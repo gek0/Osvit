@@ -96,7 +96,7 @@ return array(
 	|
 	*/
 
-	'cookie' => 'taekwondoo_osvit_session',
+	'cookie' => 'taekwondo_osvit_session',
 
 	/*
 	|--------------------------------------------------------------------------

@@ -46,20 +46,22 @@ class LoginController extends BaseController{
             $input_data = Input::get('formData');
             $token = Input::get('_token');
             $user_data = ['username' => e($input_data['username']),
-                'password' => $input_data['password'],
-                'rememberMe' => $input_data['rememberMe']
+                          'password' => $input_data['password']
             ];
 
             //check if csrf token is valid
             if(Session::token() != $token){
                 return Response::json(['status' => 'error',
-                    'errors' => 'Nevaeæi CSRF token!'
+                    'errors' => 'NevaÅ¾eÄ‡i CSRF token!'
                 ]);
             }
 
-            $remember_me = false;
-            if($user_data['rememberMe'] == '1'){
+            // permanent session
+            if(isset($input_data['remember_me']) && $input_data['remember_me'] == '1'){
                 $remember_me = true;
+            }
+            else{
+                $remember_me = false;
             }
 
             if (Auth::attempt(['username' => $user_data['username'], 'password' => $user_data['password']], $remember_me)) {
@@ -67,7 +69,7 @@ class LoginController extends BaseController{
             }
             else {
                 return Response::json(['status' => 'error',
-                    'errors' => 'Neispravno korisnièko ime ili lozinka.'
+                    'errors' => 'Neispravno korisniÄko ime ili lozinka.'
                 ]);
             }
         }

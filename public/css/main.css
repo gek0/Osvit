@@ -8,6 +8,10 @@
 @import 'animate.css';
 @import 'bootstrap-select.min.css';
 @import 'fileinput.min.css';
+@import 'icomoon.css';
+@import 'simple-line-icons.css';
+@import 'magnific-popup.css';
+@import '../fonts/font-awesome/css/font-awesome.min.css';
 *,
 :after,
 :before {
@@ -147,7 +151,6 @@ blockquote.fine-read {
 .form-container,
 .login-container {
     margin: 1em auto;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, .1)
 }
 .form-container {
     width: 75%;
@@ -167,11 +170,11 @@ blockquote.fine-read {
 .form-element input,
 .form-element textarea {
     outline: 0;
-    background: rgba(32, 75, 118, .95);
+    background: rgba(31, 26, 23, .75);
     width: 100%;
     border: 0;
     margin: 0 0 15px;
-    padding: 1em;
+    padding: .75em;
     box-sizing: border-box;
     color: #FFF
 }
@@ -179,7 +182,7 @@ blockquote.fine-read {
 .form-element input:hover,
 .form-element textarea:focus,
 .form-element textarea:hover {
-    background: rgba(32, 75, 118, .75);
+    background: rgba(218, 37, 28, .75);
     -webkit-transition: all .5s ease;
     transition: all .5s ease
 }
@@ -197,10 +200,12 @@ blockquote.fine-read {
 .form-element button.submit-form {
     text-transform: uppercase;
     outline: 0;
-    background: rgba(32, 134, 244, 1);
-    width: 100%;
+    background: rgba(218, 37, 28, 1);
+    width: 50%;
     border: 0;
-    padding: 1em;
+    display: block;
+    margin: 0 auto;
+    padding: .75em;
     color: #FFF;
     font-size: 14px;
     -webkit-transition: all .5s ease;
@@ -210,7 +215,7 @@ blockquote.fine-read {
 .form-element button.submit-form:active,
 .form-element button.submit-form:focus,
 .form-element button.submit-form:hover {
-    background: rgba(32, 134, 244, .8);
+    background: rgba(218, 37, 28, .75);
     -webkit-transition: all .5s ease;
     transition: all .5s ease
 }
@@ -229,6 +234,10 @@ blockquote.fine-read {
 .logo-placeholder {
     text-align: center
 }
+.logo-placeholder img{
+    display: block;
+    margin: .05em auto;
+}
 .pagination-layout ul {
     -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
     -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
@@ -245,6 +254,11 @@ blockquote.fine-read {
     padding: .15em 1em;
     font-size: 1.1em
 }
+.space{ margin: 1em auto; }
+.space-x2{ margin: 2em auto; }
+.space-x3{ margin: 3em auto; }
+.space-x4{ margin: 4em auto; }
+.space-x5{ margin: 5em auto; }
 span.size1 {
     font-size: 10px
 }
@@ -277,7 +291,7 @@ span.size5 {
 }
 div.thumbnail {
     background-color: rgba(0, 0, 0, .2);
-    border: 1px solid rgba(32, 134, 244, .25)
+    border: 1px solid rgba(218, 37, 28, .25);
 }
 pre {
     background: 0 0;
@@ -354,6 +368,78 @@ pre {
     width: 100%
 }
 
+.danger-notif,
+.info-notif,
+.notificationOutput {
+    font-weight: 700;
+    text-align: center;
+}
+.notificationOutput {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    display: none;
+    position: fixed;
+    z-index: 999;
+    color: #FFFFFF;
+    top: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+    -o-box-shadow: 0 1px 2px rgba(0, 0, 0, .1)
+}
+.notificationOutput h3 {
+    display: inline-block;
+    width: 60%;
+    margin: .625em auto
+}
+#outputMsg{
+    color: #FFFFFF;
+}
+.notificationTools {
+    width: 100px;
+    height: 25px;
+    line-height: 25px;
+    position: absolute;
+    z-index: 100;
+    right: 50px;
+    top: 30%;
+    margin: auto;
+    cursor: pointer;
+    color: #FFFFFF;
+}
+#notificationTimer {
+    font-size: 1.45em
+}
+.warningNotif {
+    background: #df1c3c
+}
+.successNotif {
+    background: #5ccb71
+}
+.none {
+    display: none
+}
+.danger-notif {
+    color: red
+}
+.info-notif {
+    color: #4ee663
+}
+.notificationOutput h3 {
+    display: inline-block;
+    width: 60%;
+    margin: .625em auto
+}
+#notificationTimer {
+    font-size: 1.45em
+}
+
+/**
+* buttons, recaptcha, checboxes
+*/
 .g-recaptcha * {
     margin: 0 auto
 }
@@ -418,6 +504,12 @@ pre {
 .btn-submit-edit:visited,
 .btn-submit:visited {
     color: #fff
+}
+.btn span.glyphicon {
+    opacity: 0;
+}
+.btn.active span.glyphicon {
+    opacity: 1;
 }
 .checkbox {
     padding-left: 20px

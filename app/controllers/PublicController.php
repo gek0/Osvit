@@ -16,7 +16,7 @@ class PublicController extends BaseController {
      */
     public function showHome()
     {
-        return "HOME";
+        return View::make('public.index')->with(['page_title' => 'PoÄetna']);
     }
 
     /**
@@ -34,15 +34,15 @@ class PublicController extends BaseController {
                 'g-recaptcha-response' => 'required|captcha'
             ];
             $messages = ['full_name.required' => 'Zaboravili ste unjeti ime i prezime / Full name is mandatory',
-                'full_name.between' => 'Ime i prezime ne mogu biti dulji od 100 znakova i kraæi od 2 / Full name length max. 100 chars and min. 2 chars',
+                'full_name.between' => 'Ime i prezime ne mogu biti dulji od 100 znakova i kraÄ‡i od 2 / Full name length max. 100 chars and min. 2 chars',
                 'email.required' => 'E-mail adresa je obavezno polje / E-mail is mandatory',
-                'email.email' => 'Unjeta e-mail adresa nije vaeæa / E-mail is invalid',
+                'email.email' => 'Unjeta e-mail adresa nije vaÅ¾eÄ‡a / E-mail is invalid',
                 'subject.required' => 'Zaboravili ste unjeti naslov poruke / Subjectis mandatory',
-                'subject.between' => 'Naslov poruke ne moe biti dulji od 100 znakova i kraæi od 2 / Subject length max. 100 chars and min. 2 chars',
+                'subject.between' => 'Naslov poruke ne moÅ¾e biti dulji od 100 znakova i kraÄ‡i od 2 / Subject length max. 100 chars and min. 2 chars',
                 'message_body.required' => 'Poruka je obavezno polje / Message is mandatory',
                 'message_body.min' => 'Poruka je prekratka, minimalno 10 znakova / Message too short, min. 10 chars',
                 'g-recaptcha-response.required' => 'Captcha je obavezna / Captcha is mandatory',
-                'g-recaptcha-response.captcha' => 'Captcha nije vaeæa / Captcha response is invalid'
+                'g-recaptcha-response.captcha' => 'Captcha nije vaÅ¾eÄ‡a / Captcha response is invalid'
             ];
 
             //get form data
@@ -61,7 +61,7 @@ class PublicController extends BaseController {
             //check if csrf token is valid
             if(Session::token() != $token){
                 return Response::json(['status' => 'error',
-                    'errors' => 'Nevaeæi CSRF token!'
+                    'errors' => 'NevaÅ¾eÄ‡i CSRF token!'
                 ]);
             }
             else {

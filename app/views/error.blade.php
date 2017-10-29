@@ -2,7 +2,7 @@
 
 <div class="container content-holder">
     <section class="logo-placeholder">
-        <h1>Dogodila se greöka</h1>
+        <h1>Dogodila se gre≈°ka</h1>
     </section>
 
     <section class="section section-inner">
@@ -10,7 +10,7 @@
             <h2>{{{ $exception }}}</h2>
 
             <div class="space"></div>
-            <a href="{{ URL::route('home') }}"><button class="learn-btn-inverse animated fadeInUp">Povratak na poËetnu <i class="fa fa-home fa-med"></i></button></a>
+            <a href="{{ URL::route('home') }}"><button class="learn-btn-inverse animated fadeInUp">Povratak na poƒçetnu <i class="fa fa-home fa-med"></i></button></a>
         </div>
     </section> <!-- end section-inner -->
 
