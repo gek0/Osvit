@@ -20,6 +20,43 @@ class PublicController extends BaseController {
     }
 
     /**
+     * generate javascript code for google map
+     * @return mixed
+     */
+    public function generateMap($id = null){
+        if($id == null){
+            return '';
+        }
+        else{
+            $location = Location::where('id', '=', $id)->first();
+            if(!$location){
+                return '';
+            }
+            else{
+                Header("content-type: application/x-javascript");
+
+                $js_map = 'jQuery(document).ready(function(){
+                                var image = "'.asset('css/assets/images/map-marker.png').'";
+                                var map'.$location->id.' = $("#map'.$location->id.'");
+
+                                if(map'.$location->id.'.length > 0) {
+                                    map = new GMaps({
+                                        el: "#map'.$location->id.'", lat: '.$location->map_lat.', lng: '.$location->map_lng.', zoom: 15, linksControl: true, zoomControl: true,
+                                        panControl: true, scrollwheel: true, streetViewControl: true
+                                    });
+
+                                    map.addMarker({lat: '.$location->map_lat.', lng: '.$location->map_lng.', title: "'.$location->map_title.'", icon: image});
+                                    var styles = '.$location->map_style.';
+                                    map.setOptions({styles: styles});
+                                }
+                            });';
+
+                return $js_map;
+            }
+        }
+    }
+
+    /**
      * send email from contact form over Ajax request
      * @return mixed
      */

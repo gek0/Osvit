@@ -134,7 +134,7 @@ h4 {
 img.thumbnail {
     margin: 0 auto 10px;
     border: none;
-    background-color: rgba(32, 134, 244, 1)
+    background-color: rgba(218, 37, 28, 1)
 }
 hr {
     border: 0;
@@ -368,6 +368,9 @@ pre {
     width: 100%
 }
 
+/*
+* global notifications
+*/
 .danger-notif,
 .info-notif,
 .notificationOutput {

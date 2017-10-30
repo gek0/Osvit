@@ -25,7 +25,7 @@ class LoginController extends BaseController{
             ]);
         }
         else{
-            return Redirect::to('admin');
+            return Redirect::to('admin/korisnici');
         }
     }
 

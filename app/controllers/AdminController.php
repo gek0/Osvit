@@ -1,0 +1,457 @@
+<?php
+
+class AdminController extends BaseController
+{
+
+    /**
+     * CSRF validation on requests
+     */
+    public function __construct()
+    {
+        $this->beforeFilter('crfs', ['on' => ['post', 'put', 'patch', 'delete']]);
+    }
+
+    /**
+     * show admin locations
+     * @return mixed
+     */
+    public function showLocations()
+    {
+        $locations_data = Location::orderBy('id', 'DESC')->get();
+
+        return View::make('admin.locations')->with(['page_title' => 'Administracija',
+            'locations_data' => $locations_data
+        ]);
+    }
+
+    /**
+     * show admin location edit
+     * @return mixed
+     */
+    public function showUpdateLocation($id = null)
+    {
+        if($id == null){
+            return Redirect::to('admin/dvorane')->withErrors('Dvorana ne postoji');
+        }
+        else{
+            $location = Location::where('id', '=', $id)->first();
+            if(!$location){
+                return Redirect::to('admin/dvorane')->withErrors('Dvorana ne postoji');
+            }
+            else{
+                if(isset($location->map_style) && !empty($location->map_style)){
+                    $custom_style = true;
+                }
+                else{
+                    $custom_style = false;
+                    $location->map_style = null;
+                }
+
+                return View::make('admin.locations-edit')->with(['page_title' => 'Administracija',
+                                                                'location' => $location,
+                                                                'custom_style' => $custom_style
+                ]);
+            }
+        }
+    }
+
+    /**
+     * update location
+     * @return mixed
+     */
+    public function updateLocation()
+    {
+        $form_data = ['map_title' => e(Input::get('map_title')), 'contact_info' => e(Input::get('contact_info')),
+                    'map_lat' => e(Input::get('map_lat')), 'map_lng' => e(Input::get('map_lng')),
+                    'time_schedule' => Input::get('time_schedule'), 'map_style' => Input::get('map_style')];
+        $token = Input::get('_token');
+        $location_id = e(Input::get('id'));
+
+        //check if csrf token is valid
+        if(Session::token() != $token){
+            return Redirect::back()->withErrors('Nevažeći CSRF token!');
+        }
+
+        $validator = Validator::make($form_data, Location::$rules, Location::$messages);
+        //check validation results and category if ok
+        if($validator->fails()){
+            return Redirect::back()->withErrors($validator->getMessageBag()->toArray())->withInput();
+        }
+        else{
+            $location = Location::where('id', '=', $location_id)->first();
+
+            # check for custom map styling
+            if(isset($form_data['map_style']) && !empty($form_data['map_style'])){
+                $map_style = $form_data['map_style'];
+            }
+            else{
+                $map_style = '[{"featureType":"all","elementType":"labels","stylers":[{"visibility":"on"}]},{"featureType":"all","elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#000000"},{"lightness":40}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#000000"},{"lightness":16}]},{"featureType":"all","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":17},{"weight":1.2}]},{"featureType":"administrative.locality","elementType":"labels.text.fill","stylers":[{"color":"#c4c4c4"}]},{"featureType":"administrative.neighborhood","elementType":"labels.text.fill","stylers":[{"color":"#707070"}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":21},{"visibility":"on"}]},{"featureType":"poi.business","elementType":"geometry","stylers":[{"visibility":"on"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#be2026"},{"lightness":"0"},{"visibility":"on"}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"visibility":"off"}]},{"featureType":"road.highway","elementType":"labels.text.fill","stylers":[{"visibility":"off"}]},{"featureType":"road.highway","elementType":"labels.text.stroke","stylers":[{"visibility":"off"},{"hue":"#ff000a"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":18}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#575757"}]},{"featureType":"road.arterial","elementType":"labels.text.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"road.arterial","elementType":"labels.text.stroke","stylers":[{"color":"#2c2c2c"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":16}]},{"featureType":"road.local","elementType":"labels.text.fill","stylers":[{"color":"#999999"}]},{"featureType":"road.local","elementType":"labels.text.stroke","stylers":[{"saturation":"-52"}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":19}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":17}]}]';
+            }
+
+            $location->map_title = $form_data['map_title'];
+            $location->contact_info = $form_data['contact_info'];
+            $location->map_lat = $form_data['map_lat'];
+            $location->map_lng = $form_data['map_lng'];
+            $location->time_schedule = $form_data['time_schedule'];
+            $location->map_style = $map_style;
+            $location->save();
+        }
+
+        return Redirect::back()->with(['success' => 'Dvorana je uspješno izmjenjena']);
+    }
+
+    /**
+     * add new location
+     * @return mixed
+     */
+    public function addLocation()
+    {
+        $form_data = ['map_title' => e(Input::get('map_title')), 'contact_info' => e(Input::get('contact_info')),
+                        'map_lat' => e(Input::get('map_lat')), 'map_lng' => e(Input::get('map_lng')),
+                        'time_schedule' => Input::get('time_schedule'), 'map_style' => Input::get('map_style')];
+        $token = Input::get('_token');
+
+        //check if csrf token is valid
+        if(Session::token() != $token){
+            return Redirect::back()->withErrors('Nevažeći CSRF token!');
+        }
+
+        $validator = Validator::make($form_data, Location::$rules, Location::$messages);
+        //check validation results and category if ok
+        if($validator->fails()){
+            return Redirect::back()->withErrors($validator->getMessageBag()->toArray())->withInput();
+        }
+        else{
+            # check for custom map styling
+            if(isset($form_data['map_style']) && !empty($form_data['map_style'])){
+                $map_style = $form_data['map_style'];
+            }
+            else{
+                $map_style = '[{"featureType":"all","elementType":"labels","stylers":[{"visibility":"on"}]},{"featureType":"all","elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#000000"},{"lightness":40}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#000000"},{"lightness":16}]},{"featureType":"all","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":17},{"weight":1.2}]},{"featureType":"administrative.locality","elementType":"labels.text.fill","stylers":[{"color":"#c4c4c4"}]},{"featureType":"administrative.neighborhood","elementType":"labels.text.fill","stylers":[{"color":"#707070"}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":21},{"visibility":"on"}]},{"featureType":"poi.business","elementType":"geometry","stylers":[{"visibility":"on"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#be2026"},{"lightness":"0"},{"visibility":"on"}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"visibility":"off"}]},{"featureType":"road.highway","elementType":"labels.text.fill","stylers":[{"visibility":"off"}]},{"featureType":"road.highway","elementType":"labels.text.stroke","stylers":[{"visibility":"off"},{"hue":"#ff000a"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":18}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#575757"}]},{"featureType":"road.arterial","elementType":"labels.text.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"road.arterial","elementType":"labels.text.stroke","stylers":[{"color":"#2c2c2c"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":16}]},{"featureType":"road.local","elementType":"labels.text.fill","stylers":[{"color":"#999999"}]},{"featureType":"road.local","elementType":"labels.text.stroke","stylers":[{"saturation":"-52"}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":19}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":17}]}]';
+            }
+
+            $location = new Location;
+            $location->map_title = $form_data['map_title'];
+            $location->contact_info = $form_data['contact_info'];
+            $location->map_lat = $form_data['map_lat'];
+            $location->map_lng = $form_data['map_lng'];
+            $location->time_schedule = $form_data['time_schedule'];
+            $location->map_style = $map_style;
+            $location->save();
+        }
+
+        return Redirect::to('admin/dvorane')->with(['success' => 'Dvorana je uspješno dodana']);
+    }
+
+    /**
+     * delete location
+     * @return mixed
+     */
+    public function deleteLocation($id = null)
+    {
+        if($id == null){
+            return Redirect::to('admin/dvorane')->withErrors('Dvorana ne postoji');
+        }
+        else{
+            $location = Location::where('id', '=', $id)->first();
+            if(!$location){
+                return Redirect::to('admin/dvorane')->withErrors('Dvorana ne postoji');
+            }
+            else{
+                $location->delete();
+                return Redirect::to('admin/dvorane')->with(['success' => 'Dvorana je uspješno obrisana']);
+            }
+        }
+    }
+
+    /**
+     * show admin video gallery
+     * @return mixed
+     */
+    public function showVideoGallery()
+    {
+        $video_gallery_data = VideoGallery::first();
+
+        return View::make('admin.video-gallery')->with(['page_title' => 'Administracija',
+            'video_gallery_data' => $video_gallery_data
+        ]);
+    }
+
+    /**
+     * add url to video gallery
+     * @return mixed
+     */
+    public function updateVideoGallery()
+    {
+        $form_data = ['video_url' => e(Input::get('video_url'))];
+        $token = Input::get('_token');
+
+        //check if csrf token is valid
+        if(Session::token() != $token){
+            return Redirect::back()->withErrors('Nevažeći CSRF token!');
+        }
+
+        $validator = Validator::make($form_data, VideoGallery::$rules, VideoGallery::$messages);
+        //check validation results and category if ok
+        if($validator->fails()){
+            return Redirect::back()->withErrors($validator->getMessageBag()->toArray())->withInput();
+        }
+        else{
+            //only one record in database
+            $check_data = VideoGallery::first();
+            if($check_data == null){
+                $video = new VideoGallery();
+            }
+            else{
+                $video = $check_data;
+            }
+            $video->video_url = $form_data['video_url'];
+            $video->save();
+        }
+
+        return Redirect::to('admin/video-galerija')->with(['success' => 'Stranica je uspješno izmjenjena']);
+    }
+
+    /**
+     * delete url from video gallery
+     * @return mixed
+     */
+    public function deleteVideoGalleryUrl()
+    {
+        $video_gallery = VideoGallery::first();
+        $video_gallery->delete();
+
+        return Redirect::to('admin/video-galerija')->with(['success' => 'Video je uspješno obrisan.']);
+    }
+
+    /**
+     * show admin gallery
+     * @return mixed
+     */
+    public function showImageGallery()
+    {
+        $image_gallery_data = Gallery::orderBy('id', 'DESC')->get();
+
+        return View::make('admin.image-gallery')->with(['page_title' => 'Administracija',
+            'image_gallery_data' => $image_gallery_data
+        ]);
+    }
+
+    /**
+     * add images to image gallery
+     * @return mixed
+     */
+    public function updateImageGallery()
+    {
+        $gallery_images = Input::file('image_gallery_images');
+        $token = Input::get('_token');
+
+        //check if csrf token is valid
+        if(Session::token() != $token){
+            return Redirect::back()->withErrors('Nevažeći CSRF token!');
+        }
+
+        //validate
+        $error_list = null;
+        if($gallery_images == true){
+            foreach($gallery_images as $img){
+                $validator_images = Validator::make(['images' => $img], Gallery::$rules, Gallery::$messages);
+                if($validator_images->fails()){
+                    $error_list = $validator_images->messages()->merge();
+                }
+            }
+        }
+
+        //check for errors
+        if($error_list == null){
+            //add new images
+            if($gallery_images == true && $gallery_images[0] != null){
+                //check for image directory
+                $path = public_path().'/image_gallery_uploads/';
+                $short_path = 'image_gallery_uploads';
+                if(!File::exists($path)){
+                    File::makeDirectory($path, 0777);
+                }
+
+                foreach($gallery_images as $img){
+                    $file_name = 'Osvit_galerija_'.Str::random(5);
+                    $file_extension = $img->getClientOriginalExtension();
+                    $full_name = $file_name.'.'.$file_extension;
+                    $file_size = $img->getSize();
+
+                    $file_uploaded = $img->move($path, $full_name);
+                    $image_resize = Image::make($path.$full_name)->widen(800, function ($constraint) {
+                        $constraint->upsize();
+                    })->save();
+                    if($file_uploaded){
+                        $image = new Gallery;
+                        $image->file_name = $full_name;
+                        $image->file_size = $file_size;
+                        $image->save();
+                    }
+                }
+
+
+                //redirect on finish
+                return Redirect::to('admin/galerija')->with(['success' => 'Slike uspješno dodane']);
+            }
+            else{
+                return Redirect::to('admin/galerija')->withErrors('Nijedna slika nije odabrana');
+            }
+        }
+        else{
+            return Redirect::to('admin/galerija')->withErrors($error_list);
+        }
+    }
+
+    /**
+     * delete image from image gallery
+     * @param null $id
+     * @return mixed
+     */
+    public function deleteImageGalleryImage($id = null)
+    {
+        if($id == null){
+            return Redirect::to('admin/galerija')->withErrors('Odabrana slika ne postoji');
+        }
+        else{
+            // find image in database
+            $image = Gallery::findOrFail($id);
+
+            if($image){
+                try{
+                    File::delete(public_path().'/image_gallery_uploads/'.$image->file_name);
+                    $image->delete();
+                }
+                catch(Exception $e){
+                    return Redirect::to('admin/galerija')->withErrors('Slika nije mogla biti obrisana');
+                }
+
+                //redirect on finish
+                return Redirect::to('admin/galerija')->with(['success' => 'Slika je uspješno obrisana']);
+            }
+            else{
+                return Redirect::to('admin/galerija')->withErrors('odabrana slika ne postoji');
+            }
+        }
+    }
+
+    /**
+     * show admin users
+     * @return mixed
+     */
+    public function showUsers()
+    {
+        $users_data = User::orderBy('id', 'ASC')->get();
+
+        return View::make('admin.users')->with(['page_title' => 'Administracija',
+            'users_data' => $users_data
+        ]);
+    }
+
+    /**
+     * show admin user edit
+     * @return mixed
+     */
+    public function showUpdateUser($id = null)
+    {
+        if($id == null){
+            return Redirect::to('admin/korisnici')->withErrors('Korisnik ne postoji');
+        }
+        else{
+            $user = User::where('id', '=', $id)->first();
+            if(!$user){
+                return Redirect::to('admin/korisnici')->withErrors('Korisnik ne postoji');
+            }
+            else{
+                return View::make('admin.users-edit')->with(['page_title' => 'Administracija',
+                    'user' => $user
+                ]);
+            }
+        }
+    }
+
+    /**
+     * update user
+     * @return mixed
+     */
+    public function updateUser()
+    {
+        $form_data = ['username' => e(Input::get('username')), 'password' => Input::get('password'), 'password_again' => Input::get('password_again'), 'email' => e(Input::get('email'))];
+        $token = Input::get('_token');
+        $user_id = e(Input::get('id'));
+
+        //check if csrf token is valid
+        if(Session::token() != $token){
+            return Redirect::back()->withErrors('Nevažeći CSRF token!');
+        }
+
+        $validator = Validator::make($form_data, User::$rulesLessStrict, User::$messages);
+        //check validation results and category if ok
+        if($validator->fails()){
+            return Redirect::back()->withErrors($validator->getMessageBag()->toArray())->withInput();
+        }
+        else{
+            $user = User::where('id', '=', $user_id)->first();
+            $user->username = $form_data['username'];
+            if(!empty($form_data['password']) && !empty($form_data['password'])){
+                $user->password = Hash::make($form_data['password']);
+            }
+            $user->email = $form_data['email'];
+            $user->save();
+        }
+
+        return Redirect::to('admin/korisnici')->with(['success' => 'Korisnik je uspješno izmjenjen']);
+    }
+
+    /**
+     * add user
+     * @return mixed
+     */
+    public function addUser()
+    {
+        $form_data = ['username' => e(Input::get('username')), 'password' => Input::get('password'), 'password_again' => Input::get('password_again'), 'email' => e(Input::get('email'))];
+        $token = Input::get('_token');
+
+        //check if csrf token is valid
+        if(Session::token() != $token){
+            return Redirect::back()->withErrors('Nevažeći CSRF token!');
+        }
+
+        $validator = Validator::make($form_data, User::$rules, User::$messages);
+        //check validation results and category if ok
+        if($validator->fails()){
+            return Redirect::back()->withErrors($validator->getMessageBag()->toArray())->withInput();
+        }
+        else{
+            $user = new User;
+            $user->username = $form_data['username'];
+            $user->password = Hash::make($form_data['password']);
+            $user->email = $form_data['email'];
+            $user->save();
+        }
+
+        return Redirect::to('admin/korisnici')->with(['success' => 'Korisnik je uspješno dodan']);
+    }
+
+    /**
+     * delete user
+     * @return mixed
+     */
+    public function deleteUser($id = null)
+    {
+        if($id == null){
+            return Redirect::to('admin/korisnici')->withErrors('Korisnik ne postoji');
+        }
+        else{
+            $user = User::where('id', '=', $id)->first();
+            if(!$user){
+                return Redirect::to('admin/korisnici')->withErrors('Korisnik ne postoji');
+            }
+            else{
+                $user->delete();
+                return Redirect::to('admin/korisnici')->with(['success' => 'Korisnik je uspješno obrisan']);
+            }
+        }
+    }
+}

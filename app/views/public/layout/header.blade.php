@@ -8,6 +8,7 @@
     <meta charset="utf-8">
     <title>Taekwondo "Osvit" :: {{ $page_title or 'Dobrodošli' }}</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="_token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="taekwondo, osvit, klub, trening, tkd, hrvatska, sport, vještine, martial arts">
     <meta name="description" content="Taekwondo klub Osvit, jedan od najstarijih TKD klubova u Hrvatskoj">
