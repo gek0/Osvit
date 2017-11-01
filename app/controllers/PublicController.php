@@ -16,7 +16,11 @@ class PublicController extends BaseController {
      */
     public function showHome()
     {
-        return View::make('public.index')->with(['page_title' => 'Početna']);
+        $cover_data = Cover::first();
+
+        return View::make('public.index')->with(['page_title' => 'Početna',
+            'cover_data' => $cover_data
+        ]);
     }
 
     /**

@@ -15,10 +15,14 @@
  * admin area
  */
 Route::group(['before' => 'auth'], function() {
+	Route::get('admin', function(){
+		return Redirect::to('admin/korisnici');
+	});
+
 	Route::group(['prefix' => 'admin'], function() {
-		Route::get('/', function(){
-			return Redirect::to('admin/korisnici');
-		});
+		Route::get('naslovnica', ['as' => 'admin-page-home', 'uses' => 'AdminController@showPageHome']);
+		Route::post('naslovnica-izmjena', ['as' => 'admin-cover-editPOST', 'uses' => 'AdminController@updateCover']);
+		Route::get('naslovnica-brisanje-slike', ['as' => 'admin-cover-image-delete', 'uses' => 'AdminController@deleteCoverImage']);
 
 		Route::post('dvorane', ['as' => 'admin-locationsPOST', 'uses' => 'AdminController@addLocation']);
 		Route::get('dvorane', ['as' => 'admin-locations', 'uses' => 'AdminController@showLocations']);

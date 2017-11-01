@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="col-lg-8 col-lg-offset-2" id="layout-block-main">
-        {{ Form::open(['url' => 'admin/korisnici', 'role' => 'form', 'id' => 'admin-users', 'class' => 'form-element']) }}
+        {{ Form::open(['url' => route('admin-usersPOST'), 'role' => 'form', 'id' => 'admin-users', 'class' => 'form-element']) }}
 
         <div class="form-group">
             {{ Form::label('username', 'Korisničko ime:') }}
@@ -44,13 +44,13 @@
                         <td>{{ $user->username }}</td>
                         <td>{{ $user->email }}</td>
                         <td>
-                            <a href="{{ url('admin/korisnici/izmjena/'.$user->id) }}">
+                            <a href="{{ route('admin-users-edit', $user->id) }}">
                                 <button class="btn btn-submit-edit">
                                     Izmjeni <i class="fa fa-pencil"></i>
                                 </button>
                             </a>
                             @if(Auth::user()->id !== $user->id)
-                                <a href="{{ url('admin/korisnici-brisanje/'.$user->id) }}">
+                                <a href="{{ route('admin-users-delete', $user->id) }}">
                                     <button class="btn btn-submit-delete">
                                         Obriši <i class="fa fa-trash"></i>
                                     </button>

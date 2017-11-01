@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="col-lg-8 col-lg-offset-2" id="layout-block-main">
-        {{ Form::open(['url' => 'admin/korisnici-izmjena', 'role' => 'form', 'id' => 'admin-users-edit', 'class' => 'form-element']) }}
+        {{ Form::open(['url' => route('admin-users-editPOST'), 'role' => 'form', 'id' => 'admin-users-edit', 'class' => 'form-element']) }}
 
         <div class="form-group">
             {{ Form::label('username', 'Korisničko ime:') }}

@@ -17,7 +17,7 @@ class LoginController extends BaseController{
     public function showLogin()
     {
         if(Auth::guest()){
-            $intended_url = Session::get('url.intended', url('admin'));
+            $intended_url = Session::get('url.intended', url('admin/korisnici'));
             Session::forget('url.intended');
 
             return View::make('public.login')->with(['intended_url' => $intended_url,
@@ -37,7 +37,7 @@ class LoginController extends BaseController{
     {
         //check if user is already authorized
         if(Auth::user()){
-            return Redirect::to('admin');
+            return Redirect::to('admin/korisnici');
         }
 
         if (Request::ajax()) {

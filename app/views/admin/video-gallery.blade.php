@@ -8,7 +8,7 @@
         <button class="btn btn-submit btn-padded" id="toggle-admin-video-help"><i class="fa fa-info fa-med"></i> Upute za video URL</button></a>
 
 
-        {{ Form::open(['url' => 'admin/video-galerija', 'role' => 'form', 'id' => 'admin-video-gallery', 'class' => 'form-element']) }}
+        {{ Form::open(['url' => route('admin-video-galleryPOST'), 'role' => 'form', 'id' => 'admin-video-gallery', 'class' => 'form-element']) }}
         <div class="form-group">
             {{ Form::label('video_url', 'Video URL:') }}
             {{ Form::text('video_url', '', ['class' => 'form-input-control', 'placeholder' => 'Video URL (YouTube, Vimeo, ...)', 'id' => 'video_url', 'required' => 'true']) }}

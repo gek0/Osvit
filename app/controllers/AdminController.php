@@ -11,6 +11,111 @@ class AdminController extends BaseController
         $this->beforeFilter('crfs', ['on' => ['post', 'put', 'patch', 'delete']]);
     }
 
+
+    /**
+     * show admin page home
+     * @return mixed
+     */
+    public function showPageHome()
+    {
+        $cover_data = Cover::first();
+
+        return View::make('admin.home')->with(['page_title' => 'Administracija',
+            'cover_data' => $cover_data
+        ]);
+    }
+
+    /**
+     * update cover
+     * @return mixed
+     */
+    public function updateCover()
+    {
+        $form_data = ['cover_title' => e(Input::get('cover_title')), 'cover_subtitle' => e(Input::get('cover_subtitle')),
+                      'image_file_name' => Input::file('cover_image')];
+        $token = Input::get('_token');
+
+        //check if csrf token is valid
+        if(Session::token() != $token){
+            return Redirect::back()->withErrors('Nevažeći CSRF token!');
+        }
+
+        $validator = Validator::make($form_data, Cover::$rules, Cover::$messages);
+        //check validation results and category if ok
+        if($validator->fails()){
+            return Redirect::back()->withErrors($validator->getMessageBag()->toArray())->withInput();
+        }
+        else{
+            // only one record in database
+            $check_data = Cover::first();
+            if($check_data == null){
+                $cover = new Cover;
+            }
+            else{
+                $cover = $check_data;
+            }
+
+            $cover->cover_title = $form_data['cover_title'];
+            $cover->cover_subtitle = $form_data['cover_subtitle'];
+
+            //check if there is image
+            if($form_data['image_file_name'] == true){
+                //check for image directory
+                $path = public_path().'/cover_uploads/';
+                //delete existing image
+                File::deleteDirectory($path);
+
+                if(!File::exists($path)){
+                    //recreate directory
+                    File::makeDirectory($path, 0777);
+                }
+
+                $file_name = getenv('WEB_NAME_URL_SAFE').'_cover';
+                $file_extension = $form_data['image_file_name']->getClientOriginalExtension();
+                $full_name = $file_name.'.'.$file_extension;
+                $file_size = $form_data['image_file_name']->getSize();
+
+                $form_data['image_file_name']->move($path, $full_name);
+
+                $cover->cover_file_name = $full_name;
+                $cover->cover_file_size = $file_size;
+            }
+
+            $cover->save();
+        }
+
+        return Redirect::to('admin/naslovnica')->with(['success' => 'Naslovnica je uspješno izmjenjena']);
+    }
+
+    /**
+     * delete cover image
+     * @return mixed
+     */
+    public function deleteCoverImage()
+    {
+        $cover = Cover::first();
+
+        $path = public_path().'/cover_uploads/';
+
+        try {
+            // delete from hard disk
+            if (File::exists($path)) {
+                //delete existing image
+                File::deleteDirectory($path);
+            }
+
+            // update database
+            $cover->cover_file_name = 'https://via.placeholder.com/1920x1080?text='.getenv('WEB_NAME');
+            $cover->cover_file_size = 0;
+            $cover->save();
+
+            return Redirect::to('admin/naslovnica')->with(['success' => 'Slika naslovnice je uspješno obrisana']);
+        }
+        catch(Exception $e){
+            return Redirect::to('admin/naslovnica')->withErrors('Slika naslovnice nije mogla biti obrisana');
+        }
+    }
+
     /**
      * show admin locations
      * @return mixed

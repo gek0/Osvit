@@ -134,7 +134,7 @@ a {
 a:active,
 a:hover,
 a:visited {
-    color: #dfdfdf
+    color: #7f7f7f;
 }
 .line-fx {
     line-height: 12px
@@ -282,11 +282,33 @@ hr {
     background-color: rgba(218, 37, 28, 1);
     color: #fff
 }
-.navbar-default .navbar-nav>.active>a:focus,
-.navbar-default .navbar-nav>.active>a:hover {
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
     background-color: rgba(218, 37, 28, .75);
     -webkit-transition: all .35s ease-in-out;
     color: #fff
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    background-color: rgba(218, 37, 28, .75);
+    -webkit-transition: all .35s ease-in-out;
+    color: #fff
+}
+.custom-pills > li.active > a, .custom-pills > li.active > a:hover, .custom-pills > li.active > a:focus {
+    background-color: rgba(0, 0, 0, .75);
+}
+.custom-pills > li > a:hover,
+.custom-pills > li > a:focus {
+    background-color: rgba(0, 0, 0, .55);
+    color: #FFFFFF;
+}
+.custom-pills > li > a {
+    background-color: #eee;
+}
+.tab-pane{
+    width: 75%;
+    height: auto;
+    margin: .5em auto;
 }
 .pagination-left {
     text-align: left
@@ -552,6 +574,10 @@ section[id^='map']{
 .map-container {
     height: 100%;
     width: 100%;
+}
+
+.red{
+    color: red;
 }
 
 /*

@@ -3,7 +3,7 @@
 class Gallery extends Eloquent{
 
     /**
-     * Gallery Database Model
+     * Database Model
      * 	-	id INT UNSIGNED / AUTO_INCREMENT PRIMARY KEY
      *  -	file_name VARCHAR(255) / UNIQUE
      *  -   file_size DOUBLE
@@ -21,7 +21,7 @@ class Gallery extends Eloquent{
      * validation error messages
      */
     public static $messages = ['images.image' => 'Dozvoljeni formati slike su: .jpeg, .png, .bmp i .gif',
-        'images.max' => 'Maksimalna veličina slike je 3MB',
+                                'images.max' => 'Maksimalna veličina slike je 3MB',
     ];
 
     /**

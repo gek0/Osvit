@@ -3,7 +3,7 @@
 class Location extends Eloquent{
 
     /**
-     * Location Database Model
+     * Database Model
      * 	-	id INT UNSIGNED / AUTO_INCREMENT PRIMARY KEY
      *  -	map_title VARCHAR(255)
      *  -   contact_info VARCHAR(255)

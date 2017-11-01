@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="col-lg-8 col-lg-offset-2" id="layout-block-main">
-        {{ Form::open(['url' => 'admin/dvorane-izmjena', 'role' => 'form', 'id' => 'admin-locations', 'files' => true, 'class' => 'form-element']) }}
+        {{ Form::open(['url' => route('admin-locations-editPOST'), 'role' => 'form', 'id' => 'admin-locations', 'files' => true, 'class' => 'form-element']) }}
 
             <div class="col-md-6">
                 <div class="form-group">

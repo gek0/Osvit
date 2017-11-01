@@ -34,6 +34,8 @@
     <!-- scripts -->
     {{ HTML::script('https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js', ['charset' => 'utf-8']) }}
     {{ HTML::script('https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.2/sweetalert2.all.min.js', ['charset' => 'utf-8']) }}
+    {{ HTML::script('js/bootstrap.min.js', ['charset' => 'utf-8']) }}
+    {{ HTML::script('js/bootstrap-select.min.js', ['charset' => 'utf-8']) }}
     {{ HTML::script('js/modernizr-2.6.2.min.js', ['charset' => 'utf-8']) }}
     {{ HTML::script('js/jquery.lazyload.min.js', ['charset' => 'utf-8']) }}
     <!--[if lt IE 9]>
@@ -67,7 +69,7 @@
 
         <div class="space-x3"></div>
         <section class="logo-placeholder">
-            {{ HTML::image('css/assets/images/logo_main.png', 'Logo', ['title' => 'Taekwondo Osvit', 'class' => 'img-responsive']) }}
+            {{ HTML::image('css/assets/images/logo_main.png', 'Logo', ['title' => getenv('WEB_NAME'), 'class' => 'img-responsive']) }}
             <h1>{{ $page_title }}</h1>
         </section>
 
@@ -78,9 +80,9 @@
                     <div class="container-fluid">
                         <ul class="nav navbar-nav">
                             {{ HTML::smartRoute_link('/', 'Pregled stranice', '<i class="fa fa-search" aria-hidden="true"></i>') }}
+                            {{ HTML::smartRoute_link('admin/naslovnica', 'Naslovnica', '<i class="fa fa-home" aria-hidden="true"></i>') }}
                             {{ HTML::smartRoute_link('admin/obavijesti', 'Obavijesti', '<i class="fa fa-pencil" aria-hidden="true"></i>') }}
-                            {{ HTML::smartRoute_link('admin/o-nama', 'O nama', '<i class="fa fa-info" aria-hidden="true"></i>') }}
-                            {{ HTML::smartRoute_link('admin/dvorane', 'Dvorane', '<i class="fa fa-home" aria-hidden="true"></i>') }}
+                            {{ HTML::smartRoute_link('admin/dvorane', 'Dvorane', '<i class="fa fa-map-marker" aria-hidden="true"></i>') }}
                             {{ HTML::smartRoute_link('admin/video-galerija', 'Video galerija', '<i class="fa fa-video-camera" aria-hidden="true"></i>') }}
                             {{ HTML::smartRoute_link('admin/galerija', 'Galerija', '<i class="fa fa-camera" aria-hidden="true"></i>') }}
                             {{ HTML::smartRoute_link('admin/korisnici', 'Korisnici', '<i class="fa fa-users" aria-hidden="true"></i>') }}

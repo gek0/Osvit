@@ -3,7 +3,7 @@
 class VideoGallery extends Eloquent{
 
     /**
-     * Video Gallery Database Model
+     * Database Model
      * 	-	id INT UNSIGNED / AUTO_INCREMENT PRIMARY KEY
      *  -	video_url VARCHAR(255)
      *  - 	created_at TIMESTAMP
@@ -20,8 +20,8 @@ class VideoGallery extends Eloquent{
      * validation error messages
      */
     public static $messages = ['video_url.required' => 'Video URL je obavezan',
-        'video_url.max' => 'Maksimalna duljina URL-a je 255 znakova',
-        'video_url.url' => 'Unjeti URL nije važeći',
+                                'video_url.max' => 'Maksimalna duljina URL-a je 255 znakova',
+                                'video_url.url' => 'Unjeti URL nije važeći',
     ];
 
     /**

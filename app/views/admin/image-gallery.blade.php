@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="col-lg-8 col-lg-offset-2" id="layout-block-main">
-        {{ Form::open(['url' => 'admin/galerija', 'role' => 'form', 'id' => 'admin-image-gallery', 'files' => true, 'class' => 'form-element']) }}
+        {{ Form::open(['url' => route('admin-image-galleryPOST'), 'role' => 'form', 'id' => 'admin-image-gallery', 'files' => true, 'class' => 'form-element']) }}
         <div class="form-group">
             {{ Form::label('image_gallery_images', 'Dodaj slike na stranicu:') }}
             {{ Form::file('image_gallery_images[]', ['multiple' => true, 'class' => 'file', 'data-show-upload' => false, 'data-show-caption' => true, 'id' => 'image_gallery_images', 'accept' => 'image/*', 'required' => 'true']) }}

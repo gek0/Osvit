@@ -31,9 +31,11 @@ jQuery(window).load(function() {
      *   BBCode editor returning blank text on refresh, FF bug
      */
     var editor = $("#codeEditor");
-    var editorLength = editor.val().length;
-    if(editorLength < 1){
-        editor.sync();
+    if(editor.length > 0) {
+        var editorLength = editor.val().length;
+        if (editorLength < 1) {
+            editor.sync();
+        }
     }
 });
 

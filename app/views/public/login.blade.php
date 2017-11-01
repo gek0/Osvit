@@ -53,7 +53,7 @@
 
 <div class="space-x3"></div>
 <section class="logo-placeholder">
-    {{ HTML::image('css/assets/images/logo_main_big.png', 'Logo', ['title' => 'Taekwondo Osvit', 'class' => 'img-responsive']) }}
+    {{ HTML::image('css/assets/images/logo_main_big.png', 'Logo', ['title' => getenv('WEB_NAME'), 'class' => 'img-responsive']) }}
     <h1>{{ $page_title }}</h1>
 </section>
 

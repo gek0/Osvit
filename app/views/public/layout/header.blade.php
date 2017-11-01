@@ -33,6 +33,9 @@
 
     <!-- scripts -->
     {{ HTML::script('https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js', ['charset' => 'utf-8']) }}
+    {{ HTML::script('https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.2/sweetalert2.all.min.js', ['charset' => 'utf-8']) }}
+    {{ HTML::script('js/bootstrap.min.js', ['charset' => 'utf-8']) }}
+    {{ HTML::script('js/bootstrap-select.min.js', ['charset' => 'utf-8']) }}
     {{ HTML::script('js/modernizr-2.6.2.min.js', ['charset' => 'utf-8']) }}
     {{ HTML::script('js/jquery.lazyload.min.js', ['charset' => 'utf-8']) }}
     <!--[if lt IE 9]>
@@ -45,6 +48,7 @@
     {{ HTML::style('css/main.css') }}
     {{ HTML::style('css/style.css') }}
     {{ HTML::style('css/queries.css') }}
+    {{ HTML::style('https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.2/sweetalert2.min.css') }}
 </head>
 <body>
 <!--[if lt IE 9]>
@@ -61,14 +65,6 @@
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
 <!-- end facebook SDK -->
-
-<!-- notifications -->
-<div class="notificationOutput" id="outputMsg">
-    <div class="notificationTools" id="notifTool">
-        <span class="fa fa-times fa-med" id="notificationRemove"></span>
-        <span id="notificationTimer"></span>
-    </div>
-</div>
 
 <header role="banner" id="fh5co-header">
     <div class="container">
