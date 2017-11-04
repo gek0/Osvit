@@ -20,8 +20,8 @@
                         <h2>Galerija slika  <small id="image_gallery_counter">{{ $image_gallery_data->count() }}</small></h2>
                         @foreach($image_gallery_data as $img)
                             <div class="col-lg-4 col-sm-4 col-6 small-marg" id="img-container-{{ $img->id }}">
-                                <a href="{{ URL::to('/image_gallery_uploads/'.$img->file_name) }}" data-imagelightbox="gallery-images">
-                                    <img data-original="{{ URL::to('/image_gallery_uploads/'.$img->file_name) }}" alt="{{ imageAlt($img->file_name) }}" class="thumbnail img-responsive lazy" />
+                                <a href="{{ URL::to('/'.getenv('IMAGE_GALLERY_UPLOAD_DIR').'/'.$img->file_name) }}" data-imagelightbox="gallery-images">
+                                    <img data-original="{{ URL::to('/'.getenv('IMAGE_GALLERY_UPLOAD_DIR').'/'.$img->file_name) }}" alt="{{ imageAlt($img->file_name) }}" class="thumbnail img-responsive lazy" />
                                 </a>
                                 <a href="{{ route('admin-image-gallery-image-delete', $img->id) }}">
                                     <button id="{{ $img->id }}" class="btn btn-submit-delete" title="Brisanje slike {{ $img->file_name }}">

@@ -1,7 +1,7 @@
 @if($cover_data['cover_file_size'] > 0)
-    <section id="fh5co-home" data-section="home" style="background-image: url('{{ url('/cover_uploads/'.$cover_data['cover_file_name']) }}');" data-stellar-background-ratio="0.5">
+    <section id="osvit-home" data-section="home" style="background-image: url('{{ url('/'.getenv('COVER_UPLOAD_DIR').'/'.$cover_data['cover_file_name']) }}');" data-stellar-background-ratio="0.5">
 @else
-    <section id="fh5co-home" data-section="home" style="background-image: url('{{ $cover_data['cover_file_name'] }}');" data-stellar-background-ratio="0.5">
+    <section id="osvit-home" data-section="home" style="background-image: url('{{ $cover_data['cover_file_name'] }}');" data-stellar-background-ratio="0.5">
 @endif
         <div class="container">
             <div class="text-wrap">

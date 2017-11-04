@@ -19,9 +19,17 @@ class AdminController extends BaseController
     public function showPageHome()
     {
         $cover_data = Cover::first();
+        $feature_data = Feature::orderBy('id', 'ASC')->get();
+        $feature_links = Feature::$feature_links;
+        $feature_icons = Feature::$feature_icons;
+        $fun_facts_data = FunFact::orderBy('id', 'ASC')->get();
 
         return View::make('admin.home')->with(['page_title' => 'Administracija',
-            'cover_data' => $cover_data
+            'cover_data' => $cover_data,
+            'feature_data' => $feature_data,
+            'feature_links' => $feature_links,
+            'feature_icons' => $feature_icons,
+            'fun_facts_data' => $fun_facts_data
         ]);
     }
 
@@ -61,7 +69,7 @@ class AdminController extends BaseController
             //check if there is image
             if($form_data['image_file_name'] == true){
                 //check for image directory
-                $path = public_path().'/cover_uploads/';
+                $path = public_path().'/'.getenv('COVER_UPLOAD_DIR').'/';
                 //delete existing image
                 File::deleteDirectory($path);
 
@@ -85,6 +93,52 @@ class AdminController extends BaseController
         }
 
         return Redirect::to('admin/naslovnica')->with(['success' => 'Naslovnica je uspješno izmjenjena']);
+    }
+
+    /**
+     * update features
+     * @return mixed
+     */
+    public function updateFeatures()
+    {
+        $form_data = Input::all();
+
+         //check if csrf token is valid
+        if(Session::token() != $form_data['_token']){
+            return Redirect::back()->withErrors('Nevažeći CSRF token!');
+        }
+
+        $validator = Validator::make($form_data, Feature::$rules, Feature::$messages);
+        //check validation results and category if ok
+        if($validator->fails()){
+            return Redirect::back()->withErrors($validator->getMessageBag()->toArray())->withInput();
+        }
+        else {
+            // there will be only 3 records by design
+            $feature_1 = Feature::find(1);
+            $feature_2 = Feature::find(2);
+            $feature_3 = Feature::find(3);
+
+            $feature_1->feature_title = $form_data['feature_title_1'];
+            $feature_1->feature_body = $form_data['feature_body_1'];
+            $feature_1->feature_link = $form_data['feature_link_1'];
+            $feature_1->feature_icon = $form_data['feature_icon_1'];
+            $feature_1->save();
+
+            $feature_2->feature_title = $form_data['feature_title_2'];
+            $feature_2->feature_body = $form_data['feature_body_2'];
+            $feature_2->feature_link = $form_data['feature_link_2'];
+            $feature_2->feature_icon = $form_data['feature_icon_2'];
+            $feature_2->save();
+
+            $feature_3->feature_title = $form_data['feature_title_3'];
+            $feature_3->feature_body = $form_data['feature_body_3'];
+            $feature_3->feature_link = $form_data['feature_link_3'];
+            $feature_3->feature_icon = $form_data['feature_icon_3'];
+            $feature_3->save();
+        }
+
+        return Redirect::to('admin/naslovnica')->with(['success' => 'Sekcija ukratko je uspješno izmjenjena']);
     }
 
     /**
@@ -314,7 +368,7 @@ class AdminController extends BaseController
             $video->save();
         }
 
-        return Redirect::to('admin/video-galerija')->with(['success' => 'Stranica je uspješno izmjenjena']);
+        return Redirect::to('admin/video-galerija')->with(['success' => 'Video za prezentaciju uspješno izmjenjen']);
     }
 
     /**
@@ -372,14 +426,14 @@ class AdminController extends BaseController
             //add new images
             if($gallery_images == true && $gallery_images[0] != null){
                 //check for image directory
-                $path = public_path().'/image_gallery_uploads/';
-                $short_path = 'image_gallery_uploads';
+                $path = public_path().'/'.getenv('IMAGE_GALLERY_UPLOAD_DIR').'/';
+                $short_path = getenv('IMAGE_GALLERY_UPLOAD_DIR');
                 if(!File::exists($path)){
                     File::makeDirectory($path, 0777);
                 }
 
                 foreach($gallery_images as $img){
-                    $file_name = 'Osvit_galerija_'.Str::random(5);
+                    $file_name = getenv('WEB_NAME_URL_SAFE').'_galerija_'.Str::random(5);
                     $file_extension = $img->getClientOriginalExtension();
                     $full_name = $file_name.'.'.$file_extension;
                     $file_size = $img->getSize();
@@ -425,7 +479,7 @@ class AdminController extends BaseController
 
             if($image){
                 try{
-                    File::delete(public_path().'/image_gallery_uploads/'.$image->file_name);
+                    File::delete(public_path().'/'.getenv('IMAGE_GALLERY_UPLOAD_DIR').'/'.$image->file_name);
                     $image->delete();
                 }
                 catch(Exception $e){

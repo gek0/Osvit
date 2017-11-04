@@ -359,6 +359,12 @@ span.size5 {
 .sm-wid {
     width: 40%
 }
+select{
+    display: none;
+}
+.use-font-awesome{
+    font-family: 'Open Sans', FontAwesome;
+}
 .row-eq-height {
     display: -webkit-box;
     display: -webkit-flex;
@@ -666,7 +672,8 @@ section[id^='map']{
 }
 .btn-submit,
 .btn-submit-delete,
-.btn-submit-edit {
+.btn-submit-edit,
+.btn-primary-red {
     outline: 0;
     border: 0;
     padding: .75em;
@@ -684,7 +691,8 @@ section[id^='map']{
     border: 2px solid rgba(91, 213, 146, .75);
     background: rgba(86, 232, 152, 1)
 }
-.btn-submit-delete {
+.btn-submit-delete,
+.btn-primary-red{
     border: 2px solid rgba(230, 33, 33, .75);
     background: rgba(226, 61, 65, 1)
 }
@@ -712,6 +720,9 @@ section[id^='map']{
 .btn-submit-edit:active,
 .btn-submit-edit:focus,
 .btn-submit-edit:hover,
+.btn-primary-red:active,
+.btn-primary-red:focus,
+.btn-primary-red:hover
 .btn-submit:active,
 .btn-submit:focus,
 .btn-submit:hover {

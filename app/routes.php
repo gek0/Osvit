@@ -23,6 +23,7 @@ Route::group(['before' => 'auth'], function() {
 		Route::get('naslovnica', ['as' => 'admin-page-home', 'uses' => 'AdminController@showPageHome']);
 		Route::post('naslovnica-izmjena', ['as' => 'admin-cover-editPOST', 'uses' => 'AdminController@updateCover']);
 		Route::get('naslovnica-brisanje-slike', ['as' => 'admin-cover-image-delete', 'uses' => 'AdminController@deleteCoverImage']);
+		Route::post('ukratko-izmjena', ['as' => 'admin-features-editPOST', 'uses' => 'AdminController@updateFeatures']);
 
 		Route::post('dvorane', ['as' => 'admin-locationsPOST', 'uses' => 'AdminController@addLocation']);
 		Route::get('dvorane', ['as' => 'admin-locations', 'uses' => 'AdminController@showLocations']);
@@ -59,5 +60,6 @@ Route::get('odjava', function(){
  */
 Route::post('prijava', ['as' => 'loginPost', 'uses' => 'LoginController@checkLogin']);
 Route::get('prijava', ['as' => 'login', 'uses' => 'LoginController@showLogin']);
+Route::get('galerija', ['as' => 'image-gallery', 'uses' => 'PublicController@showImageGallery']);
 Route::get('js-map-generator/{id}', ['as' => 'generate-js-map', 'uses' => 'PublicController@generateMap']);
 Route::get('/', ['as' => 'home', 'uses' => 'PublicController@showHome']);

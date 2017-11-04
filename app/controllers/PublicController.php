@@ -17,9 +17,28 @@ class PublicController extends BaseController {
     public function showHome()
     {
         $cover_data = Cover::first();
+        $feature_data = Feature::orderBy('id', 'ASC')->get();
+        $video_gallery_data = VideoGallery::first();
+        $image_gallery_data = Gallery::orderBy('id', 'DESC')->limit(9)->get(); // enough to fill 3 rows
 
         return View::make('public.index')->with(['page_title' => 'Početna',
-            'cover_data' => $cover_data
+            'cover_data' => $cover_data,
+            'feature_data' => $feature_data,
+            'video_gallery_data' => $video_gallery_data,
+            'image_gallery_data' => $image_gallery_data
+        ]);
+    }
+
+    /**
+     * show image gallery
+     * @return mixed
+     */
+    public function showImageGallery()
+    {
+        $image_gallery_data = Gallery::orderBy('id', 'DESC')->get();
+
+        return View::make('public.image-gallery')->with(['page_title' => 'Galerija slika',
+            'image_gallery_data' => $image_gallery_data
         ]);
     }
 

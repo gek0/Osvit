@@ -25,7 +25,7 @@
     // Burger Menu
     var burgerMenu = function() {
 
-        $('body').on('click', '.js-fh5co-nav-toggle', function(event){
+        $('body').on('click', '.js-osvit-nav-toggle', function(event){
 
             event.preventDefault();
 
@@ -71,9 +71,22 @@
             if ( navbar.is(':visible')) {
                 navbar.removeClass('in');
                 navbar.attr('aria-expanded', 'false');
-                $('.js-fh5co-nav-toggle').removeClass('active');
+                $('.js-osvit-nav-toggle').removeClass('active');
             }
 
+            event.preventDefault();
+            return false;
+        });
+
+        $('a.feature-menu-anchor').click(function(event){
+            var section = $(this).data('nav-section'),
+                navbar = $('#navbar');
+
+            if ( $('[data-section="' + section + '"]').length ) {
+                $('html, body').animate({
+                    scrollTop: $('[data-section="' + section + '"]').offset().top
+                }, 500);
+            }
             event.preventDefault();
             return false;
         });
@@ -125,16 +138,16 @@
 
         $(window).scroll(function(event){
 
-            var header = $('#fh5co-header'),
+            var header = $('#osvit-header'),
                 scrlTop = $(this).scrollTop();
 
             if ( scrlTop > 500 && scrlTop <= 2000 ) {
-                header.addClass('navbar-fixed-top fh5co-animated slideInDown');
+                header.addClass('navbar-fixed-top osvit-animated slideInDown');
             } else if ( scrlTop <= 500) {
                 if ( header.hasClass('navbar-fixed-top') ) {
-                    header.addClass('navbar-fixed-top fh5co-animated slideOutUp');
+                    header.addClass('navbar-fixed-top osvit-animated slideOutUp');
                     setTimeout(function(){
-                        header.removeClass('navbar-fixed-top fh5co-animated slideInDown slideOutUp');
+                        header.removeClass('navbar-fixed-top osvit-animated slideInDown slideOutUp');
                     }, 100 );
                 }
             }
@@ -148,15 +161,15 @@
     // Home
 
     var homeAnimate = function() {
-        if ( $('#fh5co-home').length > 0 ) {
+        if ( $('#osvit-home').length > 0 ) {
 
-            $('#fh5co-home').waypoint( function( direction ) {
+            $('#osvit-home').waypoint( function( direction ) {
 
                 if( direction === 'down' && !$(this.element).hasClass('animated') ) {
 
 
                     setTimeout(function() {
-                        $('#fh5co-home .to-animate').each(function( k ) {
+                        $('#osvit-home .to-animate').each(function( k ) {
                             var el = $(this);
 
                             setTimeout ( function () {
@@ -177,15 +190,15 @@
 
 
     var introAnimate = function() {
-        if ( $('#fh5co-intro').length > 0 ) {
+        if ( $('#osvit-intro').length > 0 ) {
 
-            $('#fh5co-intro').waypoint( function( direction ) {
+            $('#osvit-intro').waypoint( function( direction ) {
 
                 if( direction === 'down' && !$(this.element).hasClass('animated') ) {
 
 
                     setTimeout(function() {
-                        $('#fh5co-intro .to-animate').each(function( k ) {
+                        $('#osvit-intro .to-animate').each(function( k ) {
                             var el = $(this);
 
                             setTimeout ( function () {
@@ -204,16 +217,16 @@
         }
     };
 
-    var workAnimate = function() {
-        if ( $('#fh5co-work').length > 0 ) {
+    var galleryAnimate = function() {
+        if ( $('#osvit-gallery').length > 0 ) {
 
-            $('#fh5co-work').waypoint( function( direction ) {
+            $('#osvit-gallery').waypoint( function( direction ) {
 
                 if( direction === 'down' && !$(this.element).hasClass('animated') ) {
 
 
                     setTimeout(function() {
-                        $('#fh5co-work .to-animate').each(function( k ) {
+                        $('#osvit-gallery .to-animate').each(function( k ) {
                             var el = $(this);
 
                             setTimeout ( function () {
@@ -234,7 +247,7 @@
 
 
     var testimonialAnimate = function() {
-        var testimonial = $('#fh5co-testimonials');
+        var testimonial = $('#osvit-testimonials');
         if ( testimonial.length > 0 ) {
 
             testimonial.waypoint( function( direction ) {
@@ -276,7 +289,7 @@
     };
 
     var servicesAnimate = function() {
-        var services = $('#fh5co-services');
+        var services = $('#osvit-services');
         if ( services.length > 0 ) {
 
             services.waypoint( function( direction ) {
@@ -319,7 +332,7 @@
     };
 
     var aboutAnimate = function() {
-        var about = $('#fh5co-about');
+        var about = $('#osvit-about');
         if ( about.length > 0 ) {
 
             about.waypoint( function( direction ) {
@@ -348,7 +361,7 @@
     };
 
     var countersAnimate = function() {
-        var counters = $('#fh5co-counters');
+        var counters = $('#osvit-counters');
         if ( counters.length > 0 ) {
 
             counters.waypoint( function( direction ) {
@@ -402,7 +415,7 @@
 
 
     var contactAnimate = function() {
-        var contact = $('#fh5co-contact');
+        var contact = $('#osvit-contact');
         if ( contact.length > 0 ) {
 
             contact.waypoint( function( direction ) {
@@ -440,7 +453,7 @@
         // Animations
         homeAnimate();
         introAnimate();
-        workAnimate();
+        galleryAnimate();
         testimonialAnimate();
         servicesAnimate();
         aboutAnimate();

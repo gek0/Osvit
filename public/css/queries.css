@@ -4,6 +4,9 @@
 @media screen and (max-width: 991px) {
 
 }
+@media screen and (max-width: 768px) {
+
+}
 @media screen and (max-width: 680px) {
 
 }
@@ -27,6 +30,12 @@
 @media all and (min-width: 768px) and (max-width: 1024px) {
     img.thumbnail {
         height: 155px
+    }
+}
+@media all and (min-width: 768px) {
+    div.img-identical > a.osvit-project-item > img.img-gallery-identical {
+        width: 400px;
+        height: 200px;
     }
 }
 @media screen and (max-width: 900px) {

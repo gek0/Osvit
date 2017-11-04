@@ -11,7 +11,7 @@
         {{ Form::open(['url' => route('admin-video-galleryPOST'), 'role' => 'form', 'id' => 'admin-video-gallery', 'class' => 'form-element']) }}
         <div class="form-group">
             {{ Form::label('video_url', 'Video URL:') }}
-            {{ Form::text('video_url', '', ['class' => 'form-input-control', 'placeholder' => 'Video URL (YouTube, Vimeo, ...)', 'id' => 'video_url', 'required' => 'true']) }}
+            {{ Form::text('video_url', $video_gallery_data['video_url'], ['class' => 'form-input-control', 'placeholder' => 'Video URL (YouTube, Vimeo, ...)', 'id' => 'video_url', 'required' => 'true']) }}
         </div>
         <div class="text-center">
             <button type="submit" class="btn btn-submit btn-submit-full">Spremi izmjene <i class="fa fa-check"></i></button>

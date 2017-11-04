@@ -37,6 +37,12 @@ jQuery(window).load(function() {
             editor.sync();
         }
     }
+
+    /**
+     *  Bootstrap Select show selected values
+     */
+    $('select[name=selValue]').val(1);
+    $('.selectpicker').selectpicker('refresh')
 });
 
 /**
