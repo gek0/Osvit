@@ -51,7 +51,7 @@ class Feature extends Eloquent{
     /**
      * model attributes
      */
-    public static $feature_links = ['about-us' => 'O nama',
+    public static $feature_links = ['about' => 'O nama',
                                     'locations' => 'Lokacije/dvorane',
                                     'gallery' => 'Galerija slika',
                                     'news' => 'Obavijesti',

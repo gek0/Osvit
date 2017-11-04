@@ -24,6 +24,8 @@ Route::group(['before' => 'auth'], function() {
 		Route::post('naslovnica-izmjena', ['as' => 'admin-cover-editPOST', 'uses' => 'AdminController@updateCover']);
 		Route::get('naslovnica-brisanje-slike', ['as' => 'admin-cover-image-delete', 'uses' => 'AdminController@deleteCoverImage']);
 		Route::post('ukratko-izmjena', ['as' => 'admin-features-editPOST', 'uses' => 'AdminController@updateFeatures']);
+		Route::post('info-izmjena', ['as' => 'admin-fun-facts-editPOST', 'uses' => 'AdminController@updateFunFacts']);
+		Route::post('o-nama-izmjena', ['as' => 'admin-about-us-editPOST', 'uses' => 'AdminController@updateAboutUs']);
 
 		Route::post('dvorane', ['as' => 'admin-locationsPOST', 'uses' => 'AdminController@addLocation']);
 		Route::get('dvorane', ['as' => 'admin-locations', 'uses' => 'AdminController@showLocations']);

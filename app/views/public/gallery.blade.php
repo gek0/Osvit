@@ -11,12 +11,20 @@
             </div>
         </div>
 
-        @include('public.gallery-shared-output')
+        @if($image_gallery_data)
+            @include('public.gallery-shared-output')
 
-        <p class="text-center">
-            <a href="{{ route('image-gallery') }}" class="btn btn-sm animated-button victoria-two">
-                <i class="fa fa-camera" aria-hidden="true"></i> Prikaži sve slike
-            </a>
-        </p>
+            <p class="text-center">
+                <a href="{{ route('image-gallery') }}" class="btn btn-sm animated-button victoria-two">
+                    <i class="fa fa-camera" aria-hidden="true"></i> Prikaži sve slike
+                </a>
+            </p>
+        @else
+            <div class="col-md-12 col-sm-12 col-xxs-12">
+                <a href="{{ URL::to('https://via.placeholder.com/1920x1080?text=...no mi svoju još nismo objavili :)') }}" class="osvit-project-item image-popup to-animate">
+                    <img src="{{ URL::to('https://via.placeholder.com/1920x1080?text=...no mi svoju još nismo objavili :)') }}" alt="{{ getenv('WEB_NAME') }}" class="img-responsive lazy">
+                </a>
+            </div>
+        @endif
     </div>
 </section>

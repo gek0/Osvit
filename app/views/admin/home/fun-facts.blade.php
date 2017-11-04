@@ -4,40 +4,27 @@
 
                     @foreach($fun_facts_data as $fact)
                         <div class="row well">
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <div class="form-group">
-                                    <label for="feature_title_{{ $feature->id }}">Naslov {{ $feature->id }}:</label>
-                                    <input class="form-input-control" placeholder="Naslov {{ $feature->id }}" name="feature_title_{{ $feature->id }}" type="text" value="{{ $feature->feature_title }}">
+                                    <label for="info_title_{{ $fact->id }}">Info {{ $fact->id }}:</label>
+                                    <input class="form-input-control" placeholder="Info {{ $fact->id }}" name="info_title_{{ $fact->id }}" type="text" value="{{ $fact->info_title }}">
                                 </div>
                             </div>
 
-                             <div class="col-md-6">
+                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="feature_body_{{ $feature->id }}">Tekst {{ $feature->id }}:</label>
-                                    <input class="form-input-control" placeholder="Tekst {{ $feature->id }}" name="feature_body_{{ $feature->id }}" type="text" value="{{ $feature->feature_body }}">
+                                    <label for="info_number_{{ $fact->id }}">Broj {{ $fact->id }}:</label>
+                                    <input class="form-input-control" placeholder="Broj {{ $fact->id }}" name="info_number_{{ $fact->id }}" pattern="\d+" type="text" value="{{ $fact->info_number }}">
                                 </div>
                              </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="feature_link_{{ $feature->id }}">Link {{ $feature->id }}:</label><br>
-                                    <select class="selectpicker show-tick" data-style="btn-submit-delete" title="Link..." data-size="5" name="feature_link_{{ $feature->id }}">
-                                        <optgroup label="Link...">
-                                            @foreach($feature_links as $link => $name)
-                                                <option value="{{ $link }}" @if($link == $feature->feature_link) selected="selected" @endif>{{ $name }}</option>
-                                            @endforeach
-                                        </optgroup>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="feature_icon_{{ $feature->id }}">Ikona {{ $feature->id }}:</label><br>
-                                    <select class="selectpicker show-tick use-font-awesome" data-style="btn-submit-delete" title="Ikona..." data-size="5" name="feature_icon_{{ $feature->id }}">
+                                    <label for="info_icon_{{ $fact->id }}">Ikona {{ $fact->id }}:</label><br>
+                                    <select class="selectpicker show-tick use-font-awesome" data-style="btn-submit-delete" title="Ikona..." data-size="5" name="info_icon_{{ $fact->id }}">
                                         <optgroup label="Ikona...">
-                                            @foreach($feature_icons as $icon => $name)
-                                                <option value="{{ $icon }}" @if($icon == $feature->feature_icon) selected="selected" @endif>{{ $name }}</option>
+                                            @foreach($fun_facts_icons as $icon => $name)
+                                                <option value="{{ $icon }}" @if($icon == $fact->info_icon) selected="selected" @endif>{{ $name }}</option>
                                             @endforeach
                                         </optgroup>
                                     </select>

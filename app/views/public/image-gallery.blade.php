@@ -30,13 +30,29 @@
                 <h2 class="to-animate">Galerija slika</h2>
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 subtext to-animate">
+
+        @if($image_gallery_data)
                         <h3>Jedna slika govori više nego tisuću riječi.<br>A mi ih imamo {{ count($image_gallery_data) }}.</h3>
                     </div>
                 </div>
             </div>
         </div>
 
-        @include('public.gallery-shared-output')
+            @include('public.gallery-shared-output')
+
+        @else
+                        <h3>Jedna slika govori više nego tisuću riječi.</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <div class="col-md-12 col-sm-12 col-xxs-12">
+                <a href="{{ URL::to('https://via.placeholder.com/1920x1080?text=...no mi svoju još nismo objavili :)') }}" class="osvit-project-item image-popup to-animate">
+                    <img src="{{ URL::to('https://via.placeholder.com/1920x1080?text=...no mi svoju još nismo objavili :)') }}" alt="{{ getenv('WEB_NAME') }}" class="img-responsive lazy">
+                </a>
+            </div>
+        @endif
 
         <p class="text-center">
             <a href="{{ route('home') }}" class="btn btn-sm animated-button victoria-two">

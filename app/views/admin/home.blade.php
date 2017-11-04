@@ -3,9 +3,10 @@
 <div class="row">
     <div class="col-lg-8 col-lg-offset-2" id="layout-block-main">
         <ul class="nav nav-pills custom-pills">
-            <li class="active"><a data-toggle="pill" href="#cover-image">Naslovnica <i class="fa fa-camera"></i></a></li>
-            <li><a data-toggle="pill" href="#features">Ukratko <i class="fa fa-pencil"></i></a></li>
-            <li><a data-toggle="pill" href="#fun-facts">Info brojevi <i class="fa fa-pencil"></i></a></li>
+            <li class="active"><a data-toggle="pill" href="#cover-image"><i class="fa fa-camera"></i> Naslovnica</a></li>
+            <li><a data-toggle="pill" href="#features"><i class="fa fa-pencil"></i> Ukratko</a></li>
+            <li><a data-toggle="pill" href="#about-us"><i class="fa fa-info"></i> O nama</a></li>
+            <li><a data-toggle="pill" href="#fun-facts"><i class="fa fa-sort-numeric-asc"></i> Info brojevi</a></li>
         </ul>
         <hr>
 
@@ -14,6 +15,8 @@
             @include('admin.home.cover-image')
 
             @include('admin.home.features')
+
+            @include('admin.home.about-us')
 
             @include('admin.home.fun-facts')
         </div>

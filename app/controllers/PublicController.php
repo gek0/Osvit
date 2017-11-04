@@ -20,12 +20,25 @@ class PublicController extends BaseController {
         $feature_data = Feature::orderBy('id', 'ASC')->get();
         $video_gallery_data = VideoGallery::first();
         $image_gallery_data = Gallery::orderBy('id', 'DESC')->limit(9)->get(); // enough to fill 3 rows
+        $fun_facts_data = FunFact::orderBy('id', 'ASC')->get();
+
+        $about_us_data = [];
+        if($about_us_data = AboutUs::first()){
+            $about_us_data['about_body'] = $about_us_data->about_body;
+            $about_us_data['about_title'] = $about_us_data->about_title;
+        }
+        else{
+            $about_us_data['about_body'] = null;
+            $about_us_data['about_title'] = null;
+        }
 
         return View::make('public.index')->with(['page_title' => 'Početna',
             'cover_data' => $cover_data,
             'feature_data' => $feature_data,
             'video_gallery_data' => $video_gallery_data,
-            'image_gallery_data' => $image_gallery_data
+            'image_gallery_data' => $image_gallery_data,
+            'fun_facts_data' => $fun_facts_data,
+            'about_us_data' => $about_us_data
         ]);
     }
 

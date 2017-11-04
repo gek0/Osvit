@@ -34,11 +34,10 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="#" data-nav-section="home"><span>Home</span></a></li>
+                    <li class="active"><a href="#" data-nav-section="home"><span>Naslovnica</span></a></li>
                     <li><a href="#" data-nav-section="gallery"><span>Galerija</span></a></li>
                     <li><a href="#" data-nav-section="testimonials"><span>Testimonials</span></a></li>
-                    <li><a href="#" data-nav-section="services"><span>Services</span></a></li>
-                    <li><a href="#" data-nav-section="about"><span>About</span></a></li>
+                    <li><a href="#" data-nav-section="about"><span>O nama</span></a></li>
                     <li><a href="#" data-nav-section="contact"><span>Contact</span></a></li>
                 </ul>
             </div>

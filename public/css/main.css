@@ -347,11 +347,7 @@ pre {
 .btn-submit-full {
     width: 100%
 }
-.nav-pills>li.active>a,
-.nav-pills>li.active>a:focus,
-.nav-pills>li.active>a:hover {
-    background: #2086F4
-}
+
 .nav-pills>li>a {
     border-radius: 0
 }
@@ -366,6 +362,10 @@ pre {
 .map-container {
     height: 100%;
     width: 100%
+}
+
+.red{
+    color: rgba(218, 37, 28, 1);
 }
 
 /*
