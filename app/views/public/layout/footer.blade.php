@@ -1,19 +1,18 @@
 <footer id="footer" role="contentinfo">
-    <a href="#" class="gotop js-gotop"><i class="icon-arrow-up2"></i></a>
     <div class="container">
-        <div class="">
+        <div class="copyright">
             <div class="col-md-12 text-center">
-                <p>&copy; Elate Free HTML5. All Rights Reserved. <br>Created by <a href="http://freehtml5.co/" target="_blank">FREEHTML5.co</a> Images: <a href="http://pexels.com/" target="_blank">Pexels</a>, <a href="http://plmd.me/" target="_blank">plmd.me</a></p>
-
+                <p>&copy; <b>{{ getenv('WEB_NAME') }}</b>, {{ date('Y') }} | Made with <i class="fa fa-heart pulseAnim red" title="love"></i>  by <a href="{{ url('https://github.com/gek0') }}" target="_blank">Matija</a></p>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12 text-center">
-                <ul class="social social-circle">
-                    <li><a href="#"><i class="icon-twitter"></i></a></li>
-                    <li><a href="#"><i class="icon-facebook"></i></a></li>
-                    <li><a href="#"><i class="icon-youtube"></i></a></li>
-                </ul>
+                <a href="{{ getenv('FACEBOOK_URL') }}" target="_blank">
+                    <i class="fa fa-facebook-official fa-gig"></i>
+                </a>
+                <a href="{{ getenv('YOUTUBE_URL') }}" target="_blank">
+                    <i class="fa fa-youtube fa-gig"></i>
+                </a>
             </div>
         </div>
     </div>
@@ -26,6 +25,7 @@
 {{ HTML::script('js/jquery.countTo.js', ['charset' => 'utf-8']) }}
 {{ HTML::script('js/jquery.magnific-popup.min.js', ['charset' => 'utf-8']) }}
 {{ HTML::script('js/magnific-popup-options.js', ['charset' => 'utf-8']) }}
+{{ HTML::script('https://apis.google.com/js/platform.js', ['charset' => 'utf-8']) }}
 {{ HTML::script('https://maps.googleapis.com/maps/api/js?key=AIzaSyAq_DC0fNjXxqN-dTvo6PhN_ifxBvBcCWI', ['charset' => 'utf-8']) }}
 {{ HTML::script('js/gmaps.js', ['charset' => 'utf-8']) }}
 {{ HTML::script('js/main.js', ['charset' => 'utf-8']) }}

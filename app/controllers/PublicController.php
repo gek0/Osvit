@@ -21,6 +21,7 @@ class PublicController extends BaseController {
         $video_gallery_data = VideoGallery::first();
         $image_gallery_data = Gallery::orderBy('id', 'DESC')->limit(9)->get(); // enough to fill 3 rows
         $fun_facts_data = FunFact::orderBy('id', 'ASC')->get();
+        $locations_data = Location::orderBy('id', 'DESC')->get();
 
         $about_us_data = [];
         if($about_us_data = AboutUs::first()){
@@ -32,13 +33,14 @@ class PublicController extends BaseController {
             $about_us_data['about_title'] = null;
         }
 
-        return View::make('public.index')->with(['page_title' => 'Početna',
-            'cover_data' => $cover_data,
-            'feature_data' => $feature_data,
-            'video_gallery_data' => $video_gallery_data,
-            'image_gallery_data' => $image_gallery_data,
-            'fun_facts_data' => $fun_facts_data,
-            'about_us_data' => $about_us_data
+        return View::make('public.index')->with(['page_title' => 'Dobrodošli',
+                                                'cover_data' => $cover_data,
+                                                'feature_data' => $feature_data,
+                                                'video_gallery_data' => $video_gallery_data,
+                                                'image_gallery_data' => $image_gallery_data,
+                                                'fun_facts_data' => $fun_facts_data,
+                                                'locations_data' => $locations_data,
+                                                'about_us_data' => $about_us_data
         ]);
     }
 
@@ -101,31 +103,31 @@ class PublicController extends BaseController {
         if (Request::ajax()) {
             //define validator rules and messages
             $rules = ['full_name' => 'required|between:2,100',
-                'email' => 'required|email',
-                'subject' => 'required|between:2,100',
-                'message_body' => 'required|min:10',
-                'g-recaptcha-response' => 'required|captcha'
+                        'email' => 'required|email',
+                        'subject' => 'required|between:2,100',
+                        'message_body' => 'required|min:10',
+                        'g-recaptcha-response' => 'required|captcha'
             ];
-            $messages = ['full_name.required' => 'Zaboravili ste unjeti ime i prezime / Full name is mandatory',
-                'full_name.between' => 'Ime i prezime ne mogu biti dulji od 100 znakova i kraći od 2 / Full name length max. 100 chars and min. 2 chars',
-                'email.required' => 'E-mail adresa je obavezno polje / E-mail is mandatory',
-                'email.email' => 'Unjeta e-mail adresa nije važeća / E-mail is invalid',
-                'subject.required' => 'Zaboravili ste unjeti naslov poruke / Subjectis mandatory',
-                'subject.between' => 'Naslov poruke ne može biti dulji od 100 znakova i kraći od 2 / Subject length max. 100 chars and min. 2 chars',
-                'message_body.required' => 'Poruka je obavezno polje / Message is mandatory',
-                'message_body.min' => 'Poruka je prekratka, minimalno 10 znakova / Message too short, min. 10 chars',
-                'g-recaptcha-response.required' => 'Captcha je obavezna / Captcha is mandatory',
-                'g-recaptcha-response.captcha' => 'Captcha nije važeća / Captcha response is invalid'
+            $messages = ['full_name.required' => 'Zaboravili ste unjeti ime i prezime',
+                        'full_name.between' => 'Ime i prezime ne mogu biti dulji od 100 znakova i kraći od 2',
+                        'email.required' => 'E-mail adresa je obavezno polje',
+                        'email.email' => 'Unjeta e-mail adresa nije važeća',
+                        'subject.required' => 'Zaboravili ste unjeti naslov poruke',
+                        'subject.between' => 'Naslov poruke ne može biti dulji od 100 znakova i kraći od 2',
+                        'message_body.required' => 'Poruka je obavezno polje',
+                        'message_body.min' => 'Poruka je prekratka, minimalno 10 znakova',
+                        'g-recaptcha-response.required' => 'Captcha je obavezna',
+                        'g-recaptcha-response.captcha' => 'Captcha nije važeća'
             ];
 
             //get form data
             $input_data = Input::get('formData');
             $token = Input::get('_token');
             $user_data = ['full_name' => e($input_data['full_name']),
-                'email' => e($input_data['email']),
-                'subject' => e($input_data['subject']),
-                'message_body' => e($input_data['message_body']),
-                'g-recaptcha-response' => e($input_data['g-recaptcha-response'])
+                        'email' => e($input_data['email']),
+                        'subject' => e($input_data['subject']),
+                        'message_body' => e($input_data['message_body']),
+                        'g-recaptcha-response' => e($input_data['g-recaptcha-response'])
             ];
 
             //validate user data
@@ -155,7 +157,7 @@ class PublicController extends BaseController {
                     }
                     catch(Exception $e){
                         return Response::json(['status' => 'error',
-                            'errors' => 'E-mail nije mogao biti poslan - E-mail was not sent.'
+                            'errors' => 'E-mail nije mogao biti poslan, pokušajte ponovo'
                         ]);
                     }
                 }
@@ -163,7 +165,7 @@ class PublicController extends BaseController {
         }
         else{
             return Response::json(['status' => 'error',
-                'errors' => 'Podaci nisu poslani Ajax-om! - Data not sent with Ajax!'
+                'errors' => 'Podaci nisu ispravno poslani'
             ]);
         }
     }

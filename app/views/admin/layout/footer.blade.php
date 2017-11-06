@@ -2,7 +2,7 @@
 <div class="row text-center">
     <hr>
     <div class="col-md-12">
-        <p>&copy; <b>Taekwondo Osvit</b>, {{ date('Y') }} | Made with <i class="fa fa-heart pulseAnim red" title="love"></i>  by <a href="{{ url('https://github.com/gek0') }}" target="_blank">Matija</a></p>
+        <p>&copy; <b>{{ getenv('WEB_NAME') }}</b>, {{ date('Y') }} | Made with <i class="fa fa-heart pulseAnim red" title="love"></i>  by <a href="{{ url('https://github.com/gek0') }}" target="_blank">Matija</a></p>
     </div>
 </div>
 </section>

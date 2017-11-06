@@ -29,13 +29,13 @@
     clear: both
 }
 ::selection {
-    background: rgba(218, 37, 28, .5)
+    background: rgba(196, 60, 70, .5)
 }
 ::-moz-selection {
-    background: rgba(218, 37, 28, .5)
+    background: rgba(196, 60, 70, .5)
 }
 -webkit-selection {
-    background: rgba(218, 37, 28, .5)
+    background: rgba(196, 60, 70, .5)
 }
 img::selection {
     background: 0 0
@@ -126,15 +126,25 @@ h4 {
 .marginated-center-lot {
     margin: 2em auto 1em
 }
-.fb-page {
-    margin: 2em auto;
+.fb-page,
+.yt-page{
     border: 0;
-    border-radius: 5px
+    width: 100%;
+    margin: 1em auto;
+    padding: .5em;
+}
+.yt-page{
+    width: 90%;
+    text-align: left;
+    border: 1px solid #E9EBEE;
+}
+.social-section{
+    text-align: center;
 }
 img.thumbnail {
     margin: 0 auto 10px;
     border: none;
-    background-color: rgba(218, 37, 28, 1)
+    background-color: rgba(196, 60, 70, 1)
 }
 hr {
     border: 0;
@@ -182,7 +192,7 @@ blockquote.fine-read {
 .form-element input:hover,
 .form-element textarea:focus,
 .form-element textarea:hover {
-    background: rgba(218, 37, 28, .75);
+    background: rgba(196, 60, 70, 1);
     -webkit-transition: all .5s ease;
     transition: all .5s ease
 }
@@ -200,7 +210,7 @@ blockquote.fine-read {
 .form-element button.submit-form {
     text-transform: uppercase;
     outline: 0;
-    background: rgba(218, 37, 28, 1);
+    background: rgba(196, 60, 70, 1);
     width: 50%;
     border: 0;
     display: block;
@@ -215,7 +225,7 @@ blockquote.fine-read {
 .form-element button.submit-form:active,
 .form-element button.submit-form:focus,
 .form-element button.submit-form:hover {
-    background: rgba(218, 37, 28, .75);
+    background: rgba(196, 60, 70, 1);
     -webkit-transition: all .5s ease;
     transition: all .5s ease
 }
@@ -343,9 +353,12 @@ pre {
     padding: 1em;
     margin: 1em auto
 }
-#map,
 .btn-submit-full {
     width: 100%
+}
+.btn-submit-full:hover,
+.btn-submit-full:focus{
+    color: #FFFFFF;
 }
 
 .nav-pills>li>a {
@@ -355,17 +368,9 @@ pre {
     display: flex;
     justify-content: center
 }
-#map {
-    height: 500px;
-    border: none
-}
-.map-container {
-    height: 100%;
-    width: 100%
-}
 
 .red{
-    color: rgba(218, 37, 28, 1);
+    color: rgba(196, 60, 70, 1);
 }
 
 /*
@@ -417,7 +422,7 @@ pre {
     font-size: 1.45em
 }
 .warningNotif {
-    background: #df1c3c
+    background: rgba(196, 60, 70, 1)
 }
 .successNotif {
     background: #5ccb71
@@ -426,7 +431,7 @@ pre {
     display: none
 }
 .danger-notif {
-    color: red
+    color: rgba(196, 60, 70, 1)
 }
 .info-notif {
     color: #4ee663
@@ -473,8 +478,8 @@ pre {
 }
 .btn-submit-delete,
 .btn-primary-red{
-    border: 2px solid rgba(230, 33, 33, .75);
-    background: rgba(226, 61, 65, 1)
+    border: 2px solid rgba(196, 60, 70, .5);
+    background: rgba(196, 60, 70, 1)
 }
 .btn-submit:active,
 .btn-submit:focus,
@@ -491,8 +496,8 @@ pre {
 .btn-submit-delete:active,
 .btn-submit-delete:focus,
 .btn-submit-delete:hover {
-    border: 2px solid rgba(230, 33, 33, .75);
-    background: rgba(226, 61, 65, .8)
+    border: 2px solid rgba(196, 60, 70, .5);
+    background: rgba(226, 80, 90, 1)
 }
 .btn-submit-delete:active,
 .btn-submit-delete:focus,

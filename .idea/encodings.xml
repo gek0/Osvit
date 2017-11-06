@@ -16,11 +16,9 @@
     <file url="file://$PROJECT_DIR$/app/views/admin/home.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/admin/home/about-us.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/admin/home/cover-image.blade.php" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/views/admin/home/features-blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/admin/home/features.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/admin/home/fun-facts.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/admin/image-gallery.blade.php" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/views/admin/index.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/admin/layout/footer.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/admin/layout/header.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/admin/locations-edit.blade.php" charset="UTF-8" />
@@ -32,6 +30,7 @@
     <file url="file://$PROJECT_DIR$/app/views/email.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/error.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/public/about-us.blade.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/views/public/contact.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/public/fun-facts.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/public/gallery-shared-output.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/public/gallery.blade.php" charset="UTF-8" />
@@ -39,6 +38,7 @@
     <file url="file://$PROJECT_DIR$/app/views/public/index.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/public/layout/footer.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/public/layout/header.blade.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/views/public/locations.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/public/login.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/shared-layout/browser-fb.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/shared-layout/head.blade.php" charset="UTF-8" />

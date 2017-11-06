@@ -30,15 +30,15 @@
             <div class="navbar-header">
                 <!-- Mobile Toggle Menu Button -->
                 <a href="#" class="js-osvit-nav-toggle osvit-nav-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i></i></a>
-                <a class="navbar-brand" href="index.html">Elate</a>
+                {{ HTML::image('css/assets/images/logo_main_small.png', 'Logo', ['title' => getenv('WEB_NAME'), 'class' => 'img-responsive logo-navbar']) }}
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active"><a href="#" data-nav-section="home"><span>Naslovnica</span></a></li>
                     <li><a href="#" data-nav-section="gallery"><span>Galerija</span></a></li>
-                    <li><a href="#" data-nav-section="testimonials"><span>Testimonials</span></a></li>
                     <li><a href="#" data-nav-section="about"><span>O nama</span></a></li>
-                    <li><a href="#" data-nav-section="contact"><span>Contact</span></a></li>
+                    <li><a href="#" data-nav-section="contact"><span>Kontakt</span></a></li>
+                    <li><a href="#" data-nav-section="locations"><span>Lokacije</span></a></li>
                 </ul>
             </div>
         </nav>

@@ -34,24 +34,6 @@
             } else {
                 $(this).addClass('active');
             }
-
-
-
-        });
-
-    };
-
-    var goToTop = function() {
-
-        $('.js-gotop').on('click', function(event){
-
-            event.preventDefault();
-
-            $('html, body').animate({
-                scrollTop: $('html').offset().top
-            }, 500);
-
-            return false;
         });
     };
 
@@ -91,7 +73,6 @@
             return false;
         });
 
-
     };
 
     // Reflect scrolling in navigation
@@ -106,11 +87,9 @@
     };
 
     var navigationSection = function() {
-
         var $section = $('section[data-section]');
 
         $section.waypoint(function(direction) {
-
             if (direction === 'down') {
                 navActive($(this.element).data('section'));
             }
@@ -125,19 +104,13 @@
         }, {
             offset: function() { return -$(this.element).height() + 155; }
         });
-
     };
-
-
-
-
 
     // Window Scroll
     var windowScroll = function() {
         var lastScrollTop = 0;
 
         $(window).scroll(function(event){
-
             var header = $('#osvit-header'),
                 scrlTop = $(this).scrollTop();
 
@@ -151,23 +124,13 @@
                     }, 100 );
                 }
             }
-
         });
     };
 
-
-
-    // Animations
-    // Home
-
     var homeAnimate = function() {
         if ( $('#osvit-home').length > 0 ) {
-
             $('#osvit-home').waypoint( function( direction ) {
-
                 if( direction === 'down' && !$(this.element).hasClass('animated') ) {
-
-
                     setTimeout(function() {
                         $('#osvit-home .to-animate').each(function( k ) {
                             var el = $(this);
@@ -175,56 +138,37 @@
                             setTimeout ( function () {
                                 el.addClass('fadeInUp animated');
                             },  k * 200, 'easeInOutExpo' );
-
                         });
                     }, 200);
-
-
                     $(this.element).addClass('animated');
-
                 }
             } , { offset: '80%' } );
 
         }
     };
 
-
     var introAnimate = function() {
         if ( $('#osvit-intro').length > 0 ) {
-
             $('#osvit-intro').waypoint( function( direction ) {
-
                 if( direction === 'down' && !$(this.element).hasClass('animated') ) {
-
-
                     setTimeout(function() {
                         $('#osvit-intro .to-animate').each(function( k ) {
                             var el = $(this);
-
                             setTimeout ( function () {
                                 el.addClass('fadeInRight animated');
                             },  k * 200, 'easeInOutExpo' );
-
                         });
                     }, 1000);
-
-
                     $(this.element).addClass('animated');
-
                 }
             } , { offset: '80%' } );
-
         }
     };
 
     var galleryAnimate = function() {
         if ( $('#osvit-gallery').length > 0 ) {
-
             $('#osvit-gallery').waypoint( function( direction ) {
-
                 if( direction === 'down' && !$(this.element).hasClass('animated') ) {
-
-
                     setTimeout(function() {
                         $('#osvit-gallery .to-animate').each(function( k ) {
                             var el = $(this);
@@ -236,52 +180,7 @@
                         });
                     }, 200);
 
-
                     $(this.element).addClass('animated');
-
-                }
-            } , { offset: '80%' } );
-
-        }
-    };
-
-
-    var testimonialAnimate = function() {
-        var testimonial = $('#osvit-testimonials');
-        if ( testimonial.length > 0 ) {
-
-            testimonial.waypoint( function( direction ) {
-
-                if( direction === 'down' && !$(this.element).hasClass('animated') ) {
-
-                    var sec = testimonial.find('.to-animate').length,
-                        sec = parseInt((sec * 200) - 400);
-
-                    setTimeout(function() {
-                        testimonial.find('.to-animate').each(function( k ) {
-                            var el = $(this);
-
-                            setTimeout ( function () {
-                                el.addClass('fadeInUp animated');
-                            },  k * 200, 'easeInOutExpo' );
-
-                        });
-                    }, 200);
-
-                    setTimeout(function() {
-                        testimonial.find('.to-animate-2').each(function( k ) {
-                            var el = $(this);
-
-                            setTimeout ( function () {
-                                el.addClass('fadeInDown animated');
-                            },  k * 200, 'easeInOutExpo' );
-
-                        });
-                    }, sec);
-
-
-                    $(this.element).addClass('animated');
-
                 }
             } , { offset: '80%' } );
 
@@ -291,12 +190,8 @@
     var aboutAnimate = function() {
         var about = $('#osvit-about');
         if ( about.length > 0 ) {
-
             about.waypoint( function( direction ) {
-
                 if( direction === 'down' && !$(this.element).hasClass('animated') ) {
-
-
                     setTimeout(function() {
                         about.find('.to-animate').each(function( k ) {
                             var el = $(this);
@@ -307,13 +202,9 @@
 
                         });
                     }, 200);
-
-
                     $(this.element).addClass('animated');
-
                 }
             } , { offset: '80%' } );
-
         }
     };
 
@@ -358,10 +249,6 @@
                         });
                     }, sec);
 
-
-
-
-
                     $(this.element).addClass('animated');
 
                 }
@@ -369,7 +256,6 @@
 
         }
     };
-
 
     var contactAnimate = function() {
         var contact = $('#osvit-contact');
@@ -386,15 +272,34 @@
                             setTimeout ( function () {
                                 el.addClass('fadeInUp animated');
                             },  k * 200, 'easeInOutExpo' );
-
                         });
                     }, 200);
-
                     $(this.element).addClass('animated');
-
                 }
             } , { offset: '80%' } );
+        }
+    };
 
+    var locationsAnimate = function() {
+        var contact = $('#osvit-locations');
+        if ( contact.length > 0 ) {
+
+            contact.waypoint( function( direction ) {
+
+                if( direction === 'down' && !$(this.element).hasClass('animated') ) {
+
+                    setTimeout(function() {
+                        contact.find('.to-animate').each(function( k ) {
+                            var el = $(this);
+
+                            setTimeout ( function () {
+                                el.addClass('fadeInUp animated');
+                            },  k * 200, 'easeInOutExpo' );
+                        });
+                    }, 200);
+                    $(this.element).addClass('animated');
+                }
+            } , { offset: '80%' } );
         }
     };
 
@@ -405,19 +310,16 @@
         clickMenu();
         windowScroll();
         navigationSection();
-        goToTop();
 
         // Animations
         homeAnimate();
         introAnimate();
         galleryAnimate();
-        testimonialAnimate();
         aboutAnimate();
         countersAnimate();
         contactAnimate();
+        locationsAnimate();
     });
-
-
 }());
 
 jQuery(document).ready(function(){
@@ -428,6 +330,99 @@ jQuery(document).ready(function(){
         $("img.lazy").lazyload({
             effect : "fadeIn"
         });
+    });
+
+    /**
+     *  email ajax script for main contact form
+     */
+    $("#contact-form").submit(function (event) {
+        event.preventDefault();
+        var submitButton = $('#contactSubmit');
+
+        //disable button for another submits
+        // add spinning icon class
+        submitButton.addClass('disabled');
+        $('#contactSubmit i').addClass('fa-spin');
+
+        //get input fields values
+        var values = {};
+        $.each($(this).serializeArray(), function (i, field) {
+            values[field.name] = field.value;
+        });
+        var token = $('#contact-form > input[name="_token"]').val();
+
+        //user output
+        var errorMsg = "";
+        var successMsg = "<h4>E-mail s Vašim upitom je uspješno poslan</h4>";
+
+        $.ajax({
+            type: 'post',
+            url: $(this).attr('action'),
+            dataType: 'json',
+            headers: {'X-CSRF-Token': token},
+            data: {_token: token, formData: values},
+            success: function (data) {
+                //check status of validation and query
+                if (data.status === 'success') {
+                    swal({
+                        title: successMsg,
+                        type: 'success',
+                        timer: 2500,
+                        onOpen: function () {
+                            swal.showLoading()
+                        }
+                    }).then(
+                        function () {},
+                        // handling the promise rejection
+                        function (dismiss) {
+                            if (dismiss === 'timer') {
+                                console.log('Mail sent');
+                            }
+                        }
+                    );
+
+                    $(this).trigger('reset');
+                }
+                else {
+                    $.each(data.errors, function(index, value) {
+                        $.each(value, function(i){
+                            errorMsg += value[i] + '<br>';
+                        });
+                    });
+
+                    $('#contactSubmit i').removeClass('fa-spin');
+
+                    swal({
+                        title: 'Ispravite navedene greške',
+                        html: errorMsg,
+                        type: 'error',
+                        timer: 5000,
+                        onOpen: function () {
+                            swal.showLoading()
+                        }
+                    }).then(
+                        function () {},
+                        // handling the promise rejection
+                        function (dismiss) {
+                            if (dismiss === 'timer') {
+                                console.log('Mail error');
+                            }
+                        }
+                    );
+                }
+            }
+        });
+
+        //restore default class and reset captcha/form
+        setTimeout(function(){
+            var submitButton = $('#contactSubmit');
+
+            submitButton.removeClass('disabled');
+            $('#contactSubmit i').removeClass('fa-spin');
+            grecaptcha.reset();
+            $('#contact-form').trigger('reset');
+        }, 5000);
+
     });
 
 });

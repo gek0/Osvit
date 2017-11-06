@@ -63,5 +63,6 @@ Route::get('odjava', function(){
 Route::post('prijava', ['as' => 'loginPost', 'uses' => 'LoginController@checkLogin']);
 Route::get('prijava', ['as' => 'login', 'uses' => 'LoginController@showLogin']);
 Route::get('galerija', ['as' => 'image-gallery', 'uses' => 'PublicController@showImageGallery']);
+Route::post('kontakt', ['as' => 'contactPOST', 'uses' => 'PublicController@sendMail']);
 Route::get('js-map-generator/{id}', ['as' => 'generate-js-map', 'uses' => 'PublicController@generateMap']);
 Route::get('/', ['as' => 'home', 'uses' => 'PublicController@showHome']);
