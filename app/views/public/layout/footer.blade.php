@@ -7,12 +7,23 @@
         </div>
         <div class="row">
             <div class="col-md-12 text-center">
-                <a href="{{ getenv('FACEBOOK_URL') }}" target="_blank">
-                    <i class="fa fa-facebook-official fa-gig"></i>
-                </a>
-                <a href="{{ getenv('YOUTUBE_URL') }}" target="_blank">
-                    <i class="fa fa-youtube fa-gig"></i>
-                </a>
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-social social-item-facebook">
+                        <a href="{{ getenv('FACEBOOK_URL') }}" target="_blank">
+                            <i class="fa fa-facebook-official fa-gig"></i>
+                        </a>
+                    </li>
+                    <li class="list-group-item list-group-item-social social-item-youtube">
+                        <a href="{{ getenv('YOUTUBE_URL') }}" target="_blank">
+                            <i class="fa fa-youtube fa-gig"></i>
+                        </a>
+                    </li>
+                    <li class="list-group-item list-group-item-social social-item-rss">
+                        <a href="{{ route('rss') }}" target="_blank">
+                            <i class="fa fa-rss fa-gig"></i>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

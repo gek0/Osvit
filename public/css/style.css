@@ -545,20 +545,11 @@ img.logo-navbar{
   transform: scale(1.1);
 }
 
-#osvit-counters, #osvit-gallery, #osvit-contact, #osvit-about {
-  padding: 4em 0;
-}
-@media screen and (max-width: 768px) {
-  #osvit-counters, #osvit-gallery, #osvit-contact, #osvit-about {
-    padding: 2em 0;
-  }
-}
-
-#osvit-gallery, #osvit-counters, #osvit-about {
+#osvit-counters, #osvit-gallery, #osvit-contact #osvit-about, #osvit-locations {
   padding: 7em 0;
 }
 @media screen and (max-width: 768px) {
-  #osvit-gallery, #osvit-counters, #osvit-about {
+  #osvit-counters, #osvit-gallery, #osvit-contact #osvit-about, #osvit-locations {
     padding: 4em 0;
   }
 }
@@ -577,14 +568,13 @@ img.logo-navbar{
 #osvit-locations{
   background: #404040;
   overflow: hidden;
-  background-color: transparent;
-  background-size: cover;
-  background-attachment: fixed;
   position: relative;
   width: 100%;
   color: #FFFFFF;
-  padding: 9em 0 10em 0;
-  clip-path: polygon(0 4%, 100% 0, 100% 96%, 0 100%);
+}
+#osvit-locations h2,
+#osvit-locations h3{
+  color: #FFFFFF;
 }
 @media screen and (max-width: 768px) {
   #osvit-counters,
@@ -954,16 +944,48 @@ textarea.form-control{
 }
 
 #footer {
-  color: #FFFFFF;
-  padding: 50px 0;
+  color: #929292;
+  padding-top: 1em;
   position: relative;
   z-index: 1;
-  background: rgba(196, 60, 70, 1);
+  background: #FFFFFF;
+}
+#footer a{
+  text-decoration: underline;
+  color: rgba(196, 60, 70, 1);
+}
+#footer a:hover,
+#footer a:focus{
+  cursor: pointer;
 }
 #footer .copyright {
   font-size: 16px;
   margin-bottom: 0px;
   padding-bottom: 0;
+}
+.list-group-item-social{
+  display: inline-block;
+}
+.list-group-item-social:hover,
+.list-group-item-social:focus{
+  -moz-animation:pulse 1s;
+  -webkit-animation:pulse 1s;
+  animation:pulse 1s;
+  -moz-animation-iteration-count:100;
+  -webkit-animation-iteration-count:100;
+  animation-iteration-count:100;
+}
+.social-item-rss i:hover,
+.social-item-rss i:focus{
+  color: #FF6600;
+}
+.social-item-facebook i:hover,
+.social-item-facebook i:focus{
+  color: #3B5998;
+}
+.social-item-youtube i:hover,
+.social-item-youtube i:focus{
+  color: #FF0000;
 }
 
 hr {
