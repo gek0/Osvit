@@ -10,7 +10,7 @@ jQuery(document).ready(function(){
     if (editor.length > 0) {
         var lg = {
             lang: "hr",
-            buttons: "bold,italic,underline,strike,sup,sub,|,justifyleft,justifycenter,justifyright,fontSize,quote,|,table,bullist,numlist,fontcolor,code,|,link,video,removeFormat"
+            buttons: "bold,italic,underline,strike,sup,sub,|,justifyleft,justifycenter,justifyright,quote,|,table,bullist,numlist,fontcolor,code,|,link,video,removeFormat"
         };
 
         editor.wysibb(lg);

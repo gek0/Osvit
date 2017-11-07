@@ -11,7 +11,7 @@
                         </div>
 
                         <div class="col-md-12">
-                            <div class="text-center to-animate">
+                            <div class="text-left to-animate">
                                 <blockquote>
                                     {{ removeEmptyP(nl2p((new BBCParser)->parse($about_us_data['about_body']))) }}
                                 </blockquote>
@@ -21,7 +21,7 @@
                 @else
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2 subtext to-animate">
-                            <h3>Još uvijek nismo dodali sadržaj...</h3>
+                            <h3>Još uvijek nismo dodali sadržaj.</h3>
                         </div>
                     </div>
                 @endif

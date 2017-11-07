@@ -572,7 +572,7 @@ img.logo-navbar{
   position: relative;
   width: 100%;
   padding: 9em 0 10em 0;
-  clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
+  clip-path: polygon(0 4%, 100% 0, 100% 96%, 0 100%);
 }
 #osvit-locations{
   background: #404040;
@@ -584,7 +584,7 @@ img.logo-navbar{
   width: 100%;
   color: #FFFFFF;
   padding: 9em 0 10em 0;
-  clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
+  clip-path: polygon(0 4%, 100% 0, 100% 96%, 0 100%);
 }
 @media screen and (max-width: 768px) {
   #osvit-counters,
@@ -664,7 +664,7 @@ img.logo-navbar{
   position: relative;
   color: rgba(255, 255, 255, 0.8);
   background-color: rgba(0, 0, 0, .75);
-  clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
+  clip-path: polygon(0 4%, 100% 0, 100% 96%, 0 100%);
 }
 #osvit-gallery a {
   color: rgba(255, 255, 255, 0.5);
@@ -1144,19 +1144,19 @@ a.animated-button.victoria-two:after {
 }
 
 blockquote {
-  background: #f9f9f9;
-  border-left: 10px solid #ccc;
-  margin: 1.5em 10px;
-  padding: 0.5em 10px;
+  background: rgba(245, 245, 245, 1);
+  border-left: 10px solid rgba(196, 60, 70, 1);
+  margin: 1.5em auto;
+  padding: 1em 2em;
   quotes: "\201C""\201D""\2018""\2019";
 }
 blockquote:before {
-  color: #ccc;
+  color: rgba(196, 60, 70, 1);
   content: open-quote;
-  font-size: 4em;
+  font-size: 5em;
   line-height: 0.1em;
   margin-right: 0.25em;
-  vertical-align: -0.4em;
+  vertical-align: -0.5em;
 }
 blockquote p {
   display: inline;

@@ -80,7 +80,7 @@ class BBCParser extends Golonka\BBCode\Facades\BBCodeParser{
             'replace' => '<ul>$1</ul>',
         ),
         'listItem' => array(
-            'pattern' => '/\[\*\](.*)/',
+            'pattern' => '/\[\*\]([\s\S]+?)\[\/\*]/',
             'replace' => '<li>$1</li>'
         ),
         'code' => array(
@@ -88,13 +88,24 @@ class BBCParser extends Golonka\BBCode\Facades\BBCodeParser{
             'replace' => '<code>$1</code>'
         ),
         'youtube' => array(
-            'pattern' => '/\[video\]([\s\S]+?)\[\/video\]/',
-            'replace' => '<div class="embed-responsive embed-responsive-16by9">
-                              <iframe class="embed-responsive-item" src="//www.youtube.com/embed/$1" allowfullscreen></iframe></div>'
+            'pattern' => '/\[video\]([\"\'\s\S]+?)\[\/video\]/',
+            'replace' => '<div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="//www.youtube.com/embed/$1" allowfullscreen></iframe></div>'
         ),
         'linebreak' => array(
             'pattern' => '/\r/',
-            'replace' => '<br>',
+            'replace' => '<br>'
+        ),
+        'table' => array(
+            'pattern' => '/\[table\]([\s\S]+?)\[\/table\]/',
+            'replace' => '<table class="table table-bordered table-responsive table-striped">$1</table>'
+        ),
+        'tr' => array(
+            'pattern' => '/\[tr\]([\s\S]+?)\[\/tr\]/',
+            'replace' => '<tr>$1</tr>'
+        ),
+        'td' => array(
+            'pattern' => '/\[td\]([\s\S]+?)\[\/td\]/',
+            'replace' => '<td>$1</td>'
         )
     );
 
@@ -190,6 +201,18 @@ class BBCParser extends Golonka\BBCode\Facades\BBCodeParser{
         'linebreak' => array(
             'pattern' => '/\r/',
             'replace' => '<br>',
+        ),
+        'table' => array(
+            'pattern' => '/\[table\](.*)\[\/table\]/',
+            'replace' => '<table>$1</table>'
+        ),
+        'tr' => array(
+            'pattern' => '/\[tr\](.*)\[\/tr\]/',
+            'replace' => '<tr>$1</tr>'
+        ),
+        'td' => array(
+            'pattern' => '/\[td\](.*)\[\/td\]/',
+            'replace' => '<td>$1</td>'
         )
     );
 
@@ -240,11 +263,6 @@ class BBCParser extends Golonka\BBCode\Facades\BBCodeParser{
             $source = $source."...";
         }
         return $source;
-    }
-
-    public function helloWorld()
-    {
-        return 'Hello Worleed';
     }
 }
 
