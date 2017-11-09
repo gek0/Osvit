@@ -27,19 +27,24 @@ Route::group(['before' => 'auth'], function() {
 		Route::post('info-izmjena', ['as' => 'admin-fun-facts-editPOST', 'uses' => 'AdminController@updateFunFacts']);
 		Route::post('o-nama-izmjena', ['as' => 'admin-about-us-editPOST', 'uses' => 'AdminController@updateAboutUs']);
 
-		Route::post('dvorane', ['as' => 'admin-locationsPOST', 'uses' => 'AdminController@addLocation']);
-		Route::get('dvorane', ['as' => 'admin-locations', 'uses' => 'AdminController@showLocations']);
-		Route::post('dvorane-izmjena', ['as' => 'admin-locations-editPOST', 'uses' => 'AdminController@updateLocation']);
-		Route::get('dvorane/izmjena/{id}', ['as' => 'admin-locations-edit', 'uses' => 'AdminController@showUpdateLocation'])->where(['id' => '[0-9]+']);
-		Route::get('dvorane-brisanje/{id}', ['as' => 'admin-locations-delete', 'uses' => 'AdminController@deleteLocation'])->where(['id' => '[0-9]+']);
+		Route::get('obavijesti', ['as' => 'admin-news', 'uses' => 'NewsController@showNews']);
+		Route::post('obavijesti/brisanje-slike-obavijesti', ['as' => 'admin-news-gallery-image-delete', 'uses' => 'NewsController@deleteNewsGalleryImage']);
+		Route::get('obavijesti/nova', ['as' => 'admin-news-add', 'uses' => 'NewsController@showNewNewsForm']);
+		Route::post('obavijesti/nova', ['as' => 'admin-news-addPOST', 'uses' => 'NewsController@addNewNews']);
 
-		Route::post('video-galerija', ['as' => 'admin-video-galleryPOST', 'uses' => 'AdminController@updateVideoGallery']);
-		Route::get('video-galerija', ['as' => 'admin-video-gallery', 'uses' => 'AdminController@showVideoGallery']);
-		Route::get('video-galerija-brisanje', ['as' => 'admin-video-gallery-delete', 'uses' => 'AdminController@deleteVideoGalleryUrl']);
+		Route::post('dvorane', ['as' => 'admin-locationsPOST', 'uses' => 'LocationController@addLocation']);
+		Route::get('dvorane', ['as' => 'admin-locations', 'uses' => 'LocationController@showLocations']);
+		Route::post('dvorane-izmjena', ['as' => 'admin-locations-editPOST', 'uses' => 'LocationController@updateLocation']);
+		Route::get('dvorane/izmjena/{id}', ['as' => 'admin-locations-edit', 'uses' => 'LocationController@showUpdateLocation'])->where(['id' => '[0-9]+']);
+		Route::get('dvorane-brisanje/{id}', ['as' => 'admin-locations-delete', 'uses' => 'LocationController@deleteLocation'])->where(['id' => '[0-9]+']);
 
-		Route::post('galerija', ['as' => 'admin-image-galleryPOST', 'uses' => 'AdminController@updateImageGallery']);
-		Route::get('galerija', ['as' => 'admin-image-gallery', 'uses' => 'AdminController@showImageGallery']);
-		Route::get('galerija-brisanje-slike/{id}', ['as' => 'admin-image-gallery-image-delete', 'uses' => 'AdminController@deleteImageGalleryImage']);
+		Route::post('video-galerija', ['as' => 'admin-video-galleryPOST', 'uses' => 'GalleryController@updateVideoGallery']);
+		Route::get('video-galerija', ['as' => 'admin-video-gallery', 'uses' => 'GalleryController@showVideoGallery']);
+		Route::get('video-galerija-brisanje', ['as' => 'admin-video-gallery-delete', 'uses' => 'GalleryController@deleteVideoGalleryUrl']);
+
+		Route::post('galerija', ['as' => 'admin-image-galleryPOST', 'uses' => 'GalleryController@updateImageGallery']);
+		Route::get('galerija', ['as' => 'admin-image-gallery', 'uses' => 'GalleryController@showImageGallery']);
+		Route::get('galerija-brisanje-slike/{id}', ['as' => 'admin-image-gallery-image-delete', 'uses' => 'GalleryController@deleteImageGalleryImage']);
 
 		Route::post('korisnici', ['as' => 'admin-usersPOST', 'uses' => 'AdminController@addUser']);
 		Route::get('korisnici', ['as' => 'admin-users', 'uses' => 'AdminController@showUsers']);
