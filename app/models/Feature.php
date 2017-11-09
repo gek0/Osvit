@@ -55,6 +55,7 @@ class Feature extends Eloquent{
                                     'locations' => 'Lokacije/dvorane',
                                     'gallery' => 'Galerija slika',
                                     'news' => 'Obavijesti',
+                                    'contact' => 'Kontakt',
                                     'fun-facts' => 'Zanimljivosti'
     ];
 
@@ -74,7 +75,10 @@ class Feature extends Eloquent{
                                     'fa fa-search fa-gig' => '<i class="fa">&#xf002;</i>',
                                     'fa fa-star fa-gig' => '<i class="fa">&#xf005;</i>',
                                     'fa fa-pencil fa-gig' => '<i class="fa">&#xf040;</i>',
-                                    'fa fa-newspaper-o fa-gig' => '<i class="fa">&#xf1ea;</i>'
+                                    'fa fa-newspaper-o fa-gig' => '<i class="fa">&#xf1ea;</i>',
+                                    'fa fa-paper-plane fa-gig' => '<i class="fa">&#xf1d8;</i>',
+                                    'fa fa-envelope fa-gig' => '<i class="fa">&#xf0e0;</i>',
+                                    'fa fa-graduation-cap fa-gig' => '<i class="fa">&#xf19d;</i>'
     ];
 
     /**

@@ -97,7 +97,7 @@ class BBCParser extends Golonka\BBCode\Facades\BBCodeParser{
         ),
         'table' => array(
             'pattern' => '/\[table\]([\s\S]+?)\[\/table\]/',
-            'replace' => '<table class="table table-bordered table-responsive table-striped">$1</table>'
+            'replace' => '<table class="table table-bordered table-responsive">$1</table>'
         ),
         'tr' => array(
             'pattern' => '/\[tr\]([\s\S]+?)\[\/tr\]/',

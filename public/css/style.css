@@ -554,6 +554,21 @@ img.logo-navbar{
   }
 }
 
+#location-details table.table-bordered{
+  border: 1px solid rgba(194, 194, 184, .25);
+  margin-top:20px;
+}
+#location-details table.table-bordered > thead > tr > th{
+  border: 1px solid rgba(194, 194, 184, .25);
+}
+#location-details table.table-bordered > tbody > tr > td{
+  border: 1px solid rgba(194, 194, 184, .25);
+}
+
+#location-details table.table tr:nth-child(odd){
+  background-color: rgba(194, 194, 184, .05);
+}
+
 #osvit-counters {
   background: #404040;
   overflow: hidden;
@@ -1182,4 +1197,8 @@ blockquote:before {
 }
 blockquote p {
   display: inline;
+}
+
+blockquote table.table tr:nth-child(even){
+  background-color: rgba(194, 194, 184, .25);
 }

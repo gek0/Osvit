@@ -12,7 +12,18 @@
         </div>
         @if($locations_data->count() > 0)
             @foreach($locations_data as $location)
-                <h3>{{ $location->map_title }}</h3>
+                <div class="container row" id="location-details">
+                    <div class="col-md-4">
+                        <h3>{{ $location->map_title }}</h3>
+                        <h4><i class="fa fa-phone" aria-hidden="true" title="Kontakt"></i>
+                            {{ $location->contact_info }}
+                        </h4>
+                    </div>
+                    <div class="col-md-8">
+                        <h3>Raspored dvorane</h3>
+                        {{ removeEmptyP(nl2p((new BBCParser)->parse($location->time_schedule))) }}
+                    </div>
+                </div>
                 <div class="map-container space">
                 <!-- start map section -->
                     <section id="map{{ $location->id }}">
@@ -22,7 +33,7 @@
                     </section>
                 <!-- end map section -->
                 </div>
-
+                <hr>
                 <div class="clearfix visible-xs"></div>
             @endforeach
         @else

@@ -43,6 +43,10 @@ img::selection {
 img::-moz-selection {
     background: 0 0
 }
+body, html{
+    background-color: rgba(255, 255, 255, 1);
+}
+
 body,
 h1,
 h2,

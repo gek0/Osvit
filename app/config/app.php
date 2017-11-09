@@ -123,7 +123,8 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Golonka\BBCode\BBCodeParserServiceProvider',
 		'Anhskohbo\NoCaptcha\NoCaptchaServiceProvider',
-		'Intervention\Image\ImageServiceProvider'
+		'Intervention\Image\ImageServiceProvider',
+		'Cviebrock\EloquentSluggable\SluggableServiceProvider',
 	),
 
 	/*
