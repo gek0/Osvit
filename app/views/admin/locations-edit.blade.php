@@ -6,36 +6,36 @@
 
             <div class="col-md-6">
                 <div class="form-group">
-                    {{ Form::label('map_title', 'Naziv dvorane') }}
+                    {{ Form::label('map_title', 'Naziv dvorane:') }}
                     {{ Form::text('map_title', $location->map_title, ['class' => 'form-input-control', 'placeholder' => 'Naziv dvorane', 'id' => 'map_title', 'required' => 'true']) }}
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="form-group">
-                    {{ Form::label('contact_info', 'Kontakt informacije') }}
+                    {{ Form::label('contact_info', 'Kontakt informacije:') }}
                     {{ Form::text('contact_info', $location->contact_info, ['class' => 'form-input-control', 'placeholder' => 'Kontakt informacije', 'id' => 'contact_info', 'required' => 'true']) }}
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="form-group">
-                    {{ Form::label('map_lat', 'Zemljopisna širina (latitude)') }}
+                    {{ Form::label('map_lat', 'Zemljopisna širina (latitude):') }}
                     {{ Form::text('map_lat', $location->map_lat, ['class' => 'form-input-control', 'placeholder' => 'Zemljopisna širina (latitude) npr. 43.172362', 'id' => 'map_lat', 'required' => 'true']) }}
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="form-group">
-                    {{ Form::label('map_lng', 'Zemljopisna dužina (longitude)') }}
+                    {{ Form::label('map_lng', 'Zemljopisna dužina (longitude):') }}
                     {{ Form::text('map_lng', $location->map_lng, ['class' => 'form-input-control', 'placeholder' => 'Zemljopisna dužina (longitude), npr. 16.4408177', 'id' => 'map_lng', 'required' => 'true']) }}
                 </div>
             </div>
 
             <div class="col-md-12">
                 <div class="form-group">
-                    {{ Form::label('time_schedule', 'Raspored dvorane') }}
-                    {{ Form::textarea('time_schedule', $location->time_schedule, ['class' => 'form-input-control', 'placeholder' => 'Raspored dvorane', 'id' => 'codeEditor', 'required' => 'true']) }}
+                    {{ Form::label('time_schedule', 'Raspored dvorane:') }}
+                    {{ Form::textarea('time_schedule', $location->time_schedule, ['class' => 'form-input-control', 'placeholder' => 'Raspored dvorane', 'id' => 'codeEditor']) }}
                 </div>
             </div>
 
@@ -63,7 +63,6 @@
                 </div>
             </div>
 
-            <hr>
             <div class="space text-center">
                 {{ Form::hidden('id', $location->id) }}
                 <button type="submit" class="btn btn-submit btn-submit-full">Spremi izmjene <i class="fa fa-check"></i></button>

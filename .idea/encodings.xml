@@ -10,6 +10,7 @@
     <file url="file://$PROJECT_DIR$/app/controllers/NewsController.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/controllers/PublicController.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/controllers/UserController.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/functions.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/models/AboutUs.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/models/Cover.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/models/Feature.php" charset="UTF-8" />
@@ -31,7 +32,10 @@
     <file url="file://$PROJECT_DIR$/app/views/admin/layout/header.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/admin/locations-edit.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/admin/locations.blade.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/views/admin/news/edit.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/admin/news/index.blade.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/views/admin/news/new-news.blade.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/views/admin/news/show.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/admin/notification.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/admin/users-edit.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/admin/users.blade.php" charset="UTF-8" />

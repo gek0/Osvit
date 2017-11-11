@@ -20,7 +20,7 @@ class LocationController extends BaseController
         $locations_data = Location::orderBy('id', 'DESC')->get();
 
         return View::make('admin.locations')->with(['page_title' => 'Administracija',
-            'locations_data' => $locations_data
+                                                    'locations_data' => $locations_data
         ]);
     }
 
@@ -31,12 +31,12 @@ class LocationController extends BaseController
     public function showUpdateLocation($id = null)
     {
         if($id == null){
-            return Redirect::to('admin/dvorane')->withErrors('Dvorana ne postoji');
+            return Redirect::to(route('admin-locations'))->withErrors('Dvorana ne postoji');
         }
         else{
             $location = Location::where('id', '=', $id)->first();
             if(!$location){
-                return Redirect::to('admin/dvorane')->withErrors('Dvorana ne postoji');
+                return Redirect::to(route('admin-locations'))->withErrors('Dvorana ne postoji');
             }
             else{
                 if(isset($location->map_style) && !empty($location->map_style)){
@@ -69,7 +69,7 @@ class LocationController extends BaseController
 
         //check if csrf token is valid
         if(Session::token() != $token){
-            return Redirect::back()->withErrors('Nevažeći CSRF token!');
+            return Redirect::back()->withErrors('Nevažeći CSRF token');
         }
 
         $validator = Validator::make($form_data, Location::$rules, Location::$messages);
@@ -97,7 +97,7 @@ class LocationController extends BaseController
             $location->save();
         }
 
-        return Redirect::back()->with(['success' => 'Dvorana je uspješno izmjenjena']);
+        return Redirect::to(route('admin-locations'))->with(['success' => 'Dvorana je uspješno izmjenjena']);
     }
 
     /**
@@ -140,7 +140,7 @@ class LocationController extends BaseController
             $location->save();
         }
 
-        return Redirect::to('admin/dvorane')->with(['success' => 'Dvorana je uspješno dodana']);
+        return Redirect::to(route('admin-locations'))->with(['success' => 'Dvorana je uspješno dodana']);
     }
 
     /**
@@ -150,16 +150,16 @@ class LocationController extends BaseController
     public function deleteLocation($id = null)
     {
         if($id == null){
-            return Redirect::to('admin/dvorane')->withErrors('Dvorana ne postoji');
+            return Redirect::to(route('admin-locations'))->withErrors('Dvorana ne postoji');
         }
         else{
             $location = Location::where('id', '=', $id)->first();
             if(!$location){
-                return Redirect::to('admin/dvorane')->withErrors('Dvorana ne postoji');
+                return Redirect::to(route('admin-locations'))->withErrors('Dvorana ne postoji');
             }
             else{
                 $location->delete();
-                return Redirect::to('admin/dvorane')->with(['success' => 'Dvorana je uspješno obrisana']);
+                return Redirect::to(route('admin-locations'))->with(['success' => 'Dvorana je uspješno obrisana']);
             }
         }
     }

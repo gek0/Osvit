@@ -32,6 +32,8 @@
     </div>
 </div>
 
+<a href="#" id="back-to-top" title="Povratak na vrh">&uarr;</a>
+
 <section id="content-main">
     <div class="container-fluid">
 

@@ -53,7 +53,7 @@ class PublicController extends BaseController {
         $image_gallery_data = Gallery::orderBy('id', 'DESC')->get();
 
         return View::make('public.image-gallery')->with(['page_title' => 'Galerija slika',
-            'image_gallery_data' => $image_gallery_data
+                                                        'image_gallery_data' => $image_gallery_data
         ]);
     }
 
@@ -136,14 +136,14 @@ class PublicController extends BaseController {
             //check if csrf token is valid
             if(Session::token() != $token){
                 return Response::json(['status' => 'error',
-                    'errors' => 'Nevažeći CSRF token!'
+                                        'errors' => 'Nevažeći CSRF token!'
                 ]);
             }
             else {
                 //check validation results and save user if ok
                 if($validator->fails()){
                     return Response::json(['status' => 'error',
-                        'errors' => $validator->getMessageBag()->toArray()
+                                            'errors' => $validator->getMessageBag()->toArray()
                     ]);
                 }
                 else{
@@ -157,7 +157,7 @@ class PublicController extends BaseController {
                     }
                     catch(Exception $e){
                         return Response::json(['status' => 'error',
-                            'errors' => 'E-mail nije mogao biti poslan, pokušajte ponovo'
+                                                'errors' => 'E-mail nije mogao biti poslan, pokušajte ponovo'
                         ]);
                     }
                 }
@@ -165,8 +165,46 @@ class PublicController extends BaseController {
         }
         else{
             return Response::json(['status' => 'error',
-                'errors' => 'Podaci nisu ispravno poslani'
+                                    'errors' => 'Podaci nisu ispravno poslani'
             ]);
         }
+    }
+
+    /**
+     * show cached rss feed
+     * @return mixed
+     */
+    public function getRss()
+    {
+        //generate feed and cache for 60 min
+        $feed = Feed::make();
+        $feed->setCache(60, getenv('RSS_CACHE_KEY'));
+
+        //check if there is cached version
+        if(!$feed->isCached()) {
+            //grab news data from database
+            $news_data = News::orderBy('id', 'DESC')->take(5)->get();
+            //check if there are news
+            if ($news_data == true) {
+                //set feed parameters
+                $feed->title = getenv('WEB_NAME').' :: RSS';
+                $feed->description = 'Najnovije vijesti na '.getenv('WEB_NAME').'';
+                $feed->logo = URL::to('css/assets/images/logo_main_small.png');
+                $feed->link = URL::to('rss');
+                $feed->setDateFormat('datetime');
+                $feed->pubdate = $news_data[0]->created_at;
+                $feed->lang = getenv('APP_LOCALE');
+                $feed->setShortening(true);
+                $feed->setTextLimit(500);
+                foreach ($news_data as $news) {
+                    $feed->add($news->news_title, 'admin', URL::to(route('news-show', $news->slug)), $news->created_at, (new BBCParser)->unparse($news->news_body), '');
+                }
+            }
+            else{
+                return Redirect::to(route('news'))->withErrors('Trenutno nema vijesti. RSS je isključen.');
+            }
+        }
+
+        return $feed->render('atom');
     }
 }

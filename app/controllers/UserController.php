@@ -20,7 +20,7 @@ class UserController extends BaseController
         $users_data = User::orderBy('id', 'ASC')->get();
 
         return View::make('admin.users')->with(['page_title' => 'Administracija',
-            'users_data' => $users_data
+                                                'users_data' => $users_data
         ]);
     }
 
@@ -31,16 +31,16 @@ class UserController extends BaseController
     public function showUpdateUser($id = null)
     {
         if($id == null){
-            return Redirect::to('admin/korisnici')->withErrors('Korisnik ne postoji');
+            return Redirect::to(route('admin-users'))->withErrors('Korisnik ne postoji');
         }
         else{
             $user = User::where('id', '=', $id)->first();
             if(!$user){
-                return Redirect::to('admin/korisnici')->withErrors('Korisnik ne postoji');
+                return Redirect::to(route('admin-users'))->withErrors('Korisnik ne postoji');
             }
             else{
                 return View::make('admin.users-edit')->with(['page_title' => 'Administracija',
-                    'user' => $user
+                                                            'user' => $user
                 ]);
             }
         }
@@ -58,7 +58,7 @@ class UserController extends BaseController
 
         //check if csrf token is valid
         if(Session::token() != $token){
-            return Redirect::back()->withErrors('Nevažeći CSRF token!');
+            return Redirect::back()->withErrors('Nevažeći CSRF token');
         }
 
         $validator = Validator::make($form_data, User::$rulesLessStrict, User::$messages);
@@ -76,7 +76,7 @@ class UserController extends BaseController
             $user->save();
         }
 
-        return Redirect::to('admin/korisnici')->with(['success' => 'Korisnik je uspješno izmjenjen']);
+        return Redirect::to(route('admin-users'))->with(['success' => 'Korisnik je uspješno izmjenjen']);
     }
 
     /**
@@ -106,7 +106,7 @@ class UserController extends BaseController
             $user->save();
         }
 
-        return Redirect::to('admin/korisnici')->with(['success' => 'Korisnik je uspješno dodan']);
+        return Redirect::to(route('admin-users'))->with(['success' => 'Korisnik je uspješno dodan']);
     }
 
     /**
@@ -116,16 +116,16 @@ class UserController extends BaseController
     public function deleteUser($id = null)
     {
         if($id == null){
-            return Redirect::to('admin/korisnici')->withErrors('Korisnik ne postoji');
+            return Redirect::to(route('admin-users'))->withErrors('Korisnik ne postoji');
         }
         else{
             $user = User::where('id', '=', $id)->first();
             if(!$user){
-                return Redirect::to('admin/korisnici')->withErrors('Korisnik ne postoji');
+                return Redirect::to(route('admin-users'))->withErrors('Korisnik ne postoji');
             }
             else{
                 $user->delete();
-                return Redirect::to('admin/korisnici')->with(['success' => 'Korisnik je uspješno obrisan']);
+                return Redirect::to(route('admin-users'))->with(['success' => 'Korisnik je uspješno obrisan']);
             }
         }
     }

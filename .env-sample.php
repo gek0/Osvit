@@ -5,6 +5,8 @@ return array(
     'DEBUG_ENV' => true,
     'ENCRYPTION_KEY_ENV' => '',
     'USE_SSL' => false,
+    'APP_TIMEZONE' => '',
+    'APP_LOCALE' => '',
     'NOCAPTCHA_SECRET' => '',
     'NOCAPTCHA_SITEKEY' => '',
     'EMAIL_USERNAME' => '',

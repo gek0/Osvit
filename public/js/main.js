@@ -257,6 +257,55 @@
         }
     };
 
+    var galleryCountersAnimate = function() {
+        var counters = $('#gallery-counters');
+        if ( counters.length > 0 ) {
+
+            counters.waypoint( function( direction ) {
+
+                if( direction === 'down' && !$(this.element).hasClass('animated') ) {
+
+                    var sec = counters.find('.to-animate').length,
+                        sec = parseInt((sec * 200) + 400);
+
+                    setTimeout(function() {
+                        counters.find('.to-animate').each(function( k ) {
+                            var el = $(this);
+
+                            setTimeout ( function () {
+                                el.addClass('fadeInUp animated');
+                            },  k * 200, 'easeInOutExpo' );
+
+                        });
+                    }, 200);
+
+                    setTimeout(function() {
+                        counters.find('.js-counter').countTo({
+                            formatter: function (value, options) {
+                                return value.toFixed(options.decimals);
+                            },
+                        });
+                    }, 400);
+
+                    setTimeout(function() {
+                        counters.find('.to-animate-2').each(function( k ) {
+                            var el = $(this);
+
+                            setTimeout ( function () {
+                                el.addClass('bounceIn animated');
+                            },  k * 200, 'easeInOutExpo' );
+
+                        });
+                    }, sec);
+
+                    $(this.element).addClass('animated');
+
+                }
+            } , { offset: '80%' } );
+
+        }
+    };
+
     var contactAnimate = function() {
         var contact = $('#osvit-contact');
         if ( contact.length > 0 ) {
@@ -317,6 +366,7 @@
         galleryAnimate();
         aboutAnimate();
         countersAnimate();
+        galleryCountersAnimate();
         contactAnimate();
         locationsAnimate();
     });
@@ -339,7 +389,7 @@ jQuery(document).ready(function(){
         event.preventDefault();
         var submitButton = $('#contactSubmit');
 
-        //disable button for another submits
+        // disable button for another submits
         // add spinning icon class
         submitButton.addClass('disabled');
         $('#contactSubmit i').addClass('fa-spin');
@@ -425,9 +475,34 @@ jQuery(document).ready(function(){
 
     });
 
+    /**
+     * back to top animation
+     */
+    if ($('#back-to-top').length > 0) {
+        var scrollTrigger = 100, // px
+            backToTop = function () {
+                var scrollTop = $(window).scrollTop();
+                if (scrollTop > scrollTrigger) {
+                    $('#back-to-top').addClass('show');
+                } else {
+                    $('#back-to-top').removeClass('show');
+                }
+            };
+        backToTop();
+        $(window).on('scroll', function () {
+            backToTop();
+        });
+        $('#back-to-top').on('click', function (e) {
+            e.preventDefault();
+            $('html,body').animate({
+                scrollTop: 0
+            }, 700);
+        });
+    }
+
 });
 
-/*
+/**
 * bootstrap checkbox icons
  */
 $(function () {

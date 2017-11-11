@@ -24,6 +24,56 @@ jQuery(document).ready(function(){
             effect : "fadeIn"
         });
     });
+
+    /**
+     * back to top animation
+     */
+    if ($('#back-to-top').length > 0) {
+        var scrollTrigger = 100, // px
+            backToTop = function () {
+                var scrollTop = $(window).scrollTop();
+                if (scrollTop > scrollTrigger) {
+                    $('#back-to-top').addClass('show');
+                } else {
+                    $('#back-to-top').removeClass('show');
+                }
+            };
+        backToTop();
+        $(window).on('scroll', function () {
+            backToTop();
+        });
+        $('#back-to-top').on('click', function (e) {
+            e.preventDefault();
+            $('html,body').animate({
+                scrollTop: 0
+            }, 700);
+        });
+    }
+
+    /**
+     *   toogle tags-collection container view
+     */
+    $("#toogle-tags-collection").click(function(event){
+        event.preventDefault();
+
+        //update element value
+        if($(this).children().attr('class') == 'fa fa-chevron-down'){
+            $(this).children().attr('class', 'fa fa-chevron-up');
+        }
+        else if($(this).children().attr('class') == 'fa fa-chevron-up'){
+            $(this).children().attr('class', 'fa fa-chevron-down');
+        }
+
+        $("#tags-collection").toggle(250);
+    });
+
+    /**
+     *   add selected tag to tags input
+     */
+    $("#tags-collection ul li").click(function() {
+        $('#news_tags').tagsinput('add', $(this).text());
+        $(this).fadeOut(300, function(){ $(this).remove(); }); //remove used tag from DOM
+    });
 });
 
 jQuery(window).load(function() {
@@ -59,7 +109,7 @@ $(document).ready(function(){
     });
 });
 
-/*
+/**
  * bootstrap checkbox icons
  */
 $(function () {

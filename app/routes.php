@@ -16,7 +16,7 @@
  */
 Route::group(['before' => 'auth'], function() {
 	Route::get('admin', function(){
-		return Redirect::to('admin/korisnici');
+		return Redirect::to(route('admin-page-home'));
 	});
 
 	Route::group(['prefix' => 'admin'], function() {
@@ -28,9 +28,13 @@ Route::group(['before' => 'auth'], function() {
 		Route::post('o-nama-izmjena', ['as' => 'admin-about-us-editPOST', 'uses' => 'AdminController@updateAboutUs']);
 
 		Route::get('obavijesti', ['as' => 'admin-news', 'uses' => 'NewsController@showNews']);
-		Route::post('obavijesti/brisanje-slike-obavijesti', ['as' => 'admin-news-gallery-image-delete', 'uses' => 'NewsController@deleteNewsGalleryImage']);
 		Route::get('obavijesti/nova', ['as' => 'admin-news-add', 'uses' => 'NewsController@showNewNewsForm']);
 		Route::post('obavijesti/nova', ['as' => 'admin-news-addPOST', 'uses' => 'NewsController@addNewNews']);
+		Route::get('obavijesti/pregled/{slug}', ['as' => 'admin-news-show', 'uses' => 'NewsController@showIndividualNews'])->where(['slug' => '[\w\-šðèæžŠÐÈÆŽ]+']);
+		Route::get('obavijesti/izmjena/{slug}', ['as' => 'admin-news-edit', 'uses' => 'NewsController@showNewsEditForm'])->where(['slug' => '[\w\-šðèæžŠÐÈÆŽ]+']);
+		Route::post('obavijesti/izmjena/{slug}', ['as' => 'admin-news-editPOST', 'uses' => 'NewsController@updateNews'])->where(['slug' => '[\w\-šðèæžŠÐÈÆŽ]+']);
+		Route::get('obavijesti/brisanje/{slug}', ['as' => 'admin-news-delete', 'uses' => 'NewsController@deleteNews'])->where(['slug' => '[\w\-šðèæžŠÐÈÆŽ]+']);
+		Route::get('obavijesti/brisanje-slike-obavijesti/{id}', ['as' => 'admin-news-gallery-image-delete', 'uses' => 'NewsController@deleteNewsGalleryImage'])->where(['id' => '[0-9]+']);
 
 		Route::post('dvorane', ['as' => 'admin-locationsPOST', 'uses' => 'LocationController@addLocation']);
 		Route::get('dvorane', ['as' => 'admin-locations', 'uses' => 'LocationController@showLocations']);
@@ -44,7 +48,7 @@ Route::group(['before' => 'auth'], function() {
 
 		Route::post('galerija', ['as' => 'admin-image-galleryPOST', 'uses' => 'GalleryController@updateImageGallery']);
 		Route::get('galerija', ['as' => 'admin-image-gallery', 'uses' => 'GalleryController@showImageGallery']);
-		Route::get('galerija-brisanje-slike/{id}', ['as' => 'admin-image-gallery-image-delete', 'uses' => 'GalleryController@deleteImageGalleryImage']);
+		Route::get('galerija-brisanje-slike/{id}', ['as' => 'admin-image-gallery-image-delete', 'uses' => 'GalleryController@deleteImageGalleryImage'])->where(['id' => '[0-9]+']);
 
 		Route::post('korisnici', ['as' => 'admin-usersPOST', 'uses' => 'AdminController@addUser']);
 		Route::get('korisnici', ['as' => 'admin-users', 'uses' => 'AdminController@showUsers']);
@@ -59,15 +63,17 @@ Route::group(['before' => 'auth'], function() {
  */
 Route::get('odjava', function(){
 	Auth::logout();
-	return Redirect::to('/');
+	return Redirect::to(route('home'));
 });
 
 /**
  * public area
  */
-Route::post('prijava', ['as' => 'loginPost', 'uses' => 'LoginController@checkLogin']);
+Route::post('prijava', ['as' => 'loginPOST', 'uses' => 'LoginController@checkLogin']);
 Route::get('prijava', ['as' => 'login', 'uses' => 'LoginController@showLogin']);
 Route::get('galerija', ['as' => 'image-gallery', 'uses' => 'PublicController@showImageGallery']);
+Route::get('obavijesti', ['as' => 'news', 'uses' => 'PublicController@showNews']);
+Route::get('obavijesti/pregled/{slug}', ['as' => 'news-show', 'uses' => 'PublicController@showIndividualNews'])->where(['slug' => '[\w\-šðèæžŠÐÈÆŽ]+']);
 Route::get('rss', ['as' => 'rss', 'uses' => 'PublicController@getRss']);
 Route::post('kontakt', ['as' => 'contactPOST', 'uses' => 'PublicController@sendMail']);
 Route::get('js-map-generator/{id}', ['as' => 'generate-js-map', 'uses' => 'PublicController@generateMap']);

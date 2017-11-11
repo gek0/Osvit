@@ -235,7 +235,7 @@ hr {
 .form-element input:hover,
 .form-element textarea:focus,
 .form-element textarea:hover {
-    background: rgba(218, 37, 28, .75);
+    background: rgba(196, 60, 70, .75);
     -webkit-transition: all .5s ease;
     transition: all .5s ease
 }
@@ -243,6 +243,7 @@ hr {
     width: 80px;
     margin: 0
 }
+
 .img-center img,
 .loginMainBox {
     margin: 0 auto
@@ -253,7 +254,7 @@ hr {
 .form-element button.submit-form {
     text-transform: uppercase;
     outline: 0;
-    background: rgba(218, 37, 28, 1);
+    background: rgba(196, 60, 70, 1);
     width: 50%;
     border: 0;
     display: block;
@@ -268,7 +269,7 @@ hr {
 .form-element button.submit-form:active,
 .form-element button.submit-form:focus,
 .form-element button.submit-form:hover {
-    background: rgba(218, 37, 28, .75);
+    background: rgba(196, 60, 70, .75);
     -webkit-transition: all .5s ease;
     transition: all .5s ease
 }
@@ -283,18 +284,18 @@ hr {
     -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .1)
 }
 .navbar-default .navbar-nav > .active > a {
-    background-color: rgba(218, 37, 28, 1);
+    background-color: rgba(196, 60, 70, 1);
     color: #fff
 }
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
-    background-color: rgba(218, 37, 28, .75);
+    background-color: rgba(196, 60, 70, .75);
     -webkit-transition: all .35s ease-in-out;
     color: #fff
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-    background-color: rgba(218, 37, 28, .75);
+    background-color: rgba(196, 60, 70, .75);
     -webkit-transition: all .35s ease-in-out;
     color: #fff
 }
@@ -433,7 +434,7 @@ pre {
 #imagelightbox-loading {
     width: 2.5em;
     height: 2.5em;
-    background-color: rgba(218, 37, 28, 1);
+    background-color: rgba(196, 60, 70, 1);
     position: fixed
 }
 #imagelightbox {
@@ -500,7 +501,7 @@ footer {
 }
 #imagelightbox-close:focus,
 #imagelightbox-close:hover {
-    background-color: rgba(218, 37, 28, .75)
+    background-color: rgba(196, 60, 70, .75);
 }
 #imagelightbox-close:after,
 #imagelightbox-close:before {
@@ -526,7 +527,7 @@ footer {
 .imagelightbox-arrow {
     width: 3.75em;
     height: 7.5em;
-    background-color: rgba(218, 37, 28, 1);
+    background-color: rgba(196, 60, 70, 1);
     vertical-align: middle;
     display: none;
     position: fixed;
@@ -537,10 +538,10 @@ footer {
 }
 .imagelightbox-arrow:focus,
 .imagelightbox-arrow:hover {
-    background-color: rgba(218, 37, 28, .75)
+    background-color: rgba(196, 60, 70, .75)
 }
 .imagelightbox-arrow:active {
-    background-color: rgba(218, 37, 28, 1)
+    background-color: rgba(196, 60, 70, 1)
 }
 .imagelightbox-arrow-left {
     left: 2.5em
@@ -588,6 +589,71 @@ section[id^='map']{
 
 .red{
     color: red;
+}
+
+.news-all-tools { margin: .5em auto; }
+
+.sidebar-header {
+    width: 100%; height: auto;
+    background-color: rgba(196, 60, 70, .75);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+    box-sizing: border-box;
+    color: #fff;
+    padding: .8em;
+    border-top-right-radius: 4px; -webkit-border-top-right-radius: 4px; -o-border-top-right-radius: 4px;
+    border-top-left-radius: 4px; -webkit-border-top-left-radius: 4px; -o-border-top-left-radius: 4px;
+}
+
+.sidebar-content {
+    width: 100%; height: auto;
+    margin: 2em auto; padding: 0;
+}
+
+.sidebar-body {
+    width: 100%; height: auto;
+    padding: .8em;
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+    border: 1px solid rgba(196, 60, 70, .25);
+    background-color: rgba(245, 245, 245, 1);
+}
+
+.section-inner{
+    width: 80%;
+    height: auto;
+    margin: .25em auto;
+}
+
+#back-to-top {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 9999;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    line-height: 30px;
+    background: rgba(196, 60, 70, .5);
+    color: #FFFFFF;
+    cursor: pointer;
+    border: 0;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: all 0.3s ease-out;
+    opacity: 0;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, .1);
+    -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, .1);
+    -o-box-shadow: 0 2px 2px rgba(0, 0, 0, .1)
+}
+#back-to-top:hover {
+    background: rgba(196, 60, 70, 1);
+    color: #FFFFFF;
+}
+#back-to-top.show {
+    opacity: 1;
 }
 
 /*
@@ -664,6 +730,169 @@ section[id^='map']{
 .none {
     display: none
 }
+
+.bootstrap-tagsinput {
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    vertical-align: middle;
+    max-width: 100%;
+    line-height: 22px;
+    cursor: text;
+    background: rgba(31, 26, 23, .75);
+    width: 100%;
+    margin-bottom: 1em;
+    padding: .5em 1em;
+    border: 1px solid rgba(196, 60, 70, .25);
+    border-radius: 0;
+
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.bootstrap-tagsinput input {
+    border: none;
+    box-shadow: none;
+    outline: none;
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    width: auto !important;
+    max-width: inherit;
+}
+
+.bootstrap-tagsinput input:focus,
+.bootstrap-tagsinput input:hover{
+    border: none;
+    box-shadow: none;
+    background: none;
+}
+
+.bootstrap-tagsinput .tag {
+    margin-right: 2px;
+    color: #fff;
+}
+
+.bootstrap-tagsinput .tag [data-role="remove"] {
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+.bootstrap-tagsinput .tag [data-role="remove"]:after {
+    content: "x";
+    padding: 0 2px;
+}
+
+.bootstrap-tagsinput .tag [data-role="remove"]:hover {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .2), 0 1px 2px rgba(0, 0, 0, .05);
+}
+
+.bootstrap-tagsinput .tag [data-role="remove"]:hover:active {
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+}
+
+.label-submit {
+    background: rgba(196, 60, 70, 1);
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+}
+
+.tags {
+    margin: 0;
+    padding: 0;
+    right: 24px;
+    bottom: -12px;
+    list-style: none;
+    font-weight: bold;
+}
+
+.tags li {
+    height: 24px;
+    display: inline-block;
+    line-height: 24px;
+    position: relative;
+    margin: 1px;
+    cursor: pointer;
+}
+
+.tags li {
+    margin-left: 20px;
+    padding: 0 10px 0 12px;
+    background-color: rgba(196, 60, 70, .75);
+    color: #fff;
+    text-decoration: none;
+    -moz-border-radius-bottomright: 4px;    -webkit-border-bottom-right-radius: 4px;    border-bottom-right-radius: 4px;
+    -moz-border-radius-topright: 4px;    -webkit-border-top-right-radius: 4px;    border-top-right-radius: 4px;
+}
+
+.tags li:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -12px;
+    width: 0; height: 0;
+    border-color: transparent rgba(196, 60, 70, .75) transparent transparent;
+    border-style: solid;
+    border-width: 12px 12px 12px 0;
+}
+
+.tags li:after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 0;
+    float: left;
+    width: 4px;
+    height: 4px;
+    -moz-border-radius: 2px;    -webkit-border-radius: 2px;    border-radius: 2px;
+    background: #fff;
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+}
+
+.tags li:hover { background-color: rgba(196, 60, 70, .55); }
+
+.tags li:hover:before { border-color: transparent rgba(196, 60, 70, .55) transparent transparent; }
+
+#tags-collection {
+    width: 90%; height: auto;
+    margin: .5em auto;
+    padding: .75em;
+    display: none;
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+}
+
+.section{
+    width: 100%;
+}
+.section-inner{
+    width: 90%;
+    height: auto;
+    margin: .25em auto;
+}
+
+.section-header{
+    border: none;
+    color: #FFFFFF;
+    padding: .625em;
+    margin: .2em auto 1em auto;
+    background-color: rgba(196, 60, 70, .75);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .1); -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .1); -o-box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+}
+
+.form-section{
+    width: 90%;
+    margin: .5em auto;
+}
+
+.table-simple-tools tr:first-child td:first-child {
+    width: 80%;
+}
+
 /**
 * buttons, recaptcha, checboxes
 */
@@ -673,6 +902,9 @@ section[id^='map']{
 .checkbox.checkbox-inline,
 .radio.radio-inline {
     margin-top: 0
+}
+a.btn-primary{
+    color: #FFFFFF;
 }
 .btn-submit,
 .btn-submit-delete,

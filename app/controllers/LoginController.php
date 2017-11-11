@@ -17,15 +17,15 @@ class LoginController extends BaseController{
     public function showLogin()
     {
         if(Auth::guest()){
-            $intended_url = Session::get('url.intended', url('admin/korisnici'));
+            $intended_url = Session::get('url.intended', url(route('admin-page-home')));
             Session::forget('url.intended');
 
-            return View::make('public.login')->with(['intended_url' => $intended_url,
-                'page_title' => 'Administracija'
+            return View::make('public.login')->with(['page_title' => 'Administracija',
+                                                    'intended_url' => $intended_url
             ]);
         }
         else{
-            return Redirect::to('admin/korisnici');
+            return Redirect::to(route('admin-page-home'));
         }
     }
 
@@ -37,7 +37,7 @@ class LoginController extends BaseController{
     {
         //check if user is already authorized
         if(Auth::user()){
-            return Redirect::to('admin/korisnici');
+            return Redirect::to(route('admin-page-home'));
         }
 
         if (Request::ajax()) {
@@ -52,7 +52,7 @@ class LoginController extends BaseController{
             //check if csrf token is valid
             if(Session::token() != $token){
                 return Response::json(['status' => 'error',
-                    'errors' => 'Nevažeći CSRF token!'
+                                        'errors' => 'Nevažeći CSRF token'
                 ]);
             }
 
@@ -69,13 +69,13 @@ class LoginController extends BaseController{
             }
             else {
                 return Response::json(['status' => 'error',
-                    'errors' => 'Neispravno korisničko ime ili lozinka.'
+                                        'errors' => 'Neispravno korisničko ime ili lozinka'
                 ]);
             }
         }
         else{
             return Response::json(['status' => 'error',
-                'errors' => 'Podaci nisu poslani Ajax-om!'
+                                    'errors' => 'Podaci nisu poslani Ajax-om'
             ]);
         }
     }

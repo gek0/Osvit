@@ -96,7 +96,7 @@
   background:#ccc;
   padding:0px 1px;
   box-shadow:inset 0px 0px 3px #aaa;
-  border:1px solid rgba(218, 37, 28, .55);
+  border:1px solid rgba(196, 60, 70, .55);
   border-radius:0px;
 }
 .wysibb .wysibb-toolbar .wysibb-toolbar-container .wysibb-toolbar-btn span.btn-inner {
@@ -104,13 +104,13 @@
   height:26px;
   min-width:26px;
   margin:2px;
-  background: rgba(218, 37, 28, 1);
+  background: rgba(196, 60, 70, 1);
   color: #ffffff;
 }
 .wysibb .wysibb-toolbar .wysibb-toolbar-container .wysibb-toolbar-btn span.btn-tooltip {
   display:none;
   background:#333;
-  border:1px solid rgba(218, 37, 28, .55);
+  border:1px solid rgba(196, 60, 70, .55);
   position:absolute;
   line-height:20px;
   font-size:11px;
@@ -127,7 +127,7 @@
   height:0;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-top: 10px solid rgba(218, 37, 28, .55);
+  border-top: 10px solid rgba(196, 60, 70, .55);
   position:absolute;
   bottom:-5px;
   left:3px;
@@ -148,7 +148,7 @@
 
 .wysibb .wysibb-toolbar .wysibb-toolbar-container .wysibb-toolbar-btn .fonticon{
   color:#333;
-  background: rgba(218, 37, 28, 1);
+  background: rgba(196, 60, 70, 1);
   font-family: 'WysiBBiconFont';
   font-size:18px;
   line-height:28px;
@@ -232,7 +232,7 @@
   border:1px solid transparent;
 }
 .wysibb .wysibb-toolbar .wysibb-toolbar-container .wysibb-toolbar-btn.wbb-dropdown.on,.wysibb .wysibb-toolbar .wysibb-toolbar-container .wysibb-toolbar-btn.wbb-dropdown.on:active{
-   border:1px solid rgba(218, 37, 28, .55);
+   border:1px solid rgba(196, 60, 70, .55);
    background:#ccc;
    box-shadow:inset 0px 0px 3px #aaa;
 }
@@ -264,7 +264,7 @@
   position:fixed;
   top:10px;
   left:3%;
-  border: 1px solid rgba(218, 37, 28, .55);
+  border: 1px solid rgba(196, 60, 70, .55);
   box-shadow: 0px 0px 3px #aaa;
   width:90%;
   padding:5px;
@@ -292,10 +292,10 @@
   margin: 0 0 1% 1%;
   display: inline-block;*display:inline;zoom: 1;
   cursor: pointer;
-  border:1px solid rgba(218, 37, 28, .55);
+  border:1px solid rgba(196, 60, 70, .55);
 }
 .wbb-list .sc:hover{
-  border:1px solid rgba(218, 37, 28, .55);
+  border:1px solid rgba(196, 60, 70, .55);
 }
 .wbb-list .nc{
   height:24px;
@@ -324,7 +324,7 @@
   background:#eee;
 }
 .wbb-table td{
-  border: 1px dashed rgba(218, 37, 28, .55);
+  border: 1px dashed rgba(196, 60, 70, .55);
   padding: 3px;
   margin:5px;
   min-width: 5px;
@@ -345,7 +345,7 @@
 }
 .wysibb .wysibb-toolbar .wysibb-toolbar-container .wysibb-toolbar-btn.wbb-select.on,.wysibb .wysibb-toolbar .wysibb-toolbar-container .wysibb-toolbar-btn.wbb-select.on:active{
    padding: 1px 1px 1px 5px;
-   border:1px solid rgba(218, 37, 28, .55);
+   border:1px solid rgba(196, 60, 70, .55);
    background:#ccc;
    box-shadow:inset 0px 0px 3px #aaa;
 }
@@ -375,7 +375,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   margin-right:10px;
-  background-color: rgba(218, 37, 28, 1);
+  background-color: rgba(196, 60, 70, 1);
   color: #ffffff;
 }
 .wbb-select .option{
@@ -388,7 +388,7 @@
   background:#eee;
 }
 .wbb-select .option.selected{
-  background:rgba(218, 37, 28, 1);
+  background:rgba(196, 60, 70, 1);
   color:#fff;
 }
 
@@ -401,7 +401,7 @@
   box-shadow:none;
 }
 .wysibb .wysibb-toolbar .wysibb-toolbar-container .wysibb-toolbar-btn.wbb-smilebox.on,.wysibb .wysibb-toolbar .wysibb-toolbar-container .wysibb-toolbar-btn.wbb-smilebox.on:active{
-   border:1px solid rgba(218, 37, 28, .55);
+   border:1px solid rgba(196, 60, 70, .55);
    background:#ccc;
    box-shadow:inset 0px 0px 3px #aaa;
 }
@@ -448,7 +448,7 @@
   max-width: 90%;
   max-height:90%;
   margin: 30px auto;
-  border: 1px solid rgba(218, 37, 28, .55);
+  border: 1px solid rgba(196, 60, 70, .55);
   box-shadow:0px 0px 5px #333;
   overflow:auto;
 }
@@ -456,7 +456,7 @@
   color:#333;
   position:relative;
   padding:5px 10px;
-  border-bottom:1px solid rgba(218, 37, 28, .55);
+  border-bottom:1px solid rgba(196, 60, 70, .55);
 }
 #wbbmodal  .wbbm-title .wbbm-title-text{
   font-size:1.6em;
@@ -496,7 +496,7 @@
   margin: 0 10px 5px 0;
 }
 #wbbmodal  .wbbm .wbbm-tablist ul li.on,#wbbmodal  .wbbm .wbbm-tablist ul li.on:hover{
-  background:rgba(218, 37, 28, 1);
+  background:rgba(196, 60, 70, 1);
   color:#fff;
   cursor:default;
 }
@@ -513,7 +513,7 @@
 }
 
 #wbbmodal .div-modal-text{
-  border:1px solid rgba(218, 37, 28, .55);
+  border:1px solid rgba(196, 60, 70, .55);
   padding:2px 5px;
   line-height: 28px;
   max-height:100px;
@@ -522,7 +522,7 @@
 }
 #wbbmodal  .wbbm-bottom{
 
-  border-top:1px solid rgba(218, 37, 28, .55);
+  border-top:1px solid rgba(196, 60, 70, .55);
 
   padding:10px;
   background:#f1f1f1;
@@ -533,23 +533,23 @@
   padding:3px 15px;
 }
 #wbbmodal .wbb-button{
-  background:rgba(218, 37, 28, 1);
+  background:rgba(196, 60, 70, 1);
   color:#fff;
   line-height:26px;
-  border:1px solid rgba(218, 37, 28, .75);
+  border:1px solid rgba(196, 60, 70, .75);
   border-radius:0px;
   
   cursor:pointer;
 }
 #wbbmodal .wbb-button:hover{
-  background:rgba(218, 37, 28, 1);
-  border:1px solid rgba(218, 37, 28, .75);
+  background:rgba(196, 60, 70, 1);
+  border:1px solid rgba(196, 60, 70, .75);
 }
 #wbbmodal .wbb-cancel-button{
   background:#f5f5f5;
   color:#333;
   line-height:26px;
-  border:1px solid rgba(218, 37, 28, .55);
+  border:1px solid rgba(196, 60, 70, .55);
   border-radius:0px;
   cursor:pointer;
   margin-left:15px;
@@ -700,11 +700,11 @@
 	  border-right:0;
 	}
 	.wysibb .wysibb-toolbar {
-	  border-bottom:1px solid rgba(218, 37, 28, .55);
+	  border-bottom:1px solid rgba(196, 60, 70, .55);
 	  position:relative;
 	  padding:0 60px 0 0;
 	  height:auto;
-      background: rgba(218, 37, 28, 1);
+      background: rgba(196, 60, 70, 1);
 	}
 	.wysibb .wysibb-toolbar .wysibb-toolbar-container {
 	  margin:0;
@@ -751,7 +751,7 @@
 	  position:absolute;
 	  top:32px;
 	  left:-1px;
-	  border: 1px solid rgba(218, 37, 28, .55);
+	  border: 1px solid rgba(196, 60, 70, .55);
 	  box-shadow: 0px 0px 3px #aaa;
 	  width:190px;
 	  background:#ffffff;

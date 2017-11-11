@@ -36,7 +36,7 @@
 
 <div class="login-container">
     <div class="row form">
-        {{ Form::open(['route' => 'loginPost', 'role' => 'form', 'id' => 'adminLogin', 'class' => 'form-element']) }}
+        {{ Form::open(['route' => 'loginPOST', 'role' => 'form', 'id' => 'adminLogin', 'class' => 'form-element']) }}
         <div class="form-group">
             {{ Form::text('username', null, ['placeholder' => 'Korisničko ime', 'id' => 'username', 'required']) }}
         </div>

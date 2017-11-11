@@ -20,7 +20,7 @@ class GalleryController extends BaseController
         $video_gallery_data = VideoGallery::first();
 
         return View::make('admin.video-gallery')->with(['page_title' => 'Administracija',
-            'video_gallery_data' => $video_gallery_data
+                                                        'video_gallery_data' => $video_gallery_data
         ]);
     }
 
@@ -35,7 +35,7 @@ class GalleryController extends BaseController
 
         //check if csrf token is valid
         if(Session::token() != $token){
-            return Redirect::back()->withErrors('Nevažeći CSRF token!');
+            return Redirect::back()->withErrors('Nevažeći CSRF token');
         }
 
         $validator = Validator::make($form_data, VideoGallery::$rules, VideoGallery::$messages);
@@ -57,7 +57,7 @@ class GalleryController extends BaseController
             $video->save();
         }
 
-        return Redirect::to('admin/video-galerija')->with(['success' => 'Video za prezentaciju uspješno izmjenjen']);
+        return Redirect::to(route('admin-video-gallery'))->with(['success' => 'Video za prezentaciju uspješno izmjenjen']);
     }
 
     /**
@@ -69,7 +69,7 @@ class GalleryController extends BaseController
         $video_gallery = VideoGallery::first();
         $video_gallery->delete();
 
-        return Redirect::to('admin/video-galerija')->with(['success' => 'Video je uspješno obrisan.']);
+        return Redirect::to(route('admin-video-gallery'))->with(['success' => 'Video je uspješno obrisan']);
     }
 
     /**
@@ -81,7 +81,7 @@ class GalleryController extends BaseController
         $image_gallery_data = Gallery::orderBy('id', 'DESC')->get();
 
         return View::make('admin.image-gallery')->with(['page_title' => 'Administracija',
-            'image_gallery_data' => $image_gallery_data
+                                                        'image_gallery_data' => $image_gallery_data
         ]);
     }
 
@@ -96,7 +96,7 @@ class GalleryController extends BaseController
 
         //check if csrf token is valid
         if(Session::token() != $token){
-            return Redirect::back()->withErrors('Nevažeći CSRF token!');
+            return Redirect::back()->withErrors('Nevažeći CSRF token');
         }
 
         //validate
@@ -141,14 +141,14 @@ class GalleryController extends BaseController
 
 
                 //redirect on finish
-                return Redirect::to('admin/galerija')->with(['success' => 'Slike uspješno dodane']);
+                return Redirect::to(route('admin-image-gallery'))->with(['success' => 'Slike uspješno dodane']);
             }
             else{
-                return Redirect::to('admin/galerija')->withErrors('Nijedna slika nije odabrana');
+                return Redirect::to(route('admin-image-gallery'))->withErrors('Nijedna slika nije odabrana');
             }
         }
         else{
-            return Redirect::to('admin/galerija')->withErrors($error_list);
+            return Redirect::to(route('admin-image-gallery'))->withErrors($error_list);
         }
     }
 
@@ -160,7 +160,7 @@ class GalleryController extends BaseController
     public function deleteImageGalleryImage($id = null)
     {
         if($id == null){
-            return Redirect::to('admin/galerija')->withErrors('Odabrana slika ne postoji');
+            return Redirect::to(route('admin-image-gallery'))->withErrors('Odabrana slika ne postoji');
         }
         else{
             // find image in database
@@ -172,14 +172,14 @@ class GalleryController extends BaseController
                     $image->delete();
                 }
                 catch(Exception $e){
-                    return Redirect::to('admin/galerija')->withErrors('Slika nije mogla biti obrisana');
+                    return Redirect::to(route('admin-image-gallery'))->withErrors('Slika nije mogla biti obrisana');
                 }
 
                 //redirect on finish
-                return Redirect::to('admin/galerija')->with(['success' => 'Slika je uspješno obrisana']);
+                return Redirect::to(route('admin-image-gallery'))->with(['success' => 'Slika je uspješno obrisana']);
             }
             else{
-                return Redirect::to('admin/galerija')->withErrors('odabrana slika ne postoji');
+                return Redirect::to(route('admin-image-gallery'))->withErrors('odabrana slika ne postoji');
             }
         }
     }

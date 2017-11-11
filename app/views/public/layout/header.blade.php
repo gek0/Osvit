@@ -23,6 +23,8 @@
 
 @include('shared-layout.browser-fb')
 
+<a href="#" id="back-to-top" title="Povratak na vrh">&uarr;</a>
+
 <header role="banner" id="osvit-header">
     <div class="container">
         <!-- <div class="row"> -->

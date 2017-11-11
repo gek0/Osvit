@@ -32,7 +32,11 @@
                     <div class="col-md-8 col-md-offset-2 subtext to-animate">
 
         @if($image_gallery_data)
-                        <h3>Jedna slika govori više nego tisuću riječi.<br>A mi ih imamo {{ count($image_gallery_data) }}.</h3>
+                        <div id="gallery-counters">
+                            <h3>Jedna slika govori više nego tisuću riječi.<br>
+                                A mi ih imamo <span class="js-counter" data-from="0" data-to="{{ count($image_gallery_data) }}" data-speed="1500" data-refresh-interval="50">{{ count($image_gallery_data) }}</span>.
+                            </h3>
+                        </div>
                     </div>
                 </div>
             </div>

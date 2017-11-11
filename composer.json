@@ -8,7 +8,8 @@
 	    "golonka/bbcodeparser": "^2.2",
 	    "anhskohbo/no-captcha": "1.*",
 	  	"cviebrock/eloquent-sluggable": "2.*",
-	    "intervention/image": "^2.3"
+	    "intervention/image": "^2.3",
+	  	"roumen/feed": "2.8.*"
 	},
 	"autoload": {
 		"classmap": [
