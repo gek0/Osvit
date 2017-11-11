@@ -26,7 +26,6 @@ function safe_name($string) {
     $string = preg_replace('/Å¾+/', 'z', $string);   // 'ž' char fix
     $string = preg_replace('/\/+/', '', $string);   // '/' char fix
 
-    $trans = ["š" => "s", "ć" => "c", "č" => "c", "đ" => "d", "ž" => "z", " " => "_", ">" => "", "<" => "", "." => "", "," => "", "&gt;" => "", "&lt;" => "", ":" => "", "-" => "", "|" => ""];
 
     return strtr(mb_strtolower($string, "UTF-8"), $trans);
 }

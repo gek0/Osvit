@@ -135,7 +135,7 @@ class NewsController extends BaseController
                 }
 
                 foreach($news_images as $img){
-                    $file_name = substr($news_name, 0, 15).'_'.Str::random(5);
+                    $file_name = substr($news->slug, 0, 15).'_'.Str::random(5);
                     $file_extension = $img->getClientOriginalExtension();
                     $full_name = $file_name.'.'.$file_extension;
                     $file_size = $img->getSize();
@@ -362,7 +362,7 @@ class NewsController extends BaseController
                         }
 
                         foreach($news_images as $img){
-                            $file_name = substr($news_name, 0, 15).'_'.Str::random(5);
+                            $file_name = substr($news->slug, 0, 15).'_'.Str::random(5);
                             $file_extension = $img->getClientOriginalExtension();
                             $full_name = $file_name.'.'.$file_extension;
                             $file_size = $img->getSize();
@@ -465,16 +465,18 @@ class NewsController extends BaseController
             $image = NewsImage::findOrFail($id);
 
             if($image){
+                $news = News::find($image->news_id);
+
                 try{
                     File::delete(public_path().'/'.getenv('NEWS_UPLOAD_DIR').'/'.$image->news_id.'/'.$image->file_name);
                     $image->delete();
                 }
                 catch(Exception $e){
-                    return Redirect::to(route('admin-news'))->withErrors('Slika nije mogla biti obrisana');
+                    return Redirect::to(route('admin-news-show', $news->slug))->withErrors('Slika nije mogla biti obrisana');
                 }
 
                 //redirect on finish
-                return Redirect::to(route('admin-news'))->with(['success' => 'Slika je uspješno obrisana']);
+                return Redirect::to(route('admin-news-show', $news->slug))->with(['success' => 'Slika je uspješno obrisana']);
             }
             else{
                 return Redirect::to(route('admin-news'))->withErrors('Odabrana slika ne postoji');
