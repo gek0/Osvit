@@ -65,3 +65,7 @@
 @media all and (max-width: 480px) {
 
 }
+
+.content-error{
+    margin: 5em auto;
+}
