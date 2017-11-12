@@ -208,6 +208,27 @@
         }
     };
 
+    var newsAnimate = function() {
+        var news = $('#osvit-news');
+        if ( news.length > 0 ) {
+            news.waypoint( function( direction ) {
+                if( direction === 'down' && !$(this.element).hasClass('animated') ) {
+                    setTimeout(function() {
+                        news.find('.to-animate').each(function( k ) {
+                            var el = $(this);
+
+                            setTimeout ( function () {
+                                el.addClass('fadeInUp animated');
+                            },  k * 200, 'easeInOutExpo' );
+
+                        });
+                    }, 200);
+                    $(this.element).addClass('animated');
+                }
+            } , { offset: '80%' } );
+        }
+    };
+
     var countersAnimate = function() {
         var counters = $('#osvit-counters');
         if ( counters.length > 0 ) {
@@ -258,18 +279,18 @@
     };
 
     var galleryCountersAnimate = function() {
-        var counters = $('#gallery-counters');
-        if ( counters.length > 0 ) {
+        var gallery = $('#gallery-counters');
+        if ( gallery.length > 0 ) {
 
-            counters.waypoint( function( direction ) {
+            gallery.waypoint( function( direction ) {
 
                 if( direction === 'down' && !$(this.element).hasClass('animated') ) {
 
-                    var sec = counters.find('.to-animate').length,
+                    var sec = gallery.find('.to-animate').length,
                         sec = parseInt((sec * 200) + 400);
 
                     setTimeout(function() {
-                        counters.find('.to-animate').each(function( k ) {
+                        gallery.find('.to-animate').each(function( k ) {
                             var el = $(this);
 
                             setTimeout ( function () {
@@ -280,7 +301,7 @@
                     }, 200);
 
                     setTimeout(function() {
-                        counters.find('.js-counter').countTo({
+                        gallery.find('.js-counter').countTo({
                             formatter: function (value, options) {
                                 return value.toFixed(options.decimals);
                             },
@@ -288,7 +309,7 @@
                     }, 400);
 
                     setTimeout(function() {
-                        counters.find('.to-animate-2').each(function( k ) {
+                        gallery.find('.to-animate-2').each(function( k ) {
                             var el = $(this);
 
                             setTimeout ( function () {
@@ -365,6 +386,7 @@
         introAnimate();
         galleryAnimate();
         aboutAnimate();
+        newsAnimate();
         countersAnimate();
         galleryCountersAnimate();
         contactAnimate();
@@ -497,6 +519,43 @@ jQuery(document).ready(function(){
             $('html,body').animate({
                 scrollTop: 0
             }, 700);
+        });
+    }
+
+    /**
+     *   live tags filtering
+     */
+    var tagsFilter = $("#filter");
+    if(tagsFilter.length > 0) {
+        //prevent submit action if user tried
+        $("#live-search").submit(function(event){
+            event.preventDefault();
+        })
+
+        //start search/filter function
+        tagsFilter.keyup(function () {
+            $("#filter-count").text("Tražim..");
+
+            var filter = $(this).val(), count = 0;
+
+            $(".tags li").each(function () {
+                if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+                    $(this).fadeOut();
+                }
+                else {
+                    $(this).show();
+                    count++;
+                }
+            });
+
+            setTimeout(function () {
+                if(count > 0) {
+                    $("#filter-count").text('Klknite na traženi tag za prikaz svih vijesti s istim.');
+                }
+                else{
+                    $("#filter-count").text('Nije pronađen niti jedan tag.');
+                }
+            }, 1500);
         });
     }
 

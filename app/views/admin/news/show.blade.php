@@ -14,9 +14,9 @@
                     <div class="row">
                         <div class="col-md-4">
                             <span class="fa fa-calendar fa-med" title="Objavljeno"></span>
-                    <span class="info-text">
-                        <time datetime="{{ $news_data->getDateCreatedFormatedHTML() }}">Objavljeno: <strong>{{ $news_data->getDateCreatedFormated() }}</strong></time>
-                    </span>
+                            <span class="info-text">
+                                <time datetime="{{ $news_data->getDateCreatedFormatedHTML() }}">Objavljeno: <strong>{{ $news_data->getDateCreatedFormated() }}</strong></time>
+                            </span>
                         </div>
                         <div class="col-md-4">
                             <span class="fa fa-eye fa-med" title="Broj pregleda"></span>

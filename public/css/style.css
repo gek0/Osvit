@@ -169,10 +169,10 @@ img.logo-navbar{
     box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.1);
   }
   #osvit-header .navbar-brand {
-    color: rgba(196, 60, 70, 1) !important;
+    color: rgba(196, 60, 70, 1);
   }
   #osvit-header #navbar li a {
-    color: rgba(255, 255, 255, 1) !important;
+    color: rgba(196, 60, 70, .25);
     -webkit-transition: 0.3s;
     -o-transition: 0.3s;
     transition: 0.3s;
@@ -316,6 +316,10 @@ img.logo-navbar{
 #osvit-header .navbar-default .brand-slogan em {
   color: rgba(196, 60, 70, 1);
   font-style: normal;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form{
+  border-color: #212121;
 }
 #osvit-header a {
   -webkit-transition: 0s;
@@ -757,6 +761,9 @@ img.logo-navbar{
   font-size: 18px;
   font-weight: 400;
 }
+.form-control-inverse{
+  color: #FFFFFF;
+}
 .form-control:active, .form-control:focus {
   outline: none;
   box-shadow: none;
@@ -804,6 +811,10 @@ textarea.form-control{
   padding-bottom: 50px;
   margin-bottom: 50px;
   clear: both;
+}
+.section-heading-tiny-pad{
+  padding-bottom: .25em;
+  margin-bottom: .25em;
 }
 .section-heading h2 {
   margin: 0 0 30px 0;
@@ -886,14 +897,14 @@ textarea.form-control{
   font: bold 14px/.4 Helvetica;
   text-transform: uppercase;
   text-indent: -55px;
-  background: #52d3aa;
+  background: rgba(196, 60, 70, 1);
   transition: all .2s ease-out;
 }
 .osvit-nav-toggle i::before, .osvit-nav-toggle i::after {
   content: '';
   width: 25px;
   height: 3px;
-  background: #52d3aa;
+  background: rgba(196, 60, 70, 1);
   position: absolute;
   left: 0;
   -webkit-transition: 0.2s;
@@ -1098,8 +1109,15 @@ section[id^='map']{
   animation-fill-mode: both;
 }
 
+.div-small{
+  width: 25%;
+  height: auto;
+  margin: .5em auto;
+}
+
 /* Victoria Buttons */
-a.animated-button:link, a.animated-button:visited {
+a.animated-button:link, a.animated-button:visited,
+a.animated-button-extended:link, a.animated-button-extended:visited{
   position: relative;
   display: block;
   width: 25%;
@@ -1118,6 +1136,10 @@ a.animated-button:link, a.animated-button:visited {
   -moz-transition: all .5s ease;
   -o-transition: all .5s ease;
   transition: all .5s ease;
+  z-index: 99;
+}
+a.animated-button-extended:link, a.animated-button-extended:visited{
+  width: 30%;
 }
 a.animated-button:link:after, a.animated-button:visited:after {
   content: "";
@@ -1230,4 +1252,74 @@ blockquote table.table tr:nth-child(even){
 }
 #back-to-top.show {
   opacity: 1;
+}
+
+.tags {
+  margin: 0;
+  padding: 0;
+  right: 24px;
+  bottom: -12px;
+  list-style: none;
+  font-weight: bold;
+}
+
+.tags li {
+  height: 24px;
+  display: inline-block;
+  line-height: 24px;
+  position: relative;
+  margin: 1px;
+  cursor: pointer;
+}
+
+.tags .marginated-tags { margin: .625em; }
+
+.tags li {
+  margin-left: 20px;
+  padding: 0 10px 0 12px;
+  background-color: rgba(196, 60, 70, .75);
+  color: #fff;
+  text-decoration: none;
+  -moz-border-radius-bottomright: 4px;    -webkit-border-bottom-right-radius: 4px;    border-bottom-right-radius: 4px;
+  -moz-border-radius-topright: 4px;    -webkit-border-top-right-radius: 4px;    border-top-right-radius: 4px;
+}
+
+.tags li:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -12px;
+  width: 0; height: 0;
+  border-color: transparent rgba(196, 60, 70, .75) transparent transparent;
+  border-style: solid;
+  border-width: 12px 12px 12px 0;
+}
+
+.tags li:after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 0;
+  float: left;
+  width: 4px;
+  height: 4px;
+  -moz-border-radius: 2px;    -webkit-border-radius: 2px;    border-radius: 2px;
+  background: #fff;
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+}
+
+.tags li:hover { background-color: rgba(196, 60, 70, .55); }
+
+.tags li:hover:before { border-color: transparent rgba(196, 60, 70, .55) transparent transparent; }
+
+#tags-collection {
+  width: 90%; height: auto;
+  margin: .5em auto;
+  padding: .75em;
+  display: none;
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
 }

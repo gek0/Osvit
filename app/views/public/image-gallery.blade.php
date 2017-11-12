@@ -23,7 +23,7 @@
 
 @include('shared-layout.browser-fb')
 
-<section id="osvit-gallery" data-section="gallery">
+<section id="osvit-gallery">
     <div class="container">
         <div class="row">
             <div class="col-md-12 section-heading text-center">

@@ -10,6 +10,13 @@ class PublicController extends BaseController {
         $this->beforeFilter('crfs', ['on' => ['post', 'put', 'patch', 'delete']]);
     }
 
+    protected $news_paginate = 9;
+    protected $sort_data = ['added_desc' => 'Najnovije vijesti',
+                            'added_asc' => 'Najstarije vijesti',
+                            'visits_desc' => 'S najviše pregleda',
+                            'visits_asc' => 'S najmanje pregleda'
+    ];
+
     /**
      * show homepage
      * @return mixed
@@ -22,6 +29,7 @@ class PublicController extends BaseController {
         $image_gallery_data = Gallery::orderBy('id', 'DESC')->limit(9)->get(); // enough to fill 3 rows
         $fun_facts_data = FunFact::orderBy('id', 'ASC')->get();
         $locations_data = Location::orderBy('id', 'DESC')->get();
+        $news_data = News::orderBy('id', 'DESC')->first();
 
         $about_us_data = [];
         if($about_us_data = AboutUs::first()){
@@ -40,7 +48,8 @@ class PublicController extends BaseController {
                                                 'image_gallery_data' => $image_gallery_data,
                                                 'fun_facts_data' => $fun_facts_data,
                                                 'locations_data' => $locations_data,
-                                                'about_us_data' => $about_us_data
+                                                'about_us_data' => $about_us_data,
+                                                'news_data' => $news_data
         ]);
     }
 
@@ -206,5 +215,18 @@ class PublicController extends BaseController {
         }
 
         return $feed->render('atom');
+    }
+
+    /**
+     * shoow all tags
+     * @return mixed
+     */
+    public function showTagsList()
+    {
+        $tags_data = Tag::all();
+
+        return View::make('public.tags-list')->with(['page_title' => 'Lista tagova',
+                                                'tags_data' => $tags_data
+        ]);
     }
 }

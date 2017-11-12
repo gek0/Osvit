@@ -6,6 +6,7 @@
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 subtext to-animate">
                         <h3>Pronađite koja Vam najviše odgovara.</h3>
+                        <h5><span class="red">*</span> Ako karta nije vidljiva ponovo učitajte stranicu.</h5>
                     </div>
                 </div>
             </div>

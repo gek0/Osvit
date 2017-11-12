@@ -49,10 +49,12 @@
     <file url="file://$PROJECT_DIR$/app/views/public/gallery.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/public/image-gallery.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/public/index.blade.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/views/public/latest-news.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/public/layout/footer.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/public/layout/header.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/public/locations.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/public/login.blade.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/views/public/tags-list.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/shared-layout/browser-fb.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/shared-layout/head.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/public/css/style.css" charset="UTF-8" />

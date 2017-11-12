@@ -8,6 +8,8 @@
 
 @include('public.about-us')
 
+@include('public.latest-news')
+
 @include('public.fun-facts')
 
 @include('public.contact')

@@ -4,12 +4,18 @@
     <div class="col-lg-8 col-lg-offset-2" id="layout-block-main">
 
     <section class="section-inner">
-        <a href="{{ URL::route('admin-news-add') }}">
-            <button class="btn btn-submit btn-padded">
-                <i class="fa fa-pencil"></i> Nova vijest
-            </button>
-        </a>
-        <div class="space"></div>
+        <div class="sidebar-content">
+            <div class="sidebar-header">
+                <span class="fa fa-cogs fa-med" title="Alati"></span> <span class="info-text">Admin alati</span>
+            </div>
+            <div class="sidebar-body">
+                <a href="{{ URL::route('admin-news-add') }}">
+                    <button class="btn btn-submit btn-submit-full">
+                        <i class="fa fa-pencil"></i> Nova vijest
+                    </button>
+                </a>
+            </div>
+        </div>
 
         @if(count($news_data->all()) > 0)
             <div class="pagination-layout pagination-centered">
@@ -31,9 +37,9 @@
                             <hr>
                             <div class="data_info">
                                 <div class="row">
-                                    <div class="col-md-12">
-                                        <i class="fa fa-calendar" alt="Datum objave" title="Datum objave"></i>
-                                        <time datetime="{{ $item->getDateCreatedFormatedHTML() }}">{{ $item->getDateCreatedFormated() }}</time>
+                                    <div class="col-md-12 text-center">
+                                        <i class="fa fa-calendar" alt="Objavljeno" title="Objavljeno"></i>
+                                        <time datetime="{{ $item->getDateCreatedFormatedHTML() }}">Objavljeno:<br><strong>{{ $item->getDateCreatedFormated() }}</strong></time>
                                     </div>
                                 </div>
                             </div> <!-- end news info -->

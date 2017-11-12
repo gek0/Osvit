@@ -39,6 +39,7 @@
                     <li class="active"><a href="#" data-nav-section="home"><span>Naslovnica</span></a></li>
                     <li><a href="#" data-nav-section="gallery"><span>Galerija</span></a></li>
                     <li><a href="#" data-nav-section="about"><span>O nama</span></a></li>
+                    <li><a href="#" data-nav-section="news"><span>Obavijesti</span></a></li>
                     <li><a href="#" data-nav-section="contact"><span>Kontakt</span></a></li>
                     <li><a href="#" data-nav-section="locations"><span>Lokacije</span></a></li>
                 </ul>

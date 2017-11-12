@@ -1,4 +1,4 @@
-<section id="osvit-counters" data-stellar-background-ratio="0.5">
+<section id="osvit-counters">
     <div class="osvit-overlay"></div>
     <div class="container">
         <div class="row">

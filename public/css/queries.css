@@ -9,6 +9,15 @@
     #osvit-counters{
         clip-path: polygon(0 1%, 100% 0, 100% 99%, 0 100%);
     }
+
+    a.animated-button:link {
+        width: 35%;
+        font-size: xx-small;
+    }
+
+    .btn-submit-full{
+        width: auto;
+    }
 }
 @media screen and (max-width: 680px) {
 
@@ -20,6 +29,11 @@
     #back-to-top{
         bottom: 20px;
         right: 20px;
+    }
+
+    a.animated-button:link {
+        width: 55%;
+        font-size: xx-small;
     }
 
 }
