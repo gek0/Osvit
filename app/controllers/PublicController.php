@@ -10,7 +10,7 @@ class PublicController extends BaseController {
         $this->beforeFilter('crfs', ['on' => ['post', 'put', 'patch', 'delete']]);
     }
 
-    protected $news_paginate = 9;
+    protected $news_paginate = 6;
     protected $sort_data = ['added_desc' => 'Najnovije vijesti',
                             'added_asc' => 'Najstarije vijesti',
                             'visits_desc' => 'S najviše pregleda',
@@ -228,5 +228,78 @@ class PublicController extends BaseController {
         return View::make('public.tags-list')->with(['page_title' => 'Lista tagova',
                                                 'tags_data' => $tags_data
         ]);
+    }
+
+    /**
+     * show news
+     * @return mixed
+     */
+    public function showNews()
+    {
+        //default form sort value
+        $news_text_sort = null;
+        $sort_category = null;
+        $sort_data = $this->sort_data;
+        $news_data = News::orderBy('id', 'DESC')->paginate($this->news_paginate);
+
+        return View::make('public.news')->with(['page_title' => 'Obavijesti',
+                                                'news_text_sort' => $news_text_sort,
+                                                'sort_data' => $sort_data,
+                                                'sort_category' => $sort_category,
+                                                'news_data' => $news_data
+        ]);
+    }
+
+    /**
+     * view individual news
+     * @param $slug
+     * @return mixed
+     */
+    public function showIndividualNews($slug = null)
+    {
+        if ($slug !== null){
+            $news_data = News::findBySlug(e($slug));
+
+            //check if news exists
+            if($news_data){
+
+                //increment number of visits
+                if((!Session::get('read_news') || !in_array($news_data->id, Session::get('read_news')))){
+                    Session::push('read_news', $news_data->id);
+                    $news_data->increment('num_visited');
+                }
+
+                //find previous and next person after current
+                $previous_news = $news_data->previousNews();
+                $next_news = $news_data->nextNews();
+
+                //check if there are news before/after or not
+                if($previous_news){
+                    $previous_news = ['slug' => $previous_news->slug, 'news_title' => $previous_news->news_title];
+                }
+                else{
+                    $previous_news = false;
+                }
+
+                if($next_news){
+                    $next_news = ['slug' => $next_news->slug, 'news_title' => $next_news->news_title];
+                }
+                else{
+                    $next_news = false;
+                }
+
+                return View::make('public.show-news')->with(['page_title' => $news_data->news_title,
+                                                                    'news_data' => $news_data,
+                                                                    'previous_news' => $previous_news,
+                                                                    'next_news' => $next_news
+                ]);
+            }
+            else{
+                App::abort(404, 'Članak nije pronađen.');
+            }
+        }
+        else{
+            App::abort(404, 'Članak nije pronađen.');
+        }
     }
 }

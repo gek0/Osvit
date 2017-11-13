@@ -25,12 +25,11 @@
     <section class="logo-placeholder">
         {{ HTML::image('css/assets/images/logo_main.png', 'Logo', ['title' => getenv('WEB_NAME'), 'class' => 'img-responsive']) }}
         <h1>Dogodila se greška<br>404</h1>
-        <h3>Stranica koju ste tražili ne postoji</h3>
     </section>
 
     <section class="section section-inner">
         <div class="text-center space">
-            <h2>{{{ $exception }}}</h2>
+            <h2>{{ $exception }}</h2>
 
             <div class="space"></div>
             <a href="{{ URL::route('home') }}">

@@ -2,7 +2,9 @@
 
 }
 @media screen and (max-width: 991px) {
-
+     .news-all-header-title{
+         height: auto;
+     }
 }
 @media screen and (max-width: 768px) {
     #osvit-gallery,
@@ -17,6 +19,10 @@
 
     .btn-submit-full{
         width: auto;
+    }
+
+    .news-all-header-title{
+        height: auto;
     }
 }
 @media screen and (max-width: 680px) {
@@ -60,7 +66,6 @@
     img.thumbnail {
         height: 175px
     }
-
 }
 @media all and (min-width: 768px) and (max-width: 1024px) {
     img.thumbnail {

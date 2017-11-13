@@ -61,8 +61,7 @@
                             <div class="space"></div>
                         @endif
 
-                        <div class="space"></div>
-                        <p class="text-center">
+                        <p class="text-center space">
                             <a href="{{ route('news') }}" class="btn btn-sm animated-button animated-button-extended victoria-two">
                                 <i class="fa fa-newspaper-o" aria-hidden="true"></i> Povratak na obavijesti
                             </a>

@@ -55,7 +55,7 @@ App::error(function(Exception $exception, $code)
 			break;
 
 		case 503:
-			$exception_message = 'Poteškoæe sa serverom. Pokušajte ponovo kasnije.';
+			$exception_message = 'PoteÅ¡koÄ‡e sa serverom. PokuÅ¡ajte ponovo kasnije.';
 			return Response::view('error', ['exception' => $exception_message, 'page_title' => $code], 503);
 			break;
 
@@ -77,7 +77,7 @@ App::error(function(Exception $exception, $code)
 
 App::down(function()
 {
-	return Response::make("Poteškoæe sa serverom. Pokušajte ponovo kasnije.", 503);
+	return Response::make("PoteÅ¡koÄ‡e sa serverom. PokuÅ¡ajte ponovo kasnije.", 503);
 });
 
 /*
@@ -92,7 +92,7 @@ App::down(function()
 App::missing(function($exception)
 {
 	if(getenv('APP_ENV') == 'production') {
-		return Response::view('error', ['exception' => 'Stranica nije pronaðena.', 'page_title' => '404'], 404);
+		return Response::view('error', ['exception' => 'Stranica nije pronaÄ‘ena.', 'page_title' => '404'], 404);
 	}
 });
 

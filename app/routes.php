@@ -50,11 +50,11 @@ Route::group(['before' => 'auth'], function() {
 		Route::get('galerija', ['as' => 'admin-image-gallery', 'uses' => 'GalleryController@showImageGallery']);
 		Route::get('galerija-brisanje-slike/{id}', ['as' => 'admin-image-gallery-image-delete', 'uses' => 'GalleryController@deleteImageGalleryImage'])->where(['id' => '[0-9]+']);
 
-		Route::post('korisnici', ['as' => 'admin-usersPOST', 'uses' => 'AdminController@addUser']);
-		Route::get('korisnici', ['as' => 'admin-users', 'uses' => 'AdminController@showUsers']);
-		Route::post('korisnici-izmjena', ['as' => 'admin-users-editPOST', 'uses' => 'AdminController@updateUser']);
-		Route::get('korisnici/izmjena/{id}', ['as' => 'admin-users-edit', 'uses' => 'AdminController@showUpdateUser'])->where(['id' => '[0-9]+']);
-		Route::get('korisnici-brisanje/{id}', ['as' => 'admin-users-delete', 'uses' => 'AdminController@deleteUser'])->where(['id' => '[0-9]+']);
+		Route::post('korisnici', ['as' => 'admin-usersPOST', 'uses' => 'UserController@addUser']);
+		Route::get('korisnici', ['as' => 'admin-users', 'uses' => 'UserController@showUsers']);
+		Route::post('korisnici-izmjena', ['as' => 'admin-users-editPOST', 'uses' => 'UserController@updateUser']);
+		Route::get('korisnici/izmjena/{id}', ['as' => 'admin-users-edit', 'uses' => 'UserController@showUpdateUser'])->where(['id' => '[0-9]+']);
+		Route::get('korisnici-brisanje/{id}', ['as' => 'admin-users-delete', 'uses' => 'UserController@deleteUser'])->where(['id' => '[0-9]+']);
 	});
 });
 
