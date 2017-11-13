@@ -31,13 +31,31 @@
                 <h3 class="to-animate">Sva događanja na jednome mjestu.</h3>
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 subtext to-animate">
-                    <hr>
+
+                        <div class="formSort padded">
+                            {{ Form::open(['url' => route('news-sort'), 'method' => 'GET', 'id' => 'formSort', 'role' => 'form']) }}
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        {{ Form::label('sort_option', 'Sortiranje vijesti:') }}<br>
+                                        {{ Form::select('sort_option', ['Vrsta sortiranja...' => $sort_data],
+                                                $sort_category, ['class' => 'selectpicker show-tick text-left', 'data-style' => 'btn-submit-delete btn-submit-full btn-padded', 'title' => 'Vrsta sortiranja...', 'data-size' => '5'])
+                                        }}
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        {{ Form::label('news_text_sort', 'Pretraga po naslovu vijesti:') }}
+                                        {{ Form::text('news_text_sort', $news_text_sort, ['id' => 'news_text', 'class' => 'form-control form-control-inverse', 'placeholder' => 'Naslov vijesti...']) }}
+                                    </div>
+                                </div>
+                            {{ Form::close() }}
+
+                            <div class="col-md-12">
+                                <hr>
+                            </div>
+                        </div>
 
                         @if(count($news_data->all()) > 0)
-                            <div class="pagination-layout pagination-centered">
-                                {{ $news_data->appends(Request::except('stranica'))->links() }}
-                            </div> <!-- end pagination -->
-
                             @foreach(array_chunk($news_data->all(), 3) as $news)
                                 <div class="row padded">
                                     @foreach($news as $item)
@@ -61,9 +79,15 @@
                                 {{ $news_data->appends(Request::except('stranica'))->links() }}
                             </div> <!-- end pagination -->
                         @else
-                            <div class="text-center">
-                                <h3>Trenutno nema vijesti.</h3>
-                            </div>
+                            @if($news_text_sort)
+                                <div class="text-center">
+                                    <h3>Trenutno nema vijesti s tim naslovom.</h3>
+                                </div>
+                            @else
+                                <div class="text-center">
+                                    <h3>Trenutno nema vijesti.</h3>
+                                </div>
+                            @endif
                         @endif
 
                         <p class="text-center space">

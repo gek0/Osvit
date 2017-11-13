@@ -65,7 +65,7 @@
                             <div class="text-center tags-collection">
                                 <ul class="tags">
                                     @foreach($news_data->tags as $tag)
-                                        <a href="{{ route('news-tag', $tag->slug) }}"><li>{{ $tag->tag }}</li></a>
+                                        <li>{{ $tag->tag }}</li>
                                     @endforeach
                                 </ul>
                             </div>

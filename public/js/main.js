@@ -584,6 +584,15 @@ jQuery(document).ready(function(){
         });
     }
 
+    /**
+     *   submit form if option changed in drop-down menu
+     */
+    if($('#sort_option').length > 0) {
+        $(this).change(function () {
+            $('#formSort').submit();
+        });
+    }
+
 });
 
 /**

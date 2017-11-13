@@ -73,9 +73,8 @@ Route::post('prijava', ['as' => 'loginPOST', 'uses' => 'LoginController@checkLog
 Route::get('prijava', ['as' => 'login', 'uses' => 'LoginController@showLogin']);
 Route::get('galerija', ['as' => 'image-gallery', 'uses' => 'PublicController@showImageGallery']);
 Route::get('obavijesti', ['as' => 'news', 'uses' => 'PublicController@showNews']);
+Route::get('obavijesti/sortirano', ['as' => 'news-sort', 'uses' => 'PublicController@showFilteredSortedNews']);
 Route::get('obavijesti/pregled/{slug}', ['as' => 'news-show', 'uses' => 'PublicController@showIndividualNews'])->where(['slug' => '[\w\-šðèæžŠÐÈÆŽ]+']);
-Route::get('obavijesti/tag/{slug}', ['as' => 'news-tag', 'uses' => 'PublicController@showNewsByTag'])->where(['slug' => '[\w\-šðèæžŠÐÈÆŽ]+']);
-Route::get('obavijesti/tagovi', ['as' => 'tags', 'uses' => 'PublicController@showTagsList']);
 Route::get('rss', ['as' => 'rss', 'uses' => 'PublicController@getRss']);
 Route::post('kontakt', ['as' => 'contactPOST', 'uses' => 'PublicController@sendMail']);
 Route::get('js-map-generator/{id}', ['as' => 'generate-js-map', 'uses' => 'PublicController@generateMap']);

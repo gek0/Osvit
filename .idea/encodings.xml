@@ -55,6 +55,7 @@
     <file url="file://$PROJECT_DIR$/app/views/public/layout/header.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/public/locations.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/public/login.blade.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/views/public/news-tagged.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/public/news.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/public/show-news.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/public/tags-list.blade.php" charset="UTF-8" />

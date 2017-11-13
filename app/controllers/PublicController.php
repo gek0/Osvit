@@ -10,7 +10,7 @@ class PublicController extends BaseController {
         $this->beforeFilter('crfs', ['on' => ['post', 'put', 'patch', 'delete']]);
     }
 
-    protected $news_paginate = 6;
+    protected $news_paginate = 9;
     protected $sort_data = ['added_desc' => 'Najnovije vijesti',
                             'added_asc' => 'Najstarije vijesti',
                             'visits_desc' => 'S najviše pregleda',
@@ -301,5 +301,71 @@ class PublicController extends BaseController {
         else{
             App::abort(404, 'Članak nije pronađen.');
         }
+    }
+
+    /**
+     * sort news by selected category
+     * @return mixed
+     */
+    public function showFilteredSortedNews()
+    {
+        //get form data and set default sort options
+        $news_text_sort = e(Input::get('news_text_sort'));
+        $sort_category = e(Input::get('sort_option'));
+        $sort_data = $this->sort_data;
+
+        //check sort category selected in form and get data
+        switch($sort_category){
+            case 'added_desc':
+                if($news_text_sort == '') {
+                    $news_data = News::orderBy('id', 'DESC')->paginate($this->news_paginate);
+                }
+                else{
+                    $news_data = News::where('news_title', 'LIKE', '%'.$news_text_sort.'%')->orderBy('id', 'DESC')->paginate($this->news_paginate);
+                }
+                break;
+
+            case 'added_asc':
+                if($news_text_sort == '') {
+                    $news_data = News::orderBy('id', 'ASC')->paginate($this->news_paginate);
+                }
+                else{
+                    $news_data = News::where('news_title', 'LIKE', '%'.$news_text_sort.'%')->orderBy('id', 'ASC')->paginate($this->news_paginate);
+                }
+                break;
+
+            case 'visits_desc':
+                if($news_text_sort == '') {
+                    $news_data = News::orderBy('num_visited', 'DESC')->paginate($this->news_paginate);
+                }
+                else{
+                    $news_data = News::where('news_title', 'LIKE', '%'.$news_text_sort.'%')->orderBy('num_visited', 'DESC')->paginate($this->news_paginate);
+                }
+                break;
+
+            case 'visits_asc':
+                if($news_text_sort == '') {
+                    $news_data = News::orderBy('num_visited', 'ASC')->paginate($this->news_paginate);
+                }
+                else{
+                    $news_data = News::where('news_title', 'LIKE', '%'.$news_text_sort.'%')->orderBy('num_visited', 'ASC')->paginate($this->news_paginate);
+                }
+                break;
+
+            default:
+                if($news_text_sort == '') {
+                    $news_data = News::orderBy('id', 'DESC')->paginate($this->news_paginate);
+                }
+                else{
+                    $news_data = News::where('news_title', 'LIKE', '%'.$news_text_sort.'%')->orderBy('id', 'DESC')->paginate($this->news_paginate);
+                }
+        }
+
+        return View::make('public.news')->with(['page_title' => 'Obavijesti',
+                                                    'news_data' => $news_data,
+                                                    'sort_data' => $sort_data,
+                                                    'sort_category' => $sort_category,
+                                                    'news_text_sort' => $news_text_sort
+        ]);
     }
 }
