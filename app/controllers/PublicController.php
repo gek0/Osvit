@@ -104,6 +104,57 @@ class PublicController extends BaseController {
     }
 
     /**
+     * generate javascript code for google map - add all locations (multiple pins on one map)
+     * @return mixed
+     */
+    public function generateMapMultiplePins(){
+        $locations = Location::all();
+
+        if(empty($locations)){
+            return '';
+        }
+        else{
+            Header("content-type: application/x-javascript");
+
+            // get first map style for all
+            $map_style = $locations->first()->map_style;
+
+            $location_map_data = '';
+            foreach ($locations as $loc) {
+                $location_map_data .= 'map.addMarker({lat: "'.$loc->map_lat.'", lng: "'.$loc->map_lng.'", title: "'.$loc->map_title.'", icon: image});';
+            }
+
+            $js_map = 'jQuery(document).ready(function(){
+                            var map;
+                            var image = "'.asset('css/assets/images/map-marker.png').'";
+                            var styles = '.$map_style.';
+
+                            function initialize() {
+                                map = new GMaps({
+                                    el: "#map", 
+                                    lat: "'.getenv('DEFAULT_MAP_LAT').'", 
+                                    lng: "'.getenv('DEFAULT_MAP_LNG').'", 
+                                    zoom: '.getenv('DEFAULT_MAP_ZOOM_LEVEL').', 
+                                    linksControl: true, 
+                                    zoomControl: true,
+                                    panControl: true, 
+                                    scrollwheel: true, 
+                                    streetViewControl: true
+                                });
+    
+                                '.$location_map_data.'
+                                map.setOptions({styles: styles});
+                            }
+
+                            google.maps.event.addDomListener(window, "load", initialize);
+                        });';
+            
+            return $js_map;            
+        }
+      
+    }
+
+    /**
      * send email from contact form over Ajax request
      * @return mixed
      */

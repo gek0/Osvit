@@ -30,10 +30,10 @@ Route::group(['before' => 'auth'], function() {
 		Route::get('obavijesti', ['as' => 'admin-news', 'uses' => 'NewsController@showNews']);
 		Route::get('obavijesti/nova', ['as' => 'admin-news-add', 'uses' => 'NewsController@showNewNewsForm']);
 		Route::post('obavijesti/nova', ['as' => 'admin-news-addPOST', 'uses' => 'NewsController@addNewNews']);
-		Route::get('obavijesti/pregled/{slug}', ['as' => 'admin-news-show', 'uses' => 'NewsController@showIndividualNews'])->where(['slug' => '[\w\-���枊��Ǝ]+']);
-		Route::get('obavijesti/izmjena/{slug}', ['as' => 'admin-news-edit', 'uses' => 'NewsController@showNewsEditForm'])->where(['slug' => '[\w\-���枊��Ǝ]+']);
-		Route::post('obavijesti/izmjena/{slug}', ['as' => 'admin-news-editPOST', 'uses' => 'NewsController@updateNews'])->where(['slug' => '[\w\-���枊��Ǝ]+']);
-		Route::get('obavijesti/brisanje/{slug}', ['as' => 'admin-news-delete', 'uses' => 'NewsController@deleteNews'])->where(['slug' => '[\w\-���枊��Ǝ]+']);
+		Route::get('obavijesti/pregled/{slug}', ['as' => 'admin-news-show', 'uses' => 'NewsController@showIndividualNews'])->where(['slug' => '[\w\-šđčćžŠĐČĆŽ]+']);
+		Route::get('obavijesti/izmjena/{slug}', ['as' => 'admin-news-edit', 'uses' => 'NewsController@showNewsEditForm'])->where(['slug' => '[\w\-šđčćžŠĐČĆŽ]+']);
+		Route::post('obavijesti/izmjena/{slug}', ['as' => 'admin-news-editPOST', 'uses' => 'NewsController@updateNews'])->where(['slug' => '[\w\-šđčćžŠĐČĆŽ]+']);
+		Route::get('obavijesti/brisanje/{slug}', ['as' => 'admin-news-delete', 'uses' => 'NewsController@deleteNews'])->where(['slug' => '[\w\-šđčćžŠĐČĆŽ]+']);
 		Route::get('obavijesti/brisanje-slike-obavijesti/{id}', ['as' => 'admin-news-gallery-image-delete', 'uses' => 'NewsController@deleteNewsGalleryImage'])->where(['id' => '[0-9]+']);
 
 		Route::post('dvorane', ['as' => 'admin-locationsPOST', 'uses' => 'LocationController@addLocation']);
@@ -74,8 +74,9 @@ Route::get('prijava', ['as' => 'login', 'uses' => 'LoginController@showLogin']);
 Route::get('galerija', ['as' => 'image-gallery', 'uses' => 'PublicController@showImageGallery']);
 Route::get('obavijesti', ['as' => 'news', 'uses' => 'PublicController@showNews']);
 Route::get('obavijesti/sortirano', ['as' => 'news-sort', 'uses' => 'PublicController@showFilteredSortedNews']);
-Route::get('obavijesti/pregled/{slug}', ['as' => 'news-show', 'uses' => 'PublicController@showIndividualNews'])->where(['slug' => '[\w\-���枊��Ǝ]+']);
+Route::get('obavijesti/pregled/{slug}', ['as' => 'news-show', 'uses' => 'PublicController@showIndividualNews'])->where(['slug' => '[\w\-šðèæžŠÐÈÆŽ]+']);
 Route::get('rss', ['as' => 'rss', 'uses' => 'PublicController@getRss']);
 Route::post('kontakt', ['as' => 'contactPOST', 'uses' => 'PublicController@sendMail']);
-Route::get('js-map-generator/{id}', ['as' => 'generate-js-map', 'uses' => 'PublicController@generateMap']);
+Route::get('js-map-generator/{id}', ['as' => 'generate-js-map', 'uses' => 'PublicController@generateMap'])->where(['id' => '[0-9]+']);
+Route::get('multiple-pin-js-map-generator', ['as' => 'generate-js-map-multiple-pins', 'uses' => 'PublicController@generateMapMultiplePins']);
 Route::get('/', ['as' => 'home', 'uses' => 'PublicController@showHome']);

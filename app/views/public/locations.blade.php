@@ -12,37 +12,35 @@
             </div>
         </div>
         @if($locations_data->count() > 0)
-            @foreach($locations_data as $location)
-                <div class="container row" id="location-details">
-                    <div class="col-md-4">
-                        <h3>{{ $location->map_title }}</h3>
-                        <h4><i class="fa fa-phone" aria-hidden="true" title="Kontakt"></i>
+            <div class="row">
+                <div class="col-md-4" id="location-details">
+                    @foreach($locations_data as $location)
+                        <h3 class="text-center">{{ $location->map_title }}</h3>
+                        <h4 class="text-center"><i class="fa fa-phone" aria-hidden="true" title="Kontakt"></i>
                             {{ $location->contact_info }}
-                        </h4>
-                    </div>
-                    <div class="col-md-8">
-                        <h3>Raspored dvorane</h3>
+                        </h4>                        
+                        <h3 class="text-center">Raspored dvorane</h3>
                         {{ removeEmptyP(nl2p((new BBCParser)->parse($location->time_schedule))) }}
+                        <hr>
+                    @endforeach
+                </div>
+
+                <div class="col-md-8">
+                    <div class="map-container space">
+                        <!-- start map section -->
+                        <section id="map">
+                            <noscript>
+                                Morate imati omogućen JavaScript u Vašem internet pregledniku kako bi se prikazala mapa, hvala na razumijevanju.
+                            </noscript>
+                        </section>
+                        <!-- end map section -->
                     </div>
-                </div>
-                <div class="map-container space">
-                <!-- start map section -->
-                    <section id="map{{ $location->id }}">
-                        <noscript>
-                            Morate imati omogućen JavaScript u Vašem internet pregledniku kako bi se prikazala mapa, hvala na razumijevanju.
-                        </noscript>
-                    </section>
-                <!-- end map section -->
-                </div>
-                <hr>
-                <div class="clearfix visible-xs"></div>
-            @endforeach
+                </div>            
+            </div>
         @else
             <h2 class="text-center">Još ih nismo objavili, dođite uskoro.</h2>
         @endif
     </div>
 </section>
 
-@foreach($locations_data as $location)
-    <script type='text/javascript' src='{{ route('generate-js-map', $location->id) }}'></script>
-@endforeach
+<script type='text/javascript' src='{{ route('generate-js-map-multiple-pins') }}'></script>

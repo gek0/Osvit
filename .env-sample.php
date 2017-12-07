@@ -29,5 +29,8 @@ return array(
     'YOUTUBE_URL' => '',
     'OWNER_CONTACT_EMAIL' => '',
     'OWNER_CONTACT_PHONE' => '',
-    'OWNER_CONTACT_ADDRESS' => ''
+    'OWNER_CONTACT_ADDRESS' => '',
+    'DEFAULT_MAP_LAT' => '',
+    'DEFAULT_MAP_LNG' => '',
+    'DEFAULT_MAP_ZOOM_LEVEL' => '',
 );

@@ -62,6 +62,7 @@
                 </span>
                 </div>
             </div>
+            <h4 class="text-center"><strong>NAPOMENA:</strong> Ako postoji više mapa, mapa na naslovnici ima dizajn prve/najstarije mape!</h4>
 
             <div class="space text-center">
                 <button type="submit" class="btn btn-submit btn-submit-full">Spremi izmjene <i class="fa fa-check"></i></button>
