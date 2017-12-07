@@ -4,16 +4,16 @@
 
 @include('public.intro')
 
-@include('public.gallery')
-
-@include('public.about-us')
-
 @include('public.latest-news')
 
 @include('public.fun-facts')
 
-@include('public.contact')
+@include('public.about-us')
 
 @include('public.locations')
+
+@include('public.gallery')
+
+@include('public.contact')
 
 @include('public.layout.footer')

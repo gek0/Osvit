@@ -582,7 +582,6 @@ img.logo-navbar{
   position: relative;
   width: 100%;
   padding: 9em 0 10em 0;
-  clip-path: polygon(0 4%, 100% 0, 100% 96%, 0 100%);
 }
 #osvit-locations{
   background: #404040;
@@ -590,6 +589,7 @@ img.logo-navbar{
   position: relative;
   width: 100%;
   color: #FFFFFF;
+  clip-path: polygon(0 2%, 100% 0, 100% 98%, 0 100%);
 }
 #osvit-locations h2,
 #osvit-locations h3{
@@ -673,6 +673,7 @@ img.logo-navbar{
   position: relative;
   color: rgba(255, 255, 255, 0.8);
   background-color: rgba(0, 0, 0, .75);
+  margin-top: .1em;
   clip-path: polygon(0 4%, 100% 0, 100% 96%, 0 100%);
 }
 #osvit-gallery a {
