@@ -7,6 +7,7 @@
             <div class="text-wrap">
                 <div class="text-inner">
                     <div class="row">
+                        {{ HTML::image('css/assets/images/logo_main.png', getenv('WEB_NAME').' cover logo', ['title' => getenv('WEB_NAME'), 'class' => 'img-responsive logo-navbar']) }}
                         <div class="col-md-8 col-md-offset-2">
                             @if($cover_data['cover_title'])
                                 <h1 class="to-animate">{{ $cover_data['cover_title'] }}</h1>
