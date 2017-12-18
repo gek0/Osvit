@@ -19,9 +19,8 @@ class Location extends Eloquent{
      * validation rules for entities
      *
      */
-    public static $rules = ['map_title' => 'required|alpha_spaces_dash|between:2,255',
+    public static $rules = ['map_title' => 'required|string|between:2,255',
                             'contact_info' => 'required|alpha_spaces_dash|between:2,255',
-                            'time_schedule' => 'required'
     ];
 
     /**
@@ -33,7 +32,6 @@ class Location extends Eloquent{
                                 'contact_info' => 'Kontakt informacija je obavezno polje',
                                 'contact_infe.alpha_spaces_dash' => 'Kontakt informacija može sadržavati samo slova, brojeve, - i razmak',
                                 'contact_inf.between' => 'Kontakt informacija mora biti dulja od 2 znaka i kraća od 255',
-                                'time_schedule.required' => 'Raspored dvorane je obavezno polje'
     ];
 
     /**

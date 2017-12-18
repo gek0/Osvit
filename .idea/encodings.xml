@@ -23,6 +23,7 @@
     <file url="file://$PROJECT_DIR$/app/models/User.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/models/VideoGallery.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/start/global.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/validators.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/admin/home.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/admin/home/about-us.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/admin/home/cover-image.blade.php" charset="UTF-8" />
