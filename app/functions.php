@@ -19,7 +19,7 @@ HTML::macro('smartRoute_link', function($route, $text, $icon = '') {
  * safe name, no croatian letters
  */
 function safe_name($string) {
-    $string = preg_replace('/&scaron;+/', 's', $string);   // 'š' letter fix
+    $string = preg_replace('/&[sS]caron;+/', 's', $string);   // 'š' and 'Š' letter fix
     $string = preg_replace('/&quot;+/', '', $string);   // '"' double quote fix
     $string = preg_replace('/&#039;+/', '', $string);   // ''' single quote fix
     $string = preg_replace('/Ä+/', 'c', $string);   // 'č' char fix
@@ -29,6 +29,22 @@ function safe_name($string) {
     $trans = ["š" => "s", "ć" => "c", "č" => "c", "đ" => "d", "ž" => "z", " " => "_", ">" => "", "<" => "", "." => "", "," => "", "&gt;" => "", "&lt;" => "", ":" => "", "-" => "", "|" => "", "!" => ""];
 
     return strtr(mb_strtolower($string, "UTF-8"), $trans);
+}
+
+/**
+ * @param $string
+ * @return string
+ * name with croatian names, broken chars
+ */
+function cro_name_strings($string) {
+    $string = preg_replace('/&scaron;+/', 'š', $string);   // 'š' letter fix
+    $string = preg_replace('/&Scaron;+/', 'Š', $string);   // 'Š' letter fix
+    $string = preg_replace('/&quot;+/', '', $string);   // '"' double quote fix
+    $string = preg_replace('/&#039;+/', '', $string);   // ''' single quote fix
+    $string = preg_replace('/Ä+/', 'č', $string);   // 'č' char fix
+    $string = preg_replace('/Å¾+/', 'ž', $string);   // 'ž' char fix
+
+    return $string;
 }
 
 /**

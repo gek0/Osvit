@@ -114,14 +114,14 @@ class PublicController extends BaseController {
             return '';
         }
         else{
-            Header("content-type: application/x-javascript");
+            Header("content-type: application/x-javascript; charset=UTF-8");
 
             // get first map style for all
             $map_style = $locations->first()->map_style;
 
             $location_map_data = '';
             foreach ($locations as $loc) {
-                $location_map_data .= 'map.addMarker({lat: "'.$loc->map_lat.'", lng: "'.$loc->map_lng.'", title: "'.$loc->map_title.'", icon: image});';
+                $location_map_data .= 'map.addMarker({lat: "'.$loc->map_lat.'", lng: "'.$loc->map_lng.'", title: "'.cro_name_strings($loc->map_title).'", icon: image});';
             }
 
             $js_map = 'jQuery(document).ready(function(){

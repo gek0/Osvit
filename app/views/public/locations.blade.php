@@ -18,9 +18,11 @@
                         <h3 class="text-center">{{ $location->map_title }}</h3>
                         <h4 class="text-center"><i class="fa fa-phone" aria-hidden="true" title="Kontakt"></i>
                             {{ $location->contact_info }}
-                        </h4>                        
-                        <h3 class="text-center">Raspored dvorane</h3>
-                        {{ removeEmptyP(nl2p((new BBCParser)->parse($location->time_schedule))) }}
+                        </h4>
+                        @if($location->time_schedule)
+                            <h3 class="text-center">Dodatne informacije</h3>
+                            {{ removeEmptyP(nl2p((new BBCParser)->parse($location->time_schedule))) }}
+                        @endif
                         <hr>
                     @endforeach
                 </div>
