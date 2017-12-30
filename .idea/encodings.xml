@@ -58,6 +58,7 @@
     <file url="file://$PROJECT_DIR$/app/views/public/login.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/public/news.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/public/show-news.blade.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/views/public/sponsors.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/shared-layout/browser-fb.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/shared-layout/head.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/public/css/style.css" charset="UTF-8" />

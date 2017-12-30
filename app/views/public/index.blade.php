@@ -16,4 +16,6 @@
 
 @include('public.contact')
 
+@include('public.sponsors')
+
 @include('public.layout.footer')

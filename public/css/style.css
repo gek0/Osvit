@@ -1040,6 +1040,19 @@ section#map{
   }
 }
 
+.sponsors-img{
+    margin: 15px;
+    opacity: .5;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+.sponsors-img:focus,
+.sponsors-img:hover{
+    opacity: 1;
+}
+
 .mfp-with-zoom .mfp-container,
 .mfp-with-zoom.mfp-bg {
   opacity: 0;
