@@ -424,6 +424,26 @@ pre {
 .pb-clear {
     padding-bottom: 0
 }
+.text-bold{
+    font-weight: bold;
+}
+
+.img-real-circle {
+     border-radius: 50%;
+     height: 100px;
+     width: 100px;
+     overflow: hidden;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
+
+.male-btn { color: #3180e1; }
+.female-btn { color: #d71e64; }
+.bronze-btn { color: #ab8024; }
+.silver-btn { color: #ccc7bb; }
+.gold-btn { color: #fcc44b; }
+
 .content_narrow {
     width: 45%;
     height: auto;

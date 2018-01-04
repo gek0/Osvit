@@ -15,13 +15,13 @@ class Gallery extends Eloquent{
      * validation rules for entities
      *
      */
-    public static $rules = ['images_name' => 'image|max:3000'];
+    public static $rules = ['images_name' => 'image|max:6000'];
 
     /**
      * validation error messages
      */
     public static $messages = ['images.image' => 'Dozvoljeni formati slike su: .jpeg, .png, .bmp i .gif',
-                                'images.max' => 'Maksimalna veličina slike je 3MB',
+                                'images.max' => 'Maksimalna veličina slike je 6MB',
     ];
 
     /**

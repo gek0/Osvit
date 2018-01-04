@@ -130,6 +130,33 @@ h4 {
 .marginated-center-lot {
     margin: 2em auto 1em
 }
+
+.img-real-circle {
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.male-btn { color: #3180e1; }
+.female-btn { color: #d71e64; }
+.bronze-btn { color: #ab8024; }
+.silver-btn { color: #ccc7bb; }
+.gold-btn { color: #fcc44b; }
+
+.short-info-paragraph{
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.athlete-content img{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
 .fb-page,
 .yt-page{
     border: 0;

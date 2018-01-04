@@ -3,13 +3,14 @@
 <div class="row">
     <div class="col-lg-8 col-lg-offset-2" id="layout-block-main">
         {{ Form::open(['url' => route('admin-image-galleryPOST'), 'role' => 'form', 'id' => 'admin-image-gallery', 'files' => true, 'class' => 'form-element']) }}
-        <div class="form-group">
-            {{ Form::label('image_gallery_images', 'Dodaj slike na stranicu:') }}
-            {{ Form::file('image_gallery_images[]', ['multiple' => true, 'class' => 'file', 'data-show-upload' => false, 'data-show-caption' => true, 'id' => 'image_gallery_images', 'accept' => 'image/*', 'required' => 'true']) }}
-        </div>
-        <div class="text-center">
-            <button type="submit" class="btn btn-submit btn-submit-full">Spremi izmjene <i class="fa fa-check"></i></button>
-        </div>
+            <div class="form-group">
+                {{ Form::label('image_gallery_images', 'Dodaj slike na stranicu:') }}
+                {{ Form::file('image_gallery_images[]', ['multiple' => true, 'class' => 'file', 'data-show-upload' => false, 'data-show-caption' => true, 'id' => 'image_gallery_images', 'accept' => 'image/*', 'required' => 'true']) }}
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-submit btn-submit-full">Spremi izmjene <i class="fa fa-check"></i></button>
+            </div>
         {{ Form::close() }}
 
         @if($image_gallery_data->count() > 0)

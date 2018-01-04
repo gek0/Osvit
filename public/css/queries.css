@@ -24,6 +24,7 @@
     .news-all-header-title{
         height: auto;
     }
+
 }
 @media screen and (max-width: 680px) {
 
@@ -76,6 +77,12 @@
     div.img-identical > a.osvit-project-item > img.img-gallery-identical {
         width: 400px;
         height: 200px;
+    }
+
+    body,
+    html{
+        top: -10px;
+        position: relative;
     }
 }
 @media screen and (max-width: 900px) {

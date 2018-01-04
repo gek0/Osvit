@@ -269,7 +269,7 @@ class PublicController extends BaseController {
     }
 
     /**
-     * shoow all tags
+     * show all tags
      * @return mixed
      */
     public function showTagsList()
@@ -278,6 +278,19 @@ class PublicController extends BaseController {
 
         return View::make('public.tags-list')->with(['page_title' => 'Lista tagova',
                                                 'tags_data' => $tags_data
+        ]);
+    }
+
+    /**
+     * show wall of fame with all athletes
+     * @return mixed
+     */
+    public function showWallOfFame()
+    {
+        $athletes_data = Athlete::orderBy('athlete_trophy', 'DESC')->get();
+
+        return View::make('public.wall-of-fame')->with(['page_title' => 'Wall of fame',
+                                                        'athletes_data' => $athletes_data
         ]);
     }
 

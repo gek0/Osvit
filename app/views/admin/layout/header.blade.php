@@ -51,6 +51,7 @@
                         <ul class="nav navbar-nav">
                             {{ HTML::smartRoute_link('/', 'Pregled stranice', '<i class="fa fa-search" aria-hidden="true"></i>') }}
                             {{ HTML::smartRoute_link('admin/naslovnica', 'Naslovnica', '<i class="fa fa-home" aria-hidden="true"></i>') }}
+                            {{ HTML::smartRoute_link('admin/sportasi', 'Sportaši', '<i class="fa fa-trophy" aria-hidden="true"></i>') }}
                             {{ HTML::smartRoute_link('admin/obavijesti', 'Obavijesti', '<i class="fa fa-pencil" aria-hidden="true"></i>') }}
                             {{ HTML::smartRoute_link('admin/dvorane', 'Dvorane', '<i class="fa fa-map-marker" aria-hidden="true"></i>') }}
                             {{ HTML::smartRoute_link('admin/video-galerija', 'Video galerija', '<i class="fa fa-video-camera" aria-hidden="true"></i>') }}

@@ -4,6 +4,7 @@
     <file url="file://$PROJECT_DIR$/.env-sample.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/.env.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/controllers/AdminController.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/controllers/AthleteController.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/controllers/GalleryController.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/controllers/LocationController.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/controllers/LoginController.php" charset="UTF-8" />
@@ -12,6 +13,7 @@
     <file url="file://$PROJECT_DIR$/app/controllers/UserController.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/functions.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/models/AboutUs.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/models/Athlete.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/models/Cover.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/models/Feature.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/models/FunFact.php" charset="UTF-8" />
@@ -24,6 +26,8 @@
     <file url="file://$PROJECT_DIR$/app/models/VideoGallery.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/start/global.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/validators.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/views/admin/athletes-edit.blade.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/views/admin/athletes.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/admin/home.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/admin/home/about-us.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/admin/home/cover-image.blade.php" charset="UTF-8" />
@@ -59,6 +63,8 @@
     <file url="file://$PROJECT_DIR$/app/views/public/news.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/public/show-news.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/public/sponsors.blade.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/views/public/wall-of-fame.blade.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/views/public/wall-of-fame.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/shared-layout/browser-fb.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/shared-layout/head.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/public/css/style.css" charset="UTF-8" />

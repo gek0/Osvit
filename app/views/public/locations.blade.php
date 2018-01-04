@@ -15,15 +15,17 @@
             <div class="row">
                 <div class="col-md-4" id="location-details">
                     @foreach($locations_data as $location)
-                        <h3 class="text-center">{{ $location->map_title }}</h3>
-                        <h4 class="text-center"><i class="fa fa-phone" aria-hidden="true" title="Kontakt"></i>
-                            {{ $location->contact_info }}
-                        </h4>
-                        @if($location->time_schedule)
-                            <h3 class="text-center">Dodatne informacije</h3>
-                            {{ removeEmptyP(nl2p((new BBCParser)->parse($location->time_schedule))) }}
-                        @endif
-                        <hr>
+                        <section class="location-details-individual">
+                            <h3 class="text-center">{{ $location->map_title }}</h3>
+                            <h4 class="text-center"><i class="fa fa-phone" aria-hidden="true" title="Kontakt"></i>
+                                {{ $location->contact_info }}
+                            </h4>
+                            @if($location->time_schedule)
+                                <h3 class="text-center">Dodatne informacije</h3>
+                                {{ removeEmptyP(nl2p((new BBCParser)->parse($location->time_schedule))) }}
+                            @endif
+                            <hr>
+                        </section>
                     @endforeach
                 </div>
 

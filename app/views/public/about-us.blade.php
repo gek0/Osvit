@@ -25,6 +25,16 @@
                         </div>
                     </div>
                 @endif
+
+                <div class="space"></div>
+                <div class="div-small">
+                    <a href="{{ route('wall-of-fame') }}">
+                        <button class="btn btn-submit-delete btn-submit-full">
+                            <i class="fa fa-trophy" aria-hidden="true"></i> {{ getenv('WEB_NAME') }} Wall of Fame
+                        </button>
+                    </a>
+                </div>
+                <div class="space"></div>
             </div>
         </div>
     </div>

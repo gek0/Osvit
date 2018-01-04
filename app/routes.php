@@ -27,6 +27,12 @@ Route::group(['before' => 'auth'], function() {
 		Route::post('info-izmjena', ['as' => 'admin-fun-facts-editPOST', 'uses' => 'AdminController@updateFunFacts']);
 		Route::post('o-nama-izmjena', ['as' => 'admin-about-us-editPOST', 'uses' => 'AdminController@updateAboutUs']);
 
+		Route::post('sportasi', ['as' => 'admin-athletesPOST', 'uses' => 'AthleteController@addAthlete']);
+		Route::get('sportasi', ['as' => 'admin-athletes', 'uses' => 'AthleteController@showAthletes']);
+		Route::post('sportasi-izmjena', ['as' => 'admin-athletes-editPOST', 'uses' => 'AthleteController@updateAthlete']);
+		Route::get('sportasi/izmjena/{id}', ['as' => 'admin-athletes-edit', 'uses' => 'AthleteController@showUpdateAthlete'])->where(['id' => '[0-9]+']);
+		Route::get('sportasi-brisanje/{id}', ['as' => 'admin-athletes-delete', 'uses' => 'AthleteController@deleteAthlete'])->where(['id' => '[0-9]+']);
+
 		Route::get('obavijesti', ['as' => 'admin-news', 'uses' => 'NewsController@showNews']);
 		Route::get('obavijesti/nova', ['as' => 'admin-news-add', 'uses' => 'NewsController@showNewNewsForm']);
 		Route::post('obavijesti/nova', ['as' => 'admin-news-addPOST', 'uses' => 'NewsController@addNewNews']);
@@ -72,6 +78,7 @@ Route::get('odjava', function(){
 Route::post('prijava', ['as' => 'loginPOST', 'uses' => 'LoginController@checkLogin']);
 Route::get('prijava', ['as' => 'login', 'uses' => 'LoginController@showLogin']);
 Route::get('galerija', ['as' => 'image-gallery', 'uses' => 'PublicController@showImageGallery']);
+Route::get('wall-of-fame', ['as' => 'wall-of-fame', 'uses' => 'PublicController@showWallOfFame']);
 Route::get('obavijesti', ['as' => 'news', 'uses' => 'PublicController@showNews']);
 Route::get('obavijesti/sortirano', ['as' => 'news-sort', 'uses' => 'PublicController@showFilteredSortedNews']);
 Route::get('obavijesti/pregled/{slug}', ['as' => 'news-show', 'uses' => 'PublicController@showIndividualNews'])->where(['slug' => '[\w\-šðèæžŠÐÈÆŽ]+']);
