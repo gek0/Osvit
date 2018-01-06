@@ -30,7 +30,7 @@
             <div class="navbar-header">
                 <!-- Mobile Toggle Menu Button -->
                 <a href="#" class="js-osvit-nav-toggle osvit-nav-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i></i></a>
-                {{ HTML::image('css/assets/images/logo_nav_small.png', getenv('WEB_NAME').' logo', ['title' => getenv('WEB_NAME'), 'class' => 'img-responsive logo-navbar']) }}
+                {{ HTML::image('css/assets/images/logo_nav_med.png', getenv('WEB_NAME').' logo', ['title' => getenv('WEB_NAME'), 'class' => 'img-responsive logo-navbar']) }}
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
