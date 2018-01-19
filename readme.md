@@ -9,7 +9,7 @@ Complete public frontpage can be changed from administration panel.
 
 ## Web preview
 
-Live page is available @ http://www.taekwondo-osvit.hr/
+Live page is available @ https://www.taekwondo-osvit.hr/
 
 ![alt tag](https://i.imgur.com/j9XizPi.jpg)
 
