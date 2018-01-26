@@ -1,6 +1,6 @@
 @include('public.layout.header')
 
--@include('public.cover')
+@include('public.cover')
 
 @include('public.intro')
 
